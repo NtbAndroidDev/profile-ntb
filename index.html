@@ -3,272 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of nguyen thanh binh (NtbAndroidDev) - Android, Web, and AI Developer.">
-    <title>Binh | iOS Emulator</title>
+    <title>Binh | The Android Experience</title>
     
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- BoxIcons for vector icons -->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Load Three.js (removed since we use CSS 3D for perfect Apple Scroll, but keeping just in case) -->
 </head>
 <body>
-    
-    <!-- Background visual to show standard desktop/ambient space behind phone -->
-    <div class="ambient-bg"></div>
 
-    <div class="device-wrapper">
-        <div class="device">
-            <div class="screen">
-                <!-- Dynamic Island -->
-                <div class="dynamic-island">
-                    <div class="camera-lens"></div>
+    <!-- Smooth Scrolling Container Wrapper -->
+    <div id="smooth-wrapper">
+        
+        <!-- Background Ambient -->
+        <div class="bg-gradient"></div>
+
+        <!-- FIXED 3D VIEWPORT -->
+        <div class="fixed-viewport">
+            
+            <!-- Floating Text Elements -->
+            <div class="text-layer" id="text-1">
+                <h1>Meet Binh.</h1>
+                <p class="subtitle">Mobile Software Engineer.</p>
+                <div class="scroll-anim">
+                    <span>Scroll to unfold</span>
+                    <i class='bx bx-chevron-down'></i>
                 </div>
+            </div>
 
-                <!-- Status Bar -->
-                <div class="status-bar">
-                    <div class="status-left">
-                        <span class="status-time" id="status-time">10:00</span>
-                    </div>
-                    <div class="status-right">
-                        <i class='bx bx-signal-5'></i>
-                        <i class='bx bx-wifi'></i>
-                        <i class='bx bxs-battery-full'></i>
-                    </div>
-                </div>
+            <div class="text-layer" id="text-2">
+                <h2>Master of Architecture.</h2>
+                <p>Clean Code. MVVM. Built for Scale.</p>
+            </div>
 
-                <!-- 1. Lock Screen (iOS Style) -->
-                <div id="lock-screen" class="view lock-view active">
-                    <div class="lock-header">
-                        <p id="lock-date" class="ios-date">Mon, Mar 31</p>
-                        <h1 id="lock-time-large" class="ios-time">10:00</h1>
-                    </div>
+            <div class="text-layer" id="text-3">
+                <h2 style="background: linear-gradient(90deg, #ff00ff, #00f0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">AI Integrated.</h2>
+                <p>Bridging mobile applications with Deep Learning & ViT5 models.</p>
+            </div>
+
+            <div class="text-layer" id="text-4" style="text-align: center; top: 10%;">
+                <h2 style="font-size: 4rem;">The Gallery.</h2>
+            </div>
+
+            <!-- The 3D CSS Smartphone -->
+            <div class="phone-3d-wrapper" id="phone-wrapper">
+                <div class="phone" id="the-phone">
                     
-                    <div class="notifications">
-                        <div class="notif-card" id="unlock-hint">
-                            <div class="notif-header">
-                                <div class="notif-app">
-                                    <i class='bx bxs-message-rounded-dots'></i>
-                                    <span>Recruiter</span>
-                                </div>
-                                <span class="notif-time">now</span>
+                    <!-- Back of Phone -->
+                    <div class="phone-face phone-back">
+                        <div class="camera-bump">
+                            <div class="lens lens-1"></div>
+                            <div class="lens lens-2"></div>
+                            <div class="lens lens-3"></div>
+                            <div class="flash"></div>
+                        </div>
+                        <div class="brand-logo"><i class='bx bxl-android'></i></div>
+                    </div>
+
+                    <!-- Front of Phone (Screen) -->
+                    <div class="phone-face phone-front">
+                        <div class="notch"></div>
+                        
+                        <!-- Screen Contents (Fading in/out with GSAP) -->
+                        <div class="screen-content active" id="screen-1">
+                            <div class="s1-time">09:41</div>
+                            <div class="s1-date">Tuesday, March 31</div>
+                            <div class="s1-widget">
+                                <i class='bx bx-user-circle'></i> NtbAndroidDev
                             </div>
-                            <div class="notif-body">
-                                <strong>New Portfolio Detected!</strong>
-                                <p>Tap the fingerprint below to unlock Binh's Developer OS.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="lock-footer">
-                        <i class='bx bxs-torch lock-shortcut'></i>
-                        <div class="unlock-area" id="unlock-btn">
-                            <span>Swipe up to open</span>
-                            <div class="swipe-bar"></div>
-                        </div>
-                        <i class='bx bxs-camera lock-shortcut'></i>
-                    </div>
-                </div>
-
-                <!-- 2. Home Screen -->
-                <div id="home-screen" class="view home-view active">
-                    <div class="app-grid">
-                        <!-- System Apps -->
-                        <div class="app-icon" data-app="app-about">
-                            <div class="icon-bg ios-settings"><i class='bx bxs-cog'></i></div>
-                            <span class="icon-label">Settings</span>
-                        </div>
-                        <div class="app-icon" data-app="app-skills">
-                            <div class="icon-bg ios-wallet"><i class='bx bxs-wallet-alt'></i></div>
-                            <span class="icon-label">Wallet</span>
-                        </div>
-                        <div class="app-icon" data-app="app-contact">
-                            <div class="icon-bg ios-mail"><i class='bx bxs-envelope'></i></div>
-                            <span class="icon-label">Mail</span>
-                        </div>
-
-                        <!-- User Repo Apps -->
-                        <div class="app-icon repo-app" data-repo="food_mvvm" data-name="Food App" data-desc="Food delivery application showcasing MVVM architecture in Android natively." data-lang="Kotlin" data-icon="bx-restaurant" data-color="linear-gradient(135deg, #fb923c, #ea580c)">
-                            <div class="icon-bg" style="background: linear-gradient(135deg, #fb923c, #ea580c);"><i class='bx bx-restaurant'></i></div>
-                            <span class="icon-label">FoodApp</span>
-                        </div>
-                        <div class="app-icon repo-app" data-repo="job_app" data-name="Job Finder" data-desc="Job seeking application focused on modern UI/UX and seamless navigation." data-lang="Dart" data-icon="bx-briefcase" data-color="linear-gradient(135deg, #38bdf8, #0284c7)">
-                            <div class="icon-bg" style="background: linear-gradient(135deg, #38bdf8, #0284c7);"><i class='bx bx-briefcase'></i></div>
-                            <span class="icon-label">Jobs UX</span>
-                        </div>
-                        <div class="app-icon repo-app" data-repo="chatapp_flutter" data-name="Chat App" data-desc="A real-time chat application built with Flutter & Firebase." data-lang="Dart" data-icon="bx-message-square-dots" data-color="linear-gradient(135deg, #4ade80, #16a34a)">
-                            <div class="icon-bg" style="background: linear-gradient(135deg, #4ade80, #16a34a);"><i class='bx bx-message-square-dots'></i></div>
-                            <span class="icon-label">Chatty</span>
-                        </div>
-                        <div class="app-icon repo-app" data-repo="uitvic-caption" data-name="ViT5 AI" data-desc="Deep Learning project for generating image captions using ViT5 and Python." data-lang="Python" data-icon="bx-brain" data-color="linear-gradient(135deg, #374151, #111827)">
-                            <div class="icon-bg" style="background: linear-gradient(135deg, #374151, #111827);"><i class='bx bx-brain'></i></div>
-                            <span class="icon-label">ViT5 AI</span>
-                        </div>
-                        <div class="app-icon repo-app" data-repo="compose-media-picker" data-name="Media Picker" data-desc="A modern, high-performance media picker for Jetpack Compose." data-lang="Kotlin" data-icon="bx-image-add" data-color="linear-gradient(135deg, #fff, #f4f4f4); color: #000;">
-                            <div class="icon-bg" style="background: linear-gradient(135deg, #fff, #f4f4f4); color: #000;"><i class='bx bx-image-add'></i></div>
-                            <span class="icon-label">ComposePic</span>
-                        </div>
-                    </div>
-
-                    <div class="home-search-pill">
-                        <i class='bx bx-search'></i> Search
-                    </div>
-
-                    <div class="dock">
-                        <div class="app-icon fake-app">
-                            <div class="icon-bg ios-phone"><i class='bx bxs-phone'></i></div>
-                        </div>
-                        <div class="app-icon fake-app">
-                            <div class="icon-bg ios-messages"><i class='bx bxs-message-rounded'></i></div>
-                        </div>
-                        <div class="app-icon fake-app">
-                            <div class="icon-bg ios-safari"><i class='bx bx-compass'></i></div>
-                        </div>
-                        <div class="app-icon fake-app">
-                            <div class="icon-bg ios-music"><i class='bx bxs-music'></i></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 3. App Windows -->
-
-                <!-- App: About -->
-                <div id="app-about" class="view app-window">
-                    <div class="app-header ios-header">
-                        <div class="header-back-btn"><i class='bx bx-chevron-left'></i> Back</div>
-                        <h2>About</h2>
-                    </div>
-                    <div class="app-content content-padded">
-                        <div class="profile-card">
-                            <img src="https://avatars.githubusercontent.com/u/135935496?v=4" alt="Binh" class="avatar">
-                            <h2>Binh (NtbAndroidDev)</h2>
-                            <p class="subtitle">Mobile Software Engineer</p>
                         </div>
                         
-                        <div class="settings-group">
-                            <div class="settings-item">
-                                <i class='bx bx-laptop bg-gray'></i>
-                                <div class="item-text">
-                                    <strong>Role</strong>
-                                    <span>Android & Flutter Mobile Dev</span>
-                                </div>
-                            </div>
-                            <div class="settings-item">
-                                <i class='bx bx-brain bg-purple'></i>
-                                <div class="item-text">
-                                    <strong>AI Focus</strong>
-                                    <span>Deep Learning, Python, ViT5</span>
-                                </div>
-                            </div>
-                            <div class="settings-item">
-                                <i class='bx bx-map bg-green'></i>
-                                <div class="item-text">
-                                    <strong>Location</strong>
-                                    <span>Vietnam</span>
-                                </div>
-                            </div>
-                            <div class="settings-item">
-                                <i class='bx bx-history bg-orange'></i>
-                                <div class="item-text">
-                                    <strong>Experience</strong>
-                                    <span>3+ Years in App Architecture</span>
-                                </div>
+                        <div class="screen-content" id="screen-2">
+                            <i class='bx bx-layer code-icon' style="color: #f97316;"></i>
+                            <h3>Kotlin / Dart</h3>
+                            <div class="line-code"></div>
+                            <div class="line-code w-70"></div>
+                            <div class="line-code w-40"></div>
+                        </div>
+
+                        <div class="screen-content" id="screen-3">
+                            <i class='bx bx-brain code-icon' style="color: #c026d3;"></i>
+                            <h3>Machine Learning</h3>
+                            <div class="ai-pulse"></div>
+                        </div>
+
+                        <div class="screen-content" id="screen-4">
+                            <div id="projects-list-scrollable">
+                                <!-- Populated dynamically by JS -->
                             </div>
                         </div>
-                        <p class="bio-text">Passionate about building highly scalable native or cross-platform architectures (MVVM, Clean Architecture). Expanding bounds into Jetpack Compose and AI integrations.</p>
                     </div>
+
                 </div>
-
-                <!-- App: Dynamic Repo Window -->
-                <div id="app-repo-template" class="view app-window">
-                    <div class="app-header ios-header">
-                        <div class="header-back-btn"><i class='bx bx-chevron-left'></i> Home</div>
-                        <h2 id="repo-header-title">App</h2>
-                    </div>
-                    <div class="app-content content-padded" style="display:flex; flex-direction:column; align-items:center; text-align:center; padding-top: 40px;">
-                        <div id="repo-big-icon" class="icon-bg" style="width:100px; height:100px; font-size:4rem; border-radius:24px; margin-bottom: 20px;">
-                            <i class='bx bx-code'></i>
-                        </div>
-                        <h1 id="repo-title" style="font-size:2rem; margin-bottom:10px;">Repo Name</h1>
-                        <span id="repo-lang" class="skill-item" style="margin-bottom:20px; font-size:0.85rem; padding: 5px 15px; border-radius: 20px;">Language</span>
-                        <p id="repo-desc" style="color:var(--text-secondary); line-height:1.6; font-size:1rem; margin-bottom: 30px; padding: 0 15px;">Description goes here.</p>
-                        
-                        <a id="repo-github-btn" href="#" target="_blank" class="install-btn" style="width: 80%; padding: 15px; border-radius: 12px; font-size: 1rem; background: #0B7CE6;">
-                            <i class='bx bxl-github' style="font-size:1.2rem; margin-right:5px; vertical-align:middle;"></i> GET FROM GITHUB
-                        </a>
-                    </div>
-                </div>
-
-                <!-- App: Skills -->
-                <div id="app-skills" class="view app-window">
-                    <div class="app-header ios-header">
-                        <div class="header-back-btn"><i class='bx bx-chevron-left'></i> Back</div>
-                        <h2>Tech Stack</h2>
-                    </div>
-                    <div class="app-content content-padded">
-                        <h3 class="section-title">Core Modules</h3>
-                        <div class="skills-grid">
-                            <div class="skill-item"><i class='bx bxl-android'></i> Android SDK</div>
-                            <div class="skill-item"><i class='bx bx-code-curly'></i> Kotlin / Java</div>
-                            <div class="skill-item"><i class='bx bx-mobile'></i> Flutter / Dart</div>
-                        </div>
-
-                        <h3 class="section-title">Secondary Modules</h3>
-                        <div class="skills-grid">
-                            <div class="skill-item"><i class='bx bxl-python'></i> Python ML</div>
-                            <div class="skill-item"><i class='bx bx-palette'></i> Jetpack Compose</div>
-                            <div class="skill-item"><i class='bx bx-layer'></i> MVVM</div>
-                        </div>
-
-                        <div class="storage-info">
-                            <div class="storage-bar">
-                                <div class="storage-used"></div>
-                            </div>
-                            <p>10+ Open Source projects installed.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- App: Contact -->
-                <div id="app-contact" class="view app-window">
-                    <div class="app-header ios-header">
-                        <div class="header-back-btn"><i class='bx bx-chevron-left'></i> Back</div>
-                        <h2>Contact</h2>
-                    </div>
-                    <div class="app-content content-padded">
-                        <div class="contact-card">
-                            <div class="contact-avatar bg-blue">R</div>
-                            <h2>Recruiters</h2>
-                            <p>Let's work together!</p>
-                        </div>
-                        
-                        <div class="action-buttons">
-                            <a href="mailto:thanhbinh@example.com" class="action-btn">
-                                <div class="action-icon bg-green"><i class='bx bxs-phone-call'></i></div>
-                                <span>Hire Me</span>
-                            </a>
-                            <a href="https://github.com/NtbAndroidDev" target="_blank" class="action-btn">
-                                <div class="action-icon bg-dark"><i class='bx bxl-github'></i></div>
-                                <span>GitHub</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- iOS Home Indicator (Bottom) -->
-                <div class="ios-home-indicator" id="btn-home"></div>
             </div>
         </div>
+
+        <!-- Scroll Height Spacers (To create length for GSAP scrubbing) -->
+        <div class="scroll-spacer section-1"></div>
+        <div class="scroll-spacer section-2"></div>
+        <div class="scroll-spacer section-3"></div>
+        <div class="scroll-spacer section-4"></div>
+        
     </div>
 
-    <!-- Sound Effects for immersion -->
-    <audio id="unlock-sound" src="https://actions.google.com/sounds/v1/ui/unlock.ogg" preload="auto"></audio>
-    <audio id="click-sound" src="https://actions.google.com/sounds/v1/ui/pop.ogg" preload="auto"></audio>
-
+    <!-- GSAP Core & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
     <script src="script.js"></script>
 </body>
 </html>
