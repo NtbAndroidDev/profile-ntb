@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio of nguyen thanh binh (NtbAndroidDev) - Android, Web, and AI Developer.">
-    <title>Binh | Mobile Dev OS</title>
+    <title>Binh | iOS Emulator</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,8 +24,8 @@
     <div class="device-wrapper">
         <div class="device">
             <div class="screen">
-                <!-- Device Notch -->
-                <div class="notch">
+                <!-- Dynamic Island -->
+                <div class="dynamic-island">
                     <div class="camera-lens"></div>
                 </div>
 
@@ -39,11 +39,11 @@
                     </div>
                 </div>
 
-                <!-- 1. Lock Screen -->
+                <!-- 1. Lock Screen (iOS Style) -->
                 <div id="lock-screen" class="view lock-view active">
                     <div class="lock-header">
-                        <h1 id="lock-time-large">10:00</h1>
-                        <p id="lock-date">Mon, Mar 31</p>
+                        <p id="lock-date" class="ios-date">Mon, Mar 31</p>
+                        <h1 id="lock-time-large" class="ios-time">10:00</h1>
                     </div>
                     
                     <div class="notifications">
@@ -65,9 +65,8 @@
                     <div class="lock-footer">
                         <i class='bx bxs-torch lock-shortcut'></i>
                         <div class="unlock-area" id="unlock-btn">
-                            <div class="fingerprint-pulse"></div>
-                            <i class='bx bx-fingerprint'></i>
-                            <span>Press to Unlock</span>
+                            <span>Swipe up to open</span>
+                            <div class="swipe-bar"></div>
                         </div>
                         <i class='bx bxs-camera lock-shortcut'></i>
                     </div>
@@ -129,9 +128,9 @@
 
                 <!-- App: About -->
                 <div id="app-about" class="view app-window">
-                    <div class="app-header">
-                        <i class='bx bx-arrow-back header-back-btn'></i>
-                        <h2>Settings / About</h2>
+                    <div class="app-header ios-header">
+                        <div class="header-back-btn"><i class='bx bx-chevron-left'></i> Back</div>
+                        <h2>About</h2>
                     </div>
                     <div class="app-content content-padded">
                         <div class="profile-card">
@@ -176,9 +175,9 @@
 
                 <!-- App: Projects -->
                 <div id="app-projects" class="view app-window">
-                    <div class="app-header">
-                        <i class='bx bx-arrow-back header-back-btn'></i>
-                        <h2>Play Store / Projects</h2>
+                    <div class="app-header ios-header">
+                        <div class="header-back-btn"><i class='bx bx-chevron-left'></i> Back</div>
+                        <h2>Projects</h2>
                     </div>
                     <div class="app-content content-scrollable" id="repos-container">
                         <!-- Rendered by JS -->
@@ -187,9 +186,9 @@
 
                 <!-- App: Skills -->
                 <div id="app-skills" class="view app-window">
-                    <div class="app-header">
-                        <i class='bx bx-arrow-back header-back-btn'></i>
-                        <h2>System Resources</h2>
+                    <div class="app-header ios-header">
+                        <div class="header-back-btn"><i class='bx bx-chevron-left'></i> Back</div>
+                        <h2>Tech Stack</h2>
                     </div>
                     <div class="app-content content-padded">
                         <h3 class="section-title">Core Modules</h3>
@@ -217,9 +216,9 @@
 
                 <!-- App: Contact -->
                 <div id="app-contact" class="view app-window">
-                    <div class="app-header">
-                        <i class='bx bx-arrow-back header-back-btn'></i>
-                        <h2>Contacts</h2>
+                    <div class="app-header ios-header">
+                        <div class="header-back-btn"><i class='bx bx-chevron-left'></i> Back</div>
+                        <h2>Contact</h2>
                     </div>
                     <div class="app-content content-padded">
                         <div class="contact-card">
@@ -241,12 +240,8 @@
                     </div>
                 </div>
 
-                <!-- Nav Bar (Bottom) -->
-                <div class="nav-bar">
-                    <div class="nav-btn" id="btn-back"><i class='bx bxs-down-arrow' style="transform: rotate(90deg);"></i></div>
-                    <div class="nav-btn" id="btn-home"><i class='bx bxs-circle'></i></div>
-                    <div class="nav-btn" id="btn-recent"><i class='bx bxs-square'></i></div>
-                </div>
+                <!-- iOS Home Indicator (Bottom) -->
+                <div class="ios-home-indicator" id="btn-home"></div>
             </div>
         </div>
     </div>

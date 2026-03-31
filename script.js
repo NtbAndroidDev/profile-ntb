@@ -45,8 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. App Navigation Logic
     const appIcons = document.querySelectorAll('.app-icon:not(.fake-app)');
     const fakeApps = document.querySelectorAll('.fake-app');
-    const backBtn = document.getElementById('btn-back');
-    const homeBtn = document.getElementById('btn-home');
+    const homeIndicator = document.getElementById('btn-home');
     const headerBackBtns = document.querySelectorAll('.header-back-btn');
 
     let currentApp = null;
@@ -80,8 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentApp = null;
     }
 
-    homeBtn.addEventListener('click', goHome);
-    backBtn.addEventListener('click', () => { if(currentApp) goHome(); });
+    homeIndicator.addEventListener('click', goHome);
     
     // Bind all Header Back buttons
     headerBackBtns.forEach(btn => {
