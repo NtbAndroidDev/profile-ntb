@@ -69,30 +69,48 @@ tl.eventCallback("onReverseComplete", () => {
 });
 
 
-// 2. Fetch Github Data
+// 2. Static Portfolio Data (Avoid GitHub API Rate Limits)
 const reposContainer = document.getElementById('projects-list-scrollable');
-const username = 'NtbAndroidDev';
 
-fetch(`https://api.github.com/users/${username}/repos?sort=pushed&per_page=6`)
-    .then(response => response.json())
-    .then(data => {
-        reposContainer.innerHTML = '';
-        data.forEach(repo => {
-            if (repo.fork) return; 
-            const desc = repo.description || 'No description available.';
-            const html = `
-                <div class="project-card">
-                    <h3>${repo.name}</h3>
-                    <p>${desc}</p>
-                    <a href="${repo.html_url}" target="_blank" class="btn-open">View on GitHub</a>
-                </div>
-            `;
-            reposContainer.innerHTML += html;
-        });
-    })
-    .catch(err => {
-        reposContainer.innerHTML = `<p style="text-align:center;">Failed to load projects.</p>`;
-    });
+const myProjects = [
+    {
+        name: 'food_mvvm',
+        desc: 'Food delivery application showcasing MVVM architecture in Android natively. Built with Kotlin.',
+        url: 'https://github.com/NtbAndroidDev/food_mvvm'
+    },
+    {
+        name: 'job_app',
+        desc: 'Job seeking application focused on modern UI/UX and seamless navigation. Built with Flutter/Dart.',
+        url: 'https://github.com/NtbAndroidDev/job_app'
+    },
+    {
+        name: 'chatapp_flutter',
+        desc: 'A real-time chat application built with Flutter & Firebase. Built with Dart.',
+        url: 'https://github.com/NtbAndroidDev/chatapp_flutter'
+    },
+    {
+        name: 'uitvic-caption',
+        desc: 'Deep Learning project for generating image captions using ViT5 and Python.',
+        url: 'https://github.com/NtbAndroidDev/uitvic-caption'
+    },
+    {
+        name: 'compose-media-picker',
+        desc: 'A modern, high-performance media picker for Jetpack Compose. Built with Kotlin.',
+        url: 'https://github.com/NtbAndroidDev/compose-media-picker'
+    }
+];
+
+let htmlContent = '';
+myProjects.forEach(repo => {
+    htmlContent += `
+        <div class="project-card">
+            <h3>${repo.name}</h3>
+            <p>${repo.desc}</p>
+            <a href="${repo.url}" target="_blank" class="btn-open">View on GitHub</a>
+        </div>
+    `;
+});
+reposContainer.innerHTML = htmlContent;
 
 // Init layout
 gsap.set("#text-1", { opacity: 1, y: 0 });
