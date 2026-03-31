@@ -186,12 +186,43 @@ body {
     color: var(--primary);
 }
 
-.bio {
-    max-width: 600px;
+.bio-extended {
+    max-width: 650px;
+    text-align: left;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.bio-subtitle {
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+.bio-intro, .bio-outro {
     color: var(--text-muted);
     line-height: 1.6;
-    margin-bottom: 2rem;
     font-size: 1.1rem;
+}
+
+.bio-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding-left: 0.5rem;
+}
+
+.bio-list li {
+    color: var(--text-main);
+    line-height: 1.5;
+    font-size: 1.05rem;
+}
+
+.bio-list strong {
+    color: var(--text-main);
+    font-weight: 600;
 }
 
 /* Buttons */
