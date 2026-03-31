@@ -76,16 +76,18 @@ body {
 }
 
 #text-1 {
-    top: 20%;
-    text-align: center;
-    width: 100%;
+    top: 50%; 
+    left: 8%; 
+    transform: translateY(-50%);
+    width: 400px;
+    text-align: left;
 }
 .scroll-anim {
     margin-top: 40px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    color: #555;
+    align-items: flex-start;
+    color: #888;
     animation: floatDown 2s infinite ease-in-out;
 }
 @keyframes floatDown {
@@ -93,9 +95,8 @@ body {
     50% { transform: translateY(10px); }
 }
 
-#text-2 { left: 10%; top: 40%; }
-#text-3 { right: 10%; top: 40%; text-align: right; }
-#text-4 { width: 100%; text-align: center; }
+#text-2 { right: 8%; top: 50%; transform: translateY(-50%); text-align: right; }
+#text-3 { left: 8%; top: 50%; transform: translateY(-50%); }
 
 /* The 3D CSS Phone Container */
 .phone-3d-wrapper {
@@ -238,9 +239,25 @@ body {
 @keyframes pulseBg { 0% { transform: scale(1); opacity: 0.5;} 50% { transform: scale(1.5); opacity: 1;} 100% { transform: scale(1); opacity: 0.5;} }
 
 /* Screen 4: Projects App Gallery inside phone */
-#screen-4 { align-items: flex-start; justify-content: flex-start; padding: 50px 15px 20px; }
-#projects-list-scrollable { width: 100%; height: 100%; overflow-y: auto; padding-right: 5px; }
-#projects-list-scrollable::-webkit-scrollbar { width: 0px; } /* Hide scrollbar completely for cleanliness */
+#screen-4 { 
+    align-items: flex-start; justify-content: flex-start; 
+    padding: 0; 
+}
+.gallery-header {
+    width: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(20px);
+    padding: 50px 20px 20px;
+    position: sticky; top: 0; z-index: 10;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.gallery-header h2 { font-size: 2.2rem; font-weight: 800; margin: 0; }
+
+#projects-list-scrollable { 
+    width: 100%; height: 100%; 
+    overflow-y: auto; overflow-x: hidden;
+    padding: 20px; 
+    padding-bottom: 50px;
+}
+#projects-list-scrollable::-webkit-scrollbar { width: 0px; } 
 
 .project-card {
     background: rgba(255,255,255,0.06);

@@ -15,30 +15,30 @@ const tl = gsap.timeline({
  * The scrub traverses the timeline based on scroll percentage.
  */
 
-// Scene 0 -> 1: Phone reveals its left side & Text 2 fades in
+// Scene 0 -> 1: Phone reveals its RIGHT side & Text 2 fades in
 tl.to("#text-1", { opacity: 0, y: -50, scale: 0.95, duration: 0.5 }, 0)
   .to("#the-phone", { 
-      rotateY: -35, // Tilt phone to face slightly right, exposing left back
+      rotateY: 25, // Tilt phone slightly left,
       rotateX: 5,
-      x: window.innerWidth > 768 ? window.innerWidth * 0.25 : 0, 
-      boxShadow: "-30px 30px 60px rgba(0,0,0,0.8)",
+      x: window.innerWidth > 768 ? -window.innerWidth * 0.25 : 0,  // Move phone to the left
+      boxShadow: "30px 30px 60px rgba(0,0,0,0.8)",
       duration: 1 
   }, 0)
-  // Text 2 appears on the left
+  // Text 2 appears on the right
   .to("#text-2", { opacity: 1, y: 0, scale: 1, duration: 0.5 }, 0.5)
   // Crossfade screen inside phone to Tech Stack
   .to("#screen-1", { opacity: 0, duration: 0.2 }, 0.4)
   .to("#screen-2", { opacity: 1, duration: 0.2 }, 0.6);
 
-// Scene 1 -> 2: Phone spins 180 to show the BACK (Camera Bump) and moves left
+// Scene 1 -> 2: Phone spins 180 to show the BACK (Camera Bump) and moves RIGHT
 tl.to("#text-2", { opacity: 0, y: -50, scale: 0.95, duration: 0.5 }, 1.5)
   .to("#the-phone", { 
-      rotateY: 180 + 35, // Spin completely backwards facing slightly left
-      x: window.innerWidth > 768 ? -window.innerWidth * 0.25 : 0,
-      boxShadow: "30px 30px 60px rgba(0,0,0,0.8)",
+      rotateY: 180 - 25, // Spin completely backwards facing slightly right
+      x: window.innerWidth > 768 ? window.innerWidth * 0.25 : 0, // Move phone to the right
+      boxShadow: "-30px 30px 60px rgba(0,0,0,0.8)",
       duration: 1.5 
   }, 1.5)
-  // Text 3 appears on the right
+  // Text 3 appears on the left
   .to("#text-3", { opacity: 1, y: 0, scale: 1, duration: 0.5 }, 2)
   // Behind the scenes, change screen content while phone is facing away
   .to("#screen-2", { opacity: 0, duration: 0.1 }, 2)
@@ -46,13 +46,12 @@ tl.to("#text-2", { opacity: 0, y: -50, scale: 0.95, duration: 0.5 }, 1.5)
 
 // Scene 2 -> 3: Phone spins back around 360, centers, and SCALES UP to fill screen
 tl.to("#text-3", { opacity: 0, y: -50, scale: 0.95, duration: 0.5 }, 3.5)
-  .to("#text-4", { opacity: 1, y: 0, scale: 1, duration: 0.5 }, 4)
   .to("#the-phone", { 
       rotateY: 360, 
       rotateX: 0,
       x: 0, 
-      y: window.innerWidth > 768 ? 100 : 50,
-      scale: window.innerWidth > 768 ? 1.5 : 1.2, // Pop out slightly
+      y: 0, // Keep it perfectly centered
+      scale: window.innerWidth > 768 ? 1.5 : 1.1, // Scale up
       boxShadow: "0 50px 100px rgba(0,0,0,0.9)",
       duration: 1.5 
   }, 3.5)
@@ -112,8 +111,8 @@ myProjects.forEach(repo => {
 });
 reposContainer.innerHTML = htmlContent;
 
-// Init layout
+// Init layout: phone on the right, text 1 on the left
+gsap.set("#the-phone", { x: window.innerWidth > 768 ? window.innerWidth * 0.25 : 0 });
 gsap.set("#text-1", { opacity: 1, y: 0, scale: 1 });
 gsap.set("#text-2", { y: 50, scale: 0.95 });
 gsap.set("#text-3", { y: 50, scale: 0.95 });
-gsap.set("#text-4", { y: 50, scale: 0.95 });
