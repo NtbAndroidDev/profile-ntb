@@ -102,18 +102,19 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    z-index: 100;
+    padding: 0 25px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    z-index: 1000;
     color: white;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
 }
-
-.status-icons {
-    display: flex;
-    gap: 5px;
-    font-size: 1.1rem;
+.status-left { margin-top: 5px; }
+.status-right { 
+    display: flex; 
+    gap: 4px; 
+    font-size: 1.1rem; 
+    margin-top: 5px;
 }
 
 /* iOS Home Indicator */
@@ -235,24 +236,27 @@ body {
     z-index: 10;
 }
 
-.search-widget {
-    margin: 20px;
-    background: rgba(255,255,255,0.2);
+.home-search-pill {
+    background: rgba(255,255,255,0.25);
     backdrop-filter: blur(10px);
-    border-radius: 30px;
-    padding: 12px 20px;
+    width: 80px;
+    height: 28px;
+    border-radius: 14px;
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    font-size: 0.9rem;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    gap: 5px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: white;
+    margin: 5px auto;
 }
 
 .app-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px 10px;
-    padding: 20px;
+    gap: 25px 15px;
+    padding: 25px 15px;
 }
 
 .app-icon {
@@ -266,45 +270,49 @@ body {
 .app-icon:active { transform: scale(0.9); }
 .icon-bg {
     width: 60px; height: 60px;
-    border-radius: 14px; /* iOS slightly squarish */
+    border-radius: 14px; 
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     color: white;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    /* Removed heavy drop shadow for standard flat iOS look */
 }
 .icon-label {
     font-size: 0.75rem;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    color: white;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
     text-align: center;
     font-weight: 500;
+    letter-spacing: 0.2px;
 }
 
 .dock {
     margin-top: auto;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 15px 10px;
-    background: rgba(255,255,255,0.2);
-    backdrop-filter: blur(15px);
-    border-radius: 25px;
+    margin-bottom: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 18px 15px;
+    background: rgba(255,255,255,0.3);
+    backdrop-filter: blur(25px);
+    border-radius: 35px;
     display: flex;
     justify-content: space-around;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.15);
 }
 
-/* Background Colors for App Icons */
-.bg-blue { background: linear-gradient(135deg, #60a5fa, #3b82f6); }
-.bg-purple { background: linear-gradient(135deg, #a78bfa, #8b5cf6); }
-.bg-orange { background: linear-gradient(135deg, #fb923c, #ea580c); }
-.bg-green { background: linear-gradient(135deg, #4ade80, #16a34a); }
-.bg-red { background: linear-gradient(135deg, #f87171, #dc2626); }
-.bg-dark { background: linear-gradient(135deg, #374151, #111827); }
-.bg-sky { background: linear-gradient(135deg, #38bdf8, #0284c7); }
-.bg-yellow { background: linear-gradient(135deg, #fbbf24, #ca8a04); }
-.bg-gray { background: linear-gradient(135deg, #9ca3af, #4b5563); }
-.bg-rainbow { background: conic-gradient(from 180deg at 50% 50%, #ff0000, #ff8000, #ffff00, #00ff00, #0000ff, #8000ff, #ff00ff, #ff0000); }
+/* Background Colors for App Icons (iOS accurate gradients) */
+.ios-settings { background: linear-gradient(135deg, #a1a6ab, #8e939a); font-size: 2rem !important; }
+.ios-appstore { background: linear-gradient(135deg, #4da4f7, #0B7CE6); }
+.ios-wallet { background: #000; }
+.ios-mail { background: linear-gradient(135deg, #4ca6f8, #2a81f3); }
+.ios-photos { background: linear-gradient(135deg, #fff, #f4f4f4); color: #000 !important; }
+.ios-weather { background: linear-gradient(135deg, #419eed, #1263d9); }
+
+.ios-phone { background: linear-gradient(135deg, #51e66c, #2ece46); }
+.ios-messages { background: linear-gradient(135deg, #5de559, #31cc32); }
+.ios-safari { background: #fff; color: #1e8ffa !important; }
+.ios-music { background: linear-gradient(135deg, #fa5972, #f53155); }
 
 
 /* 3. App Windows */

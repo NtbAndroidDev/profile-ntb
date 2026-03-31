@@ -31,8 +31,10 @@
 
                 <!-- Status Bar -->
                 <div class="status-bar">
-                    <span class="status-time" id="status-time">10:00</span>
-                    <div class="status-icons">
+                    <div class="status-left">
+                        <span class="status-time" id="status-time">10:00</span>
+                    </div>
+                    <div class="status-right">
                         <i class='bx bx-signal-5'></i>
                         <i class='bx bx-wifi'></i>
                         <i class='bx bxs-battery-full'></i>
@@ -74,52 +76,49 @@
 
                 <!-- 2. Home Screen -->
                 <div id="home-screen" class="view home-view active">
-                    <!-- Google Search Bar Fake -->
-                    <div class="search-widget">
-                        <i class='bx bx-search'></i>
-                        <span>Search apps or web...</span>
-                        <i class='bx bxs-microphone'></i>
-                    </div>
-
                     <div class="app-grid">
                         <div class="app-icon" data-app="app-about">
-                            <div class="icon-bg bg-blue"><i class='bx bx-user'></i></div>
-                            <span class="icon-label">About</span>
+                            <div class="icon-bg ios-settings"><i class='bx bxs-cog'></i></div>
+                            <span class="icon-label">Settings</span>
                         </div>
                         <div class="app-icon" data-app="app-projects">
-                            <div class="icon-bg bg-purple"><i class='bx bx-code-alt'></i></div>
-                            <span class="icon-label">Projects</span>
+                            <div class="icon-bg ios-appstore"><i class='bx bx-cube'></i></div>
+                            <span class="icon-label">App Store</span>
                         </div>
                         <div class="app-icon" data-app="app-skills">
-                            <div class="icon-bg bg-orange"><i class='bx bxl-android'></i></div>
-                            <span class="icon-label">Tech Stack</span>
+                            <div class="icon-bg ios-wallet"><i class='bx bxs-wallet-alt'></i></div>
+                            <span class="icon-label">Wallet</span>
                         </div>
                         <div class="app-icon" data-app="app-contact">
-                            <div class="icon-bg bg-green"><i class='bx bxs-map-pin'></i></div>
-                            <span class="icon-label">Contact</span>
+                            <div class="icon-bg ios-mail"><i class='bx bxs-envelope'></i></div>
+                            <span class="icon-label">Mail</span>
                         </div>
                         <div class="app-icon fake-app">
-                            <div class="icon-bg bg-red"><i class='bx bxl-youtube'></i></div>
-                            <span class="icon-label">YouTube</span>
+                            <div class="icon-bg ios-photos"><i class='bx bx-landscape'></i></div>
+                            <span class="icon-label">Photos</span>
                         </div>
                         <div class="app-icon fake-app">
-                            <div class="icon-bg bg-dark"><i class='bx bxl-github'></i></div>
-                            <span class="icon-label">GitHub</span>
+                            <div class="icon-bg ios-weather"><i class='bx bx-cloud-light-rain'></i></div>
+                            <span class="icon-label">Weather</span>
                         </div>
+                    </div>
+
+                    <div class="home-search-pill">
+                        <i class='bx bx-search'></i> Search
                     </div>
 
                     <div class="dock">
                         <div class="app-icon fake-app">
-                            <div class="icon-bg bg-blue"><i class='bx bxs-phone'></i></div>
+                            <div class="icon-bg ios-phone"><i class='bx bxs-phone'></i></div>
                         </div>
                         <div class="app-icon fake-app">
-                            <div class="icon-bg bg-sky"><i class='bx bxs-message-rounded'></i></div>
+                            <div class="icon-bg ios-messages"><i class='bx bxs-message-rounded'></i></div>
                         </div>
                         <div class="app-icon fake-app">
-                            <div class="icon-bg bg-rainbow"><i class='bx bxl-chrome'></i></div>
+                            <div class="icon-bg ios-safari"><i class='bx bx-compass'></i></div>
                         </div>
                         <div class="app-icon fake-app">
-                            <div class="icon-bg bg-yellow"><i class='bx bxs-camera'></i></div>
+                            <div class="icon-bg ios-music"><i class='bx bxs-music'></i></div>
                         </div>
                     </div>
                 </div>
