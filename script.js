@@ -16,7 +16,7 @@ const tl = gsap.timeline({
  */
 
 // Scene 0 -> 1: Phone reveals its left side & Text 2 fades in
-tl.to("#text-1", { opacity: 0, y: -50, duration: 0.5 }, 0)
+tl.to("#text-1", { opacity: 0, y: -50, scale: 0.95, duration: 0.5 }, 0)
   .to("#the-phone", { 
       rotateY: -35, // Tilt phone to face slightly right, exposing left back
       rotateX: 5,
@@ -25,13 +25,13 @@ tl.to("#text-1", { opacity: 0, y: -50, duration: 0.5 }, 0)
       duration: 1 
   }, 0)
   // Text 2 appears on the left
-  .to("#text-2", { opacity: 1, y: 0, duration: 0.5 }, 0.5)
+  .to("#text-2", { opacity: 1, y: 0, scale: 1, duration: 0.5 }, 0.5)
   // Crossfade screen inside phone to Tech Stack
   .to("#screen-1", { opacity: 0, duration: 0.2 }, 0.4)
   .to("#screen-2", { opacity: 1, duration: 0.2 }, 0.6);
 
 // Scene 1 -> 2: Phone spins 180 to show the BACK (Camera Bump) and moves left
-tl.to("#text-2", { opacity: 0, y: -50, duration: 0.5 }, 1.5)
+tl.to("#text-2", { opacity: 0, y: -50, scale: 0.95, duration: 0.5 }, 1.5)
   .to("#the-phone", { 
       rotateY: 180 + 35, // Spin completely backwards facing slightly left
       x: window.innerWidth > 768 ? -window.innerWidth * 0.25 : 0,
@@ -39,14 +39,14 @@ tl.to("#text-2", { opacity: 0, y: -50, duration: 0.5 }, 1.5)
       duration: 1.5 
   }, 1.5)
   // Text 3 appears on the right
-  .to("#text-3", { opacity: 1, y: 0, duration: 0.5 }, 2)
+  .to("#text-3", { opacity: 1, y: 0, scale: 1, duration: 0.5 }, 2)
   // Behind the scenes, change screen content while phone is facing away
   .to("#screen-2", { opacity: 0, duration: 0.1 }, 2)
   .to("#screen-3", { opacity: 1, duration: 0.1 }, 2.1);
 
 // Scene 2 -> 3: Phone spins back around 360, centers, and SCALES UP to fill screen
-tl.to("#text-3", { opacity: 0, y: -50, duration: 0.5 }, 3.5)
-  .to("#text-4", { opacity: 1, y: 0, duration: 0.5 }, 4)
+tl.to("#text-3", { opacity: 0, y: -50, scale: 0.95, duration: 0.5 }, 3.5)
+  .to("#text-4", { opacity: 1, y: 0, scale: 1, duration: 0.5 }, 4)
   .to("#the-phone", { 
       rotateY: 360, 
       rotateX: 0,
@@ -113,4 +113,7 @@ myProjects.forEach(repo => {
 reposContainer.innerHTML = htmlContent;
 
 // Init layout
-gsap.set("#text-1", { opacity: 1, y: 0 });
+gsap.set("#text-1", { opacity: 1, y: 0, scale: 1 });
+gsap.set("#text-2", { y: 50, scale: 0.95 });
+gsap.set("#text-3", { y: 50, scale: 0.95 });
+gsap.set("#text-4", { y: 50, scale: 0.95 });

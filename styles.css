@@ -15,10 +15,16 @@ body {
     position: fixed;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    width: 60vw; height: 60vw;
-    background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(0,0,0,0) 70%);
+    width: 70vw; height: 70vw;
+    background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, rgba(139,92,246,0.1) 40%, rgba(0,0,0,0) 80%);
+    filter: blur(80px); 
     z-index: 0;
     pointer-events: none;
+    animation: pulseAura 8s infinite alternate ease-in-out;
+}
+@keyframes pulseAura { 
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+    100% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
 }
 
 /* Fixed viewport that holds 3D elements while body scrolls */
@@ -40,21 +46,33 @@ body {
     width: 450px;
     opacity: 0;
     z-index: 5;
+    transform: translateY(50px) scale(0.95); /* Starting state for GSAP */
 }
 .text-layer h1, .text-layer h2 {
-    font-size: 3.5rem; 
+    font-size: 4.5rem; 
     margin-bottom: 15px; 
     font-weight: 800; 
-    letter-spacing: -1px;
+    letter-spacing: -2px;
     line-height: 1.1;
-    background: linear-gradient(90deg, #ffffff, #888888); 
+    background: linear-gradient(135deg, #ffffff, #a1a1aa); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+}
+#text-2 h2 {
+    background: linear-gradient(135deg, #38bdf8, #818cf8); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+}
+#text-3 h2 {
+    background: linear-gradient(135deg, #f472b6, #c026d3); 
     -webkit-background-clip: text; 
     -webkit-text-fill-color: transparent;
 }
 .text-layer p {
-    font-size: 1.2rem; 
+    font-size: 1.25rem; 
     color: #a1a1aa; 
-    line-height: 1.5;
+    line-height: 1.6;
+    font-weight: 300;
 }
 
 #text-1 {
@@ -91,44 +109,49 @@ body {
     width: 100%; height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    border-radius: 50px;
-    /* Edge glow for depth */
-    box-shadow:  0 0 0 2px #444, inset 0 0 10px rgba(0,0,0,0.5), 0 30px 60px rgba(0,0,0,0.8);
+    border-radius: 55px;
+    /* Extra edge realistic shadowing */
+    box-shadow: 0 0 0 1px #222, inset 0 0 0 2px #444, 0 30px 60px rgba(0,0,0,0.9);
     transition: box-shadow 0.1s;
 }
 
 .phone-face {
     position: absolute;
     width: 100%; height: 100%;
-    border-radius: 50px;
+    border-radius: 55px;
     backface-visibility: hidden;
     overflow: hidden;
 }
 
 /* Front Face (Screen) */
 .phone-front {
-    background: #09090b;
-    border: 12px solid #111; /* Bezel */
-    transform: translateZ(1px); /* Slight bump so it sits in front */
+    background: #000;
+    border: 8px solid #000; /* Thinner realistic bezel */
+    transform: translateZ(1px);
     display: flex;
     flex-direction: column;
 }
 
+/* Screen lighting sheen */
+.phone-front::after {
+    content: ''; position: absolute; top:0; left:0; width:100%; height:100%;
+    border-radius: 46px; border: 1px solid rgba(255,255,255,0.05); pointer-events: none; z-index: 999;
+}
+
 .notch {
     position: absolute;
-    top: 0px; left: 50%; transform: translateX(-50%);
-    width: 120px; height: 32px;
+    top: 10px; left: 50%; transform: translateX(-50%);
+    width: 110px; height: 32px;
     background: #000;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    z-index: 100;
+    border-radius: 20px;
+    z-index: 1000;
 }
 
 /* Back Face */
 .phone-back {
-    background: linear-gradient(135deg, #27272a, #09090b);
-    transform: rotateY(180deg) translateZ(1px); /* Flipped */
-    border: 1px solid #333;
+    background: linear-gradient(160deg, #18181b 0%, #09090b 100%);
+    transform: rotateY(180deg) translateZ(1px);
+    border: 2px solid #27272a;
 }
 
 .camera-bump {
@@ -174,24 +197,36 @@ body {
     opacity: 0;
     padding: 20px;
     pointer-events: none; 
+    border-radius: 46px; overflow: hidden;
+    background-size: cover; background-position: center;
 }
 .screen-content.active { opacity: 1; pointer-events: auto; }
 
+/* Wallpapers */
+#screen-1 { background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop'); }
+#screen-2 { background: linear-gradient(180deg, #0f172a, #020617); }
+#screen-3 { background: radial-gradient(circle at center, #3b0764, #000000 80%); }
+#screen-4 { background: #000; }
+
 /* Screen 1: Lock Style */
-.s1-time { font-size: 5rem; font-weight: 700; margin-top: 80px; }
-.s1-date { font-size: 1.2rem; color: #ccc; }
+.s1-time { font-size: 5.5rem; font-weight: 300; margin-top: 60px; color: white; text-shadow: 0 4px 20px rgba(0,0,0,0.5); letter-spacing: -2px; }
+.s1-date { font-size: 1.1rem; color: rgba(255,255,255,0.9); font-weight: 500; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 .s1-widget {
-    margin-top: 40px;
-    background: rgba(255,255,255,0.1);
+    margin-top: auto;
+    margin-bottom: 20px;
+    background: rgba(0,0,0,0.3);
     padding: 15px 30px;
     border-radius: 20px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
     font-size: 1.1rem;
+    font-weight: 600;
     display: flex; align-items: center; gap: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 /* Screen 2 & 3: Code & AI */
-.code-icon { font-size: 6rem; margin-bottom: 20px; text-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+.code-icon { font-size: 7rem; margin-bottom: 10px; text-shadow: 0 10px 40px rgba(0,0,0,0.8); }
+.screen-content h3 { font-size: 1.5rem; margin-bottom: 20px; font-weight: 600; letter-spacing: -0.5px; }
 .line-code { height: 15px; background: #333; border-radius: 10px; width: 80%; margin-bottom: 10px; }
 .w-70 { width: 70%; } .w-40 { width: 40%; }
 .ai-pulse {
@@ -203,26 +238,32 @@ body {
 @keyframes pulseBg { 0% { transform: scale(1); opacity: 0.5;} 50% { transform: scale(1.5); opacity: 1;} 100% { transform: scale(1); opacity: 0.5;} }
 
 /* Screen 4: Projects App Gallery inside phone */
-#screen-4 { align-items: flex-start; justify-content: flex-start; padding: 40px 15px 20px; }
+#screen-4 { align-items: flex-start; justify-content: flex-start; padding: 50px 15px 20px; }
 #projects-list-scrollable { width: 100%; height: 100%; overflow-y: auto; padding-right: 5px; }
-#projects-list-scrollable::-webkit-scrollbar { width: 4px; }
-#projects-list-scrollable::-webkit-scrollbar-thumb { background: #555; border-radius: 10px; }
+#projects-list-scrollable::-webkit-scrollbar { width: 0px; } /* Hide scrollbar completely for cleanliness */
 
 .project-card {
-    background: #18181b;
-    border: 1px solid #333;
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 15px;
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border-radius: 24px;
+    padding: 25px;
+    margin-bottom: 20px;
+    transition: transform 0.2s;
 }
-.project-card h3 { margin-bottom: 5px; font-size: 1.3rem; }
-.project-card p { color: #a1a1aa; font-size: 0.9rem; line-height: 1.5; margin-bottom: 15px; }
+.project-card:hover { transform: translateY(-3px); }
+.project-card h3 { margin-bottom: 8px; font-size: 1.4rem; font-weight: 700; }
+.project-card p { color: #a1a1aa; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
 .btn-open {
     display: block; width: 100%; text-align: center;
-    background: #2563eb; color: #fff;
-    padding: 10px; border-radius: 10px;
-    text-decoration: none; font-weight: 600;
+    background: #ffffff; color: #000000;
+    padding: 12px; border-radius: 30px;
+    text-decoration: none; font-weight: 700;
+    font-size: 0.95rem;
+    transition: background 0.2s;
 }
+.btn-open:hover { background: #d1d5db; }
 
 /* Scroll Sections triggers */
 .scroll-spacer { width: 100%; }
