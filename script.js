@@ -58,8 +58,8 @@ tl.to("#text-3", { opacity: 0, y: -50, scale: 0.95, duration: 0.5 }, 3.5)
   .to("#screen-3", { opacity: 0, duration: 0.2 }, 3.8)
   .to("#screen-4", { opacity: 1, duration: 0.2 }, 4.0);
 
-// Removed unreliable pointer-events toggle. Handled via CSS natively.
-
+// Let the 3D phone timeline end. Note: Gallery scrolling is mapped below!
+// -------------------------------------------------------------
 
 // 2. Static Portfolio Data (Avoid GitHub API Rate Limits)
 const reposContainer = document.getElementById('projects-list-scrollable');
@@ -126,6 +126,19 @@ myProjects.forEach(repo => {
     `;
 });
 reposContainer.innerHTML = htmlContent;
+
+// Scene 4: NATIVE GSAP GALLERY SCROLLING!
+// Once the phone is fully scaled and gallery is visible, the next 200vh of body scrolling will physically slide the projects up!
+tl.to("#projects-list-scrollable", {
+    y: function() {
+        const list = document.getElementById('projects-list-scrollable');
+        const screenHeight = document.getElementById('screen-4').clientHeight;
+        const totalScroll = list.scrollHeight - screenHeight + 150; // 150px padding slack
+        return -Math.max(totalScroll, 0); // Slide up exactly how tall the content is
+    },
+    duration: 3, 
+    ease: "power1.inOut"
+}, 5.0);
 
 // Init layout: phone on the right, text 1 on the left
 gsap.set("#the-phone", { x: window.innerWidth > 768 ? window.innerWidth * 0.25 : 0 });
