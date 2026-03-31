@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of nguyen thanh binh (NtbAndroidDev) - Android, Web and AI Developer from Vietnam.">
-    <title>Nguyen Thanh Binh | NtbAndroidDev</title>
+    <meta name="description" content="Portfolio of nguyen thanh binh (NtbAndroidDev) - Android, Web, and AI Developer.">
+    <title>Binh | Mobile Dev OS</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="styles.css">
     
@@ -17,116 +17,230 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    <canvas id="bg-canvas"></canvas>
     
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    
-    <div class="container">
-        <header class="glass-panel profile-header">
-            <div class="profile-image-wrapper">
-                <img src="https://avatars.githubusercontent.com/u/135935496?v=4" alt="Nguyen Thanh Binh" class="profile-image">
-                <div class="status-indicator"></div>
-            </div>
-            
-            <div class="profile-info">
-                <div class="terminal-greeting">
-                    <span class="prompt">root@binh:~$</span>
-                    <span class="typewriter">./hello</span
-                    ><span class="cursor">_</span>
-                </div>
-                <h1 class="name">Nguyen Thanh Binh</h1>
-                <h2 class="username">@NtbAndroidDev</h2>
-                
-                <div class="tags">
-                    <div class="tag">
-                        <i class='bx bxl-android'></i>
-                        Android Developer
-                    </div>
-                    <div class="tag">
-                        <i class='bx bx-map'></i>
-                        Vietnam
+    <!-- Background visual to show standard desktop/ambient space behind phone -->
+    <div class="ambient-bg"></div>
+
+    <div class="device-wrapper">
+        <div class="device">
+            <div class="screen">
+                <!-- Status Bar -->
+                <div class="status-bar">
+                    <span class="status-time" id="status-time">10:00</span>
+                    <div class="status-icons">
+                        <i class='bx bx-wifi'></i>
+                        <i class='bx bxs-battery-full'></i>
                     </div>
                 </div>
-                
-                <div class="bio-extended">
-                    <p class="bio-subtitle"><i>Mostly coding, sometimes exploring AI.</i></p>
-                    <p class="bio-intro">👋 Hi there! I'm Binh - a passionate mobile software engineer obsessed with building robust, modern applications.</p>
+
+                <!-- 1. Lock Screen -->
+                <div id="lock-screen" class="view lock-view active">
+                    <div class="lock-header">
+                        <h1 id="lock-time-large">10:00</h1>
+                        <p id="lock-date">Mon, Mar 31</p>
+                    </div>
                     
-                    <ul class="bio-list">
-                        <li>📱 <strong>Mobile Expert:</strong> Deep experience in <strong>Kotlin (native Android)</strong> and <strong>Dart (Flutter)</strong> ecosystem.</li>
-                        <li>🤖 <strong>AI Enthusiast:</strong> Exploring Deep Learning, recently integrating <strong>ViT5</strong> for Image Captioning.</li>
-                        <li>🚀 <strong>Open Source:</strong> Building and sharing 10+ open-source projects on GitHub.</li>
-                        <li>💡 <strong>Focus:</strong> Mastering modern UI toolkits like <strong>Jetpack Compose</strong> and robust MVVM architectures.</li>
-                    </ul>
+                    <div class="notifications">
+                        <div class="notif-card" id="unlock-hint">
+                            <div class="notif-header">
+                                <div class="notif-app">
+                                    <i class='bx bxs-message-rounded-dots'></i>
+                                    <span>Recruiter</span>
+                                </div>
+                                <span class="notif-time">now</span>
+                            </div>
+                            <div class="notif-body">
+                                <strong>New Portfolio Detected!</strong>
+                                <p>Tap the fingerprint below to unlock Binh's Developer OS.</p>
+                            </div>
+                        </div>
+                    </div>
 
-                    <p class="bio-outro">💜 I code for fun, solve real-world problems, and keep pushing my boundaries :)</p>
+                    <div class="unlock-area" id="unlock-btn">
+                        <div class="fingerprint-pulse"></div>
+                        <i class='bx bx-fingerprint'></i>
+                        <span>Press to Unlock</span>
+                    </div>
                 </div>
-                
-                <div class="actions">
-                    <a href="mailto:thanhbinh@example.com" class="btn btn-primary">
-                        <i class='bx bx-envelope'></i>
-                        Hire Me
-                    </a>
-                    <a href="https://github.com/NtbAndroidDev" target="_blank" class="btn btn-secondary">
-                        <i class='bx bxl-github'></i>
-                        GitHub
-                    </a>
-                    <a href="#" class="btn btn-secondary" onclick="alert('Resume PDF will be available soon!')">
-                        <i class='bx bx-download'></i>
-                        Resume
-                    </a>
+
+                <!-- 2. Home Screen -->
+                <div id="home-screen" class="view home-view">
+                    <!-- Google Search Bar Fake -->
+                    <div class="search-widget">
+                        <i class='bx bx-search'></i>
+                        <span>Search apps or web...</span>
+                        <i class='bx bxs-microphone'></i>
+                    </div>
+
+                    <div class="app-grid">
+                        <div class="app-icon" data-app="app-about">
+                            <div class="icon-bg bg-blue"><i class='bx bx-user'></i></div>
+                            <span class="icon-label">About</span>
+                        </div>
+                        <div class="app-icon" data-app="app-projects">
+                            <div class="icon-bg bg-purple"><i class='bx bx-code-alt'></i></div>
+                            <span class="icon-label">Projects</span>
+                        </div>
+                        <div class="app-icon" data-app="app-skills">
+                            <div class="icon-bg bg-orange"><i class='bx bxl-android'></i></div>
+                            <span class="icon-label">Tech Stack</span>
+                        </div>
+                        <div class="app-icon" data-app="app-contact">
+                            <div class="icon-bg bg-green"><i class='bx bxs-map-pin'></i></div>
+                            <span class="icon-label">Contact</span>
+                        </div>
+                        <div class="app-icon fake-app">
+                            <div class="icon-bg bg-red"><i class='bx bxl-youtube'></i></div>
+                            <span class="icon-label">YouTube</span>
+                        </div>
+                        <div class="app-icon fake-app">
+                            <div class="icon-bg bg-dark"><i class='bx bxl-github'></i></div>
+                            <span class="icon-label">GitHub</span>
+                        </div>
+                    </div>
+
+                    <div class="dock">
+                        <div class="app-icon fake-app">
+                            <div class="icon-bg bg-blue"><i class='bx bxs-phone'></i></div>
+                        </div>
+                        <div class="app-icon fake-app">
+                            <div class="icon-bg bg-sky"><i class='bx bxs-message-rounded'></i></div>
+                        </div>
+                        <div class="app-icon fake-app">
+                            <div class="icon-bg bg-rainbow"><i class='bx bxl-chrome'></i></div>
+                        </div>
+                        <div class="app-icon fake-app">
+                            <div class="icon-bg bg-yellow"><i class='bx bxs-camera'></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. App Windows -->
+
+                <!-- App: About -->
+                <div id="app-about" class="view app-window">
+                    <div class="app-header">
+                        <h2>Settings / About</h2>
+                    </div>
+                    <div class="app-content content-padded">
+                        <div class="profile-card">
+                            <img src="https://avatars.githubusercontent.com/u/135935496?v=4" alt="Binh" class="avatar">
+                            <h2>Binh (NtbAndroidDev)</h2>
+                            <p class="subtitle">Mobile Software Engineer</p>
+                        </div>
+                        
+                        <div class="settings-group">
+                            <div class="settings-item">
+                                <i class='bx bx-laptop bg-gray'></i>
+                                <div class="item-text">
+                                    <strong>Role</strong>
+                                    <span>Android & Flutter Mobile Dev</span>
+                                </div>
+                            </div>
+                            <div class="settings-item">
+                                <i class='bx bx-brain bg-purple'></i>
+                                <div class="item-text">
+                                    <strong>AI Focus</strong>
+                                    <span>Deep Learning, Python, ViT5</span>
+                                </div>
+                            </div>
+                            <div class="settings-item">
+                                <i class='bx bx-map bg-green'></i>
+                                <div class="item-text">
+                                    <strong>Location</strong>
+                                    <span>Vietnam</span>
+                                </div>
+                            </div>
+                            <div class="settings-item">
+                                <i class='bx bx-history bg-orange'></i>
+                                <div class="item-text">
+                                    <strong>Experience</strong>
+                                    <span>3+ Years in App Architecture</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="bio-text">Passionate about building highly scalable native or cross-platform architectures (MVVM, Clean Architecture). Expanding bounds into Jetpack Compose and AI integrations.</p>
+                    </div>
+                </div>
+
+                <!-- App: Projects -->
+                <div id="app-projects" class="view app-window">
+                    <div class="app-header">
+                        <h2>Play Store / Projects</h2>
+                    </div>
+                    <div class="app-content content-scrollable" id="repos-container">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+
+                <!-- App: Skills -->
+                <div id="app-skills" class="view app-window">
+                    <div class="app-header">
+                        <h2>System Resources</h2>
+                    </div>
+                    <div class="app-content content-padded">
+                        <h3 class="section-title">Core Modules</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item"><i class='bx bxl-android'></i> Android SDK</div>
+                            <div class="skill-item"><i class='bx bx-code-curly'></i> Kotlin / Java</div>
+                            <div class="skill-item"><i class='bx bx-mobile'></i> Flutter / Dart</div>
+                        </div>
+
+                        <h3 class="section-title">Secondary Modules</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item"><i class='bx bxl-python'></i> Python ML</div>
+                            <div class="skill-item"><i class='bx bx-palette'></i> Jetpack Compose</div>
+                            <div class="skill-item"><i class='bx bx-layer'></i> MVVM</div>
+                        </div>
+
+                        <div class="storage-info">
+                            <div class="storage-bar">
+                                <div class="storage-used"></div>
+                            </div>
+                            <p>10+ Open Source projects installed.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- App: Contact -->
+                <div id="app-contact" class="view app-window">
+                    <div class="app-header">
+                        <h2>Contacts</h2>
+                    </div>
+                    <div class="app-content content-padded">
+                        <div class="contact-card">
+                            <div class="contact-avatar bg-blue">R</div>
+                            <h2>Recruiters</h2>
+                            <p>Let's work together!</p>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <a href="mailto:thanhbinh@example.com" class="action-btn">
+                                <div class="action-icon bg-green"><i class='bx bxs-phone-call'></i></div>
+                                <span>Hire Me</span>
+                            </a>
+                            <a href="https://github.com/NtbAndroidDev" target="_blank" class="action-btn">
+                                <div class="action-icon bg-dark"><i class='bx bxl-github'></i></div>
+                                <span>GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nav Bar (Bottom) -->
+                <div class="nav-bar">
+                    <div class="nav-btn" id="btn-back"><i class='bx bxs-down-arrow' style="transform: rotate(90deg);"></i></div>
+                    <div class="nav-btn" id="btn-home"><i class='bx bxs-circle'></i></div>
+                    <div class="nav-btn" id="btn-recent"><i class='bx bxs-square'></i></div>
                 </div>
             </div>
-        </header>
-
-        <main>
-            <section class="skills-section">
-                <div class="section-header">
-                    <h2>Tech Stack & Skills</h2>
-                    <div class="line"></div>
-                </div>
-                <div class="skills-container">
-                    <div class="skill-badge"><i class='bx bxl-android'></i> Android SDK</div>
-                    <div class="skill-badge"><i class='bx bxl-java'></i> Kotlin & Java</div>
-                    <div class="skill-badge"><i class='bx bx-mobile-alt'></i> Flutter & Dart</div>
-                    <div class="skill-badge"><i class='bx bx-brain'></i> Deep Learning (Python)</div>
-                    <div class="skill-badge"><i class='bx bx-shape-triangle'></i> Jetpack Compose</div>
-                    <div class="skill-badge"><i class='bx bx-layer'></i> MVVM Architecture</div>
-                    <div class="skill-badge"><i class='bx bxl-git'></i> Git & GitHub</div>
-                    <div class="skill-badge"><i class='bx bx-server'></i> RESTful APIs</div>
-                </div>
-            </section>
-
-            <section class="projects-section">
-                <div class="section-header">
-                    <h2>Latest Projects</h2>
-                    <div class="line"></div>
-                </div>
-                
-                <div class="grid" id="repos-grid">
-                    <!-- Project Cards will be inserted here by JS -->
-                </div>
-            </section>
-        </main>
-        
-        <section class="hire-me-section glass-panel text-center">
-            <h2>Looking for a Mobile Software Engineer?</h2>
-            <p>I'm currently open to new opportunities. Whether you have an exciting project, a job opening, or just want to connect, my inbox is always open!</p>
-            <a href="mailto:thanhbinh@example.com" class="btn btn-primary">
-                <i class='bx bx-send'></i> Get In Touch
-            </a>
-        </section>
-        
-        <footer class="text-center" style="margin-bottom: 2rem; color: var(--text-muted); opacity: 0.8;">
-            <p>&copy; <span id="year"></span> Nguyen Thanh Binh. Designed to impress recruiters.</p>
-        </footer>
+        </div>
     </div>
 
-    <!-- Three.js Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="three-scene.js"></script>
-    
+    <!-- Sound Effects for immersion -->
+    <audio id="unlock-sound" src="https://actions.google.com/sounds/v1/ui/unlock.ogg" preload="auto"></audio>
+    <audio id="click-sound" src="https://actions.google.com/sounds/v1/ui/pop.ogg" preload="auto"></audio>
+
     <script src="script.js"></script>
 </body>
 </html>
