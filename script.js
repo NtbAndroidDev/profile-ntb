@@ -58,14 +58,7 @@ tl.to("#text-3", { opacity: 0, y: -50, scale: 0.95, duration: 0.5 }, 3.5)
   .to("#screen-3", { opacity: 0, duration: 0.2 }, 3.8)
   .to("#screen-4", { opacity: 1, duration: 0.2 }, 4.0);
 
-// Let the user scroll inside the phone!
-// At the end of the timeline, enable pointer events on the container.
-tl.eventCallback("onComplete", () => {
-    document.querySelector('.fixed-viewport').style.pointerEvents = 'auto';
-});
-tl.eventCallback("onReverseComplete", () => {
-    document.querySelector('.fixed-viewport').style.pointerEvents = 'none';
-});
+// Removed unreliable pointer-events toggle. Handled via CSS natively.
 
 
 // 2. Static Portfolio Data (Avoid GitHub API Rate Limits)

@@ -114,6 +114,7 @@ body {
     /* Extra edge realistic shadowing */
     box-shadow: 0 0 0 1px #222, inset 0 0 0 2px #444, 0 30px 60px rgba(0,0,0,0.9);
     transition: box-shadow 0.1s;
+    pointer-events: auto; /* Allows nested elements to be scrolled! */
 }
 
 .phone-face {
