@@ -242,6 +242,7 @@ body {
     background: linear-gradient(135deg, var(--primary), var(--accent));
     color: white;
     box-shadow: 0 10px 20px -10px rgba(99, 102, 241, 0.7);
+    border: 1px solid transparent;
 }
 
 .btn-primary:hover {
@@ -249,11 +250,70 @@ body {
     box-shadow: 0 15px 25px -10px rgba(99, 102, 241, 0.9);
 }
 
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+    border: 1px solid var(--border-glass);
+    backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Skills Section */
+.skills-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.skill-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    background: var(--surface-glass);
+    border: 1px solid var(--border-glass);
+    color: var(--text-main);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.skill-badge i {
+    font-size: 1.4rem;
+    color: var(--primary);
+}
+
+.skill-badge:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px -5px rgba(0,0,0,0.3);
+    border-color: var(--primary);
+    background: var(--surface-glass-hover);
+}
+
 /* Projects Section */
 .projects-section {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    margin-bottom: 4rem;
 }
 
 .section-header {
@@ -363,6 +423,28 @@ body {
     display: flex;
     align-items: center;
     gap: 0.4rem;
+}
+
+/* Hire Me Section */
+.hire-me-section {
+    margin-bottom: 3rem;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.hire-me-section h2 {
+    font-size: 2rem;
+    color: var(--text-main);
+}
+
+.hire-me-section p {
+    color: var(--text-muted);
+    max-width: 600px;
+    line-height: 1.6;
+    font-size: 1.1rem;
 }
 
 /* Footer */
