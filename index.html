@@ -24,10 +24,16 @@
     <div class="device-wrapper">
         <div class="device">
             <div class="screen">
+                <!-- Device Notch -->
+                <div class="notch">
+                    <div class="camera-lens"></div>
+                </div>
+
                 <!-- Status Bar -->
                 <div class="status-bar">
                     <span class="status-time" id="status-time">10:00</span>
                     <div class="status-icons">
+                        <i class='bx bx-signal-5'></i>
                         <i class='bx bx-wifi'></i>
                         <i class='bx bxs-battery-full'></i>
                     </div>
@@ -56,10 +62,14 @@
                         </div>
                     </div>
 
-                    <div class="unlock-area" id="unlock-btn">
-                        <div class="fingerprint-pulse"></div>
-                        <i class='bx bx-fingerprint'></i>
-                        <span>Press to Unlock</span>
+                    <div class="lock-footer">
+                        <i class='bx bxs-torch lock-shortcut'></i>
+                        <div class="unlock-area" id="unlock-btn">
+                            <div class="fingerprint-pulse"></div>
+                            <i class='bx bx-fingerprint'></i>
+                            <span>Press to Unlock</span>
+                        </div>
+                        <i class='bx bxs-camera lock-shortcut'></i>
                     </div>
                 </div>
 
@@ -120,6 +130,7 @@
                 <!-- App: About -->
                 <div id="app-about" class="view app-window">
                     <div class="app-header">
+                        <i class='bx bx-arrow-back header-back-btn'></i>
                         <h2>Settings / About</h2>
                     </div>
                     <div class="app-content content-padded">
@@ -166,6 +177,7 @@
                 <!-- App: Projects -->
                 <div id="app-projects" class="view app-window">
                     <div class="app-header">
+                        <i class='bx bx-arrow-back header-back-btn'></i>
                         <h2>Play Store / Projects</h2>
                     </div>
                     <div class="app-content content-scrollable" id="repos-container">
@@ -176,6 +188,7 @@
                 <!-- App: Skills -->
                 <div id="app-skills" class="view app-window">
                     <div class="app-header">
+                        <i class='bx bx-arrow-back header-back-btn'></i>
                         <h2>System Resources</h2>
                     </div>
                     <div class="app-content content-padded">
@@ -205,6 +218,7 @@
                 <!-- App: Contact -->
                 <div id="app-contact" class="view app-window">
                     <div class="app-header">
+                        <i class='bx bx-arrow-back header-back-btn'></i>
                         <h2>Contacts</h2>
                     </div>
                     <div class="app-content content-padded">

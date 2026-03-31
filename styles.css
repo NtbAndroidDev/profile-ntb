@@ -71,6 +71,30 @@ body {
     color: var(--text-primary);
 }
 
+/* Hardware Notch */
+.notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 30px;
+    background-color: #000;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    z-index: 999;
+}
+.camera-lens {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px; height: 12px;
+    background: #080808;
+    border-radius: 50%;
+    box-shadow: inset 0 0 4px rgba(255,255,255,0.3);
+}
+
 /* Status Bar */
 .status-bar {
     position: absolute;
@@ -174,6 +198,26 @@ body {
 .notif-app i { color: var(--blue); }
 .notif-body { font-size: 0.95rem; }
 .notif-body p { opacity: 0.8; margin-top: 4px; font-size: 0.85rem; }
+
+.lock-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 30px;
+}
+
+.lock-shortcut {
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    display: flex; justify-content: center; align-items: center;
+    font-size: 1.5rem; color: white;
+    cursor: pointer;
+    transition: transform 0.2s;
+    margin-bottom: 20px;
+}
+.lock-shortcut:active { transform: scale(0.9); }
 
 .unlock-area {
     text-align: center;
@@ -298,10 +342,16 @@ body {
     gap: 15px;
     padding: 15px 20px;
     background: var(--bg-surface);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05); /* Separator */
     font-size: 1.1rem;
     font-weight: 500;
 }
+.header-back-btn {
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+.header-back-btn:active { opacity: 0.5; }
 .app-header h2 { font-size: 1.2rem; font-weight: 500; }
 
 .content-padded { padding: 20px; overflow-y: auto; }

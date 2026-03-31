@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let hours = now.getHours();
         let minutes = now.getMinutes();
         
-        // Format to HH:MM (e.g. 09:05)
         hours = hours < 10 ? '0' + hours : hours;
         minutes = minutes < 10 ? '0' + minutes : minutes;
         
@@ -13,22 +12,20 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('status-time').textContent = timeStr;
         document.getElementById('lock-time-large').textContent = timeStr;
 
-        // Date formatting
         const options = { weekday: 'short', month: 'short', day: 'numeric' };
         document.getElementById('lock-date').textContent = now.toLocaleDateString('en-US', options);
     }
     
-    // Update clock immediately and then every minute
     updateClock();
     setInterval(updateClock, 1000 * 60);
 
-    // 2. Audio Effects (Optional immersion)
+    // 2. Audio Effects
     const unlockSound = document.getElementById('unlock-sound');
     const clickSound = document.getElementById('click-sound');
 
     function playClick() {
         clickSound.currentTime = 0;
-        clickSound.play().catch(e => {}); // catch auto-play blocks
+        clickSound.play().catch(e => {}); 
     }
 
     // 3. Unlock Logic
@@ -36,30 +33,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const unlockBtn = document.getElementById('unlock-btn');
 
     unlockBtn.addEventListener('click', () => {
-        // Play sound
         unlockSound.currentTime = 0;
         unlockSound.play().catch(e => {});
 
         lockScreen.classList.add('slide-up');
-        
-        // Remove class after animation to hide it completely (optional but clean)
         setTimeout(() => {
             lockScreen.classList.remove('active');
         }, 500); 
     });
 
     // 4. App Navigation Logic
-    const homeScreen = document.getElementById('home-screen');
     const appIcons = document.querySelectorAll('.app-icon:not(.fake-app)');
     const fakeApps = document.querySelectorAll('.fake-app');
-    const allViews = document.querySelectorAll('.view');
     const backBtn = document.getElementById('btn-back');
     const homeBtn = document.getElementById('btn-home');
-    const recentBtn = document.getElementById('btn-recent');
+    const headerBackBtns = document.querySelectorAll('.header-back-btn');
 
     let currentApp = null;
 
-    // Open an App
     appIcons.forEach(icon => {
         icon.addEventListener('click', () => {
             playClick();
@@ -76,15 +67,13 @@ document.addEventListener('DOMContentLoaded', () => {
     fakeApps.forEach(icon => {
         icon.addEventListener('click', () => {
             playClick();
-            alert("App is not installed. Please try 'About', 'Projects', 'Tech Stack' or 'Contact' instead!");
+            alert("App is not installed! Try 'About', 'Projects', 'Tech Stack' or 'Contact'.");
         });
     });
 
-    // Go Home
     function goHome() {
-        if(lockScreen.classList.contains('active')) return; // Dont go home if locked
+        if(lockScreen.classList.contains('active')) return;
         playClick();
-        // Hide all app windows
         document.querySelectorAll('.app-window').forEach(w => {
             w.classList.remove('active');
         });
@@ -92,76 +81,65 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     homeBtn.addEventListener('click', goHome);
+    backBtn.addEventListener('click', () => { if(currentApp) goHome(); });
     
-    backBtn.addEventListener('click', () => {
-        // Simple back logic: if an app is open, close it (go home)
-        if (currentApp) {
-            goHome();
-        }
+    // Bind all Header Back buttons
+    headerBackBtns.forEach(btn => {
+        btn.addEventListener('click', goHome);
     });
 
-    recentBtn.addEventListener('click', () => {
-        playClick();
-        alert("No recent apps. To clear cache, enjoy the smoothness of this fake OS!");
-    });
-
-
-    // 5. Populate Projects Data
-    const repositories = [
-        {
-            name: "compose-media-picker",
-            description: "A modern media picker for Jetpack Compose.",
-            language: "Kotlin",
-            url: "https://github.com/NtbAndroidDev/compose-media-picker",
-            icon: "bx-image-add"
-        },
-        {
-            name: "uitvic-caption",
-            description: "Deep Learning project for generating image captions using ViT5 and Python.",
-            language: "Python",
-            url: "https://github.com/NtbAndroidDev/uitvic-caption",
-            icon: "bx-brain"
-        },
-        {
-            name: "chatapp_flutter",
-            description: "A real-time chat application built with flutter.",
-            language: "Dart",
-            url: "https://github.com/NtbAndroidDev/chatapp_flutter",
-            icon: "bx-message-square-dots"
-        },
-        {
-            name: "job_app",
-            description: "Job seeking application focused on modern UI/UX.",
-            language: "Dart",
-            url: "https://github.com/NtbAndroidDev/job_app",
-            icon: "bx-briefcase"
-        },
-        {
-            name: "food_mvvm",
-            description: "Food delivery application showcasing MVVM architecture in Android.",
-            language: "Kotlin",
-            url: "https://github.com/NtbAndroidDev/food_mvvm",
-            icon: "bx-restaurant"
-        }
-    ];
-
+    // 5. Fetch Github Data for "Google Play / Projects"
     const reposContainer = document.getElementById('repos-container');
+    const username = 'NtbAndroidDev';
 
-    repositories.forEach(repo => {
-        const storeCard = document.createElement('div');
-        storeCard.className = 'store-card';
-        
-        storeCard.innerHTML = `
-            <div class="store-icon"><i class='bx ${repo.icon}'></i></div>
-            <div class="store-info">
-                <h3>${repo.name}</h3>
-                <p>${repo.description}</p>
-                <span class="skill-item" style="display:inline-block; font-size:0.75rem; padding: 3px 8px; margin-bottom:10px;">${repo.language}</span>
-                <br>
-                <a href="${repo.url}" target="_blank" class="install-btn">OPEN IN GITHUB</a>
-            </div>
-        `;
-        reposContainer.appendChild(storeCard);
-    });
+    // Highlighted projects with specific icons
+    const repoIcons = {
+        'compose-media-picker': 'bx-image-add',
+        'uitvic-caption': 'bx-brain',
+        'chatapp_flutter': 'bx-message-square-dots',
+        'job_app': 'bx-briefcase',
+        'food_mvvm': 'bx-restaurant'
+    };
 
+    reposContainer.innerHTML = `<div style="text-align:center; padding: 20px;"><i class='bx bx-loader bx-spin' style="font-size:2rem; color:var(--blue)"></i></div>`;
+
+    fetch(`https://api.github.com/users/${username}/repos?sort=pushed&per_page=10`)
+        .then(response => response.json())
+        .then(data => {
+            reposContainer.innerHTML = '';
+            
+            if(data.message) {
+                reposContainer.innerHTML = `<p style="text-align:center; padding:20px;">Cannot connect to GitHub Servers.</p>`;
+                return;
+            }
+
+            data.forEach(repo => {
+                if (repo.fork) return; 
+                
+                const storeCard = document.createElement('div');
+                storeCard.className = 'store-card';
+                
+                // Assign mapped icon or generic
+                const iconClass = repoIcons[repo.name] || 'bx-code';
+                
+                // Truncate desc
+                const desc = repo.description || 'No description available for this repository.';
+                const shortDesc = desc.length > 70 ? desc.substring(0, 70) + '...' : desc;
+
+                storeCard.innerHTML = `
+                    <div class="store-icon"><i class='bx ${iconClass}'></i></div>
+                    <div class="store-info">
+                        <h3>${repo.name}</h3>
+                        <p>${shortDesc}</p>
+                        ${repo.language ? `<span class="skill-item" style="display:inline-block; font-size:0.75rem; padding: 3px 8px; margin-bottom:10px;"><i class='bx bxl-${repo.language.toLowerCase()}'></i> ${repo.language}</span>` : ''}
+                        <br>
+                        <a href="${repo.html_url}" target="_blank" class="install-btn">OPEN APP</a>
+                    </div>
+                `;
+                reposContainer.appendChild(storeCard);
+            });
+        })
+        .catch(err => {
+            reposContainer.innerHTML = `<p style="text-align:center;">Failed to load Play Store. Please check internet connection.</p>`;
+        });
 });
