@@ -77,13 +77,10 @@
                 <!-- 2. Home Screen -->
                 <div id="home-screen" class="view home-view active">
                     <div class="app-grid">
+                        <!-- System Apps -->
                         <div class="app-icon" data-app="app-about">
                             <div class="icon-bg ios-settings"><i class='bx bxs-cog'></i></div>
                             <span class="icon-label">Settings</span>
-                        </div>
-                        <div class="app-icon" data-app="app-projects">
-                            <div class="icon-bg ios-appstore"><i class='bx bx-cube'></i></div>
-                            <span class="icon-label">App Store</span>
                         </div>
                         <div class="app-icon" data-app="app-skills">
                             <div class="icon-bg ios-wallet"><i class='bx bxs-wallet-alt'></i></div>
@@ -93,13 +90,27 @@
                             <div class="icon-bg ios-mail"><i class='bx bxs-envelope'></i></div>
                             <span class="icon-label">Mail</span>
                         </div>
-                        <div class="app-icon fake-app">
-                            <div class="icon-bg ios-photos"><i class='bx bx-landscape'></i></div>
-                            <span class="icon-label">Photos</span>
+
+                        <!-- User Repo Apps -->
+                        <div class="app-icon repo-app" data-repo="food_mvvm" data-name="Food App" data-desc="Food delivery application showcasing MVVM architecture in Android natively." data-lang="Kotlin" data-icon="bx-restaurant" data-color="linear-gradient(135deg, #fb923c, #ea580c)">
+                            <div class="icon-bg" style="background: linear-gradient(135deg, #fb923c, #ea580c);"><i class='bx bx-restaurant'></i></div>
+                            <span class="icon-label">FoodApp</span>
                         </div>
-                        <div class="app-icon fake-app">
-                            <div class="icon-bg ios-weather"><i class='bx bx-cloud-light-rain'></i></div>
-                            <span class="icon-label">Weather</span>
+                        <div class="app-icon repo-app" data-repo="job_app" data-name="Job Finder" data-desc="Job seeking application focused on modern UI/UX and seamless navigation." data-lang="Dart" data-icon="bx-briefcase" data-color="linear-gradient(135deg, #38bdf8, #0284c7)">
+                            <div class="icon-bg" style="background: linear-gradient(135deg, #38bdf8, #0284c7);"><i class='bx bx-briefcase'></i></div>
+                            <span class="icon-label">Jobs UX</span>
+                        </div>
+                        <div class="app-icon repo-app" data-repo="chatapp_flutter" data-name="Chat App" data-desc="A real-time chat application built with Flutter & Firebase." data-lang="Dart" data-icon="bx-message-square-dots" data-color="linear-gradient(135deg, #4ade80, #16a34a)">
+                            <div class="icon-bg" style="background: linear-gradient(135deg, #4ade80, #16a34a);"><i class='bx bx-message-square-dots'></i></div>
+                            <span class="icon-label">Chatty</span>
+                        </div>
+                        <div class="app-icon repo-app" data-repo="uitvic-caption" data-name="ViT5 AI" data-desc="Deep Learning project for generating image captions using ViT5 and Python." data-lang="Python" data-icon="bx-brain" data-color="linear-gradient(135deg, #374151, #111827)">
+                            <div class="icon-bg" style="background: linear-gradient(135deg, #374151, #111827);"><i class='bx bx-brain'></i></div>
+                            <span class="icon-label">ViT5 AI</span>
+                        </div>
+                        <div class="app-icon repo-app" data-repo="compose-media-picker" data-name="Media Picker" data-desc="A modern, high-performance media picker for Jetpack Compose." data-lang="Kotlin" data-icon="bx-image-add" data-color="linear-gradient(135deg, #fff, #f4f4f4); color: #000;">
+                            <div class="icon-bg" style="background: linear-gradient(135deg, #fff, #f4f4f4); color: #000;"><i class='bx bx-image-add'></i></div>
+                            <span class="icon-label">ComposePic</span>
                         </div>
                     </div>
 
@@ -172,14 +183,23 @@
                     </div>
                 </div>
 
-                <!-- App: Projects -->
-                <div id="app-projects" class="view app-window">
+                <!-- App: Dynamic Repo Window -->
+                <div id="app-repo-template" class="view app-window">
                     <div class="app-header ios-header">
-                        <div class="header-back-btn"><i class='bx bx-chevron-left'></i> Back</div>
-                        <h2>Projects</h2>
+                        <div class="header-back-btn"><i class='bx bx-chevron-left'></i> Home</div>
+                        <h2 id="repo-header-title">App</h2>
                     </div>
-                    <div class="app-content content-scrollable" id="repos-container">
-                        <!-- Rendered by JS -->
+                    <div class="app-content content-padded" style="display:flex; flex-direction:column; align-items:center; text-align:center; padding-top: 40px;">
+                        <div id="repo-big-icon" class="icon-bg" style="width:100px; height:100px; font-size:4rem; border-radius:24px; margin-bottom: 20px;">
+                            <i class='bx bx-code'></i>
+                        </div>
+                        <h1 id="repo-title" style="font-size:2rem; margin-bottom:10px;">Repo Name</h1>
+                        <span id="repo-lang" class="skill-item" style="margin-bottom:20px; font-size:0.85rem; padding: 5px 15px; border-radius: 20px;">Language</span>
+                        <p id="repo-desc" style="color:var(--text-secondary); line-height:1.6; font-size:1rem; margin-bottom: 30px; padding: 0 15px;">Description goes here.</p>
+                        
+                        <a id="repo-github-btn" href="#" target="_blank" class="install-btn" style="width: 80%; padding: 15px; border-radius: 12px; font-size: 1rem; background: #0B7CE6;">
+                            <i class='bx bxl-github' style="font-size:1.2rem; margin-right:5px; vertical-align:middle;"></i> GET FROM GITHUB
+                        </a>
                     </div>
                 </div>
 

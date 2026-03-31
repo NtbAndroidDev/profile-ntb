@@ -43,7 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 4. App Navigation Logic
-    const appIcons = document.querySelectorAll('.app-icon:not(.fake-app)');
+    const appIcons = document.querySelectorAll('.app-icon:not(.fake-app):not(.repo-app)');
+    const repoApps = document.querySelectorAll('.repo-app');
     const fakeApps = document.querySelectorAll('.fake-app');
     const homeIndicator = document.getElementById('btn-home');
     const headerBackBtns = document.querySelectorAll('.header-back-btn');
@@ -86,58 +87,36 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', goHome);
     });
 
-    // 5. Fetch Github Data for "Google Play / Projects"
-    const reposContainer = document.getElementById('repos-container');
-    const username = 'NtbAndroidDev';
-
-    // Highlighted projects with specific icons
-    const repoIcons = {
-        'compose-media-picker': 'bx-image-add',
-        'uitvic-caption': 'bx-brain',
-        'chatapp_flutter': 'bx-message-square-dots',
-        'job_app': 'bx-briefcase',
-        'food_mvvm': 'bx-restaurant'
-    };
-
-    reposContainer.innerHTML = `<div style="text-align:center; padding: 20px;"><i class='bx bx-loader bx-spin' style="font-size:2rem; color:var(--blue)"></i></div>`;
-
-    fetch(`https://api.github.com/users/${username}/repos?sort=pushed&per_page=10`)
-        .then(response => response.json())
-        .then(data => {
-            reposContainer.innerHTML = '';
+    // Populate and open dynamic repo window
+    const repoTemplate = document.getElementById('app-repo-template');
+    repoApps.forEach(icon => {
+        icon.addEventListener('click', () => {
+            playClick();
             
-            if(data.message) {
-                reposContainer.innerHTML = `<p style="text-align:center; padding:20px;">Cannot connect to GitHub Servers.</p>`;
-                return;
-            }
+            // Extract data
+            const repoId = icon.getAttribute('data-repo');
+            const name = icon.getAttribute('data-name');
+            const desc = icon.getAttribute('data-desc');
+            const lang = icon.getAttribute('data-lang');
+            const iconClass = icon.getAttribute('data-icon');
+            const color = icon.getAttribute('data-color');
 
-            data.forEach(repo => {
-                if (repo.fork) return; 
-                
-                const storeCard = document.createElement('div');
-                storeCard.className = 'store-card';
-                
-                // Assign mapped icon or generic
-                const iconClass = repoIcons[repo.name] || 'bx-code';
-                
-                // Truncate desc
-                const desc = repo.description || 'No description available for this repository.';
-                const shortDesc = desc.length > 70 ? desc.substring(0, 70) + '...' : desc;
+            // Populate Template
+            document.getElementById('repo-header-title').textContent = name;
+            document.getElementById('repo-title').textContent = name;
+            document.getElementById('repo-desc').textContent = desc;
+            document.getElementById('repo-lang').innerHTML = `<i class='bx bxl-${lang.toLowerCase()}'></i> ${lang}`;
+            document.getElementById('repo-github-btn').href = `https://github.com/NtbAndroidDev/${repoId}`;
+            
+            const bigIcon = document.getElementById('repo-big-icon');
+            bigIcon.innerHTML = `<i class='bx ${iconClass}'></i>`;
+            bigIcon.style.background = color;
+            bigIcon.style.color = color.includes('#fff') ? '#000' : '#fff'; // Adjust icon color if background is white
 
-                storeCard.innerHTML = `
-                    <div class="store-icon"><i class='bx ${iconClass}'></i></div>
-                    <div class="store-info">
-                        <h3>${repo.name}</h3>
-                        <p>${shortDesc}</p>
-                        ${repo.language ? `<span class="skill-item" style="display:inline-block; font-size:0.75rem; padding: 3px 8px; margin-bottom:10px;"><i class='bx bxl-${repo.language.toLowerCase()}'></i> ${repo.language}</span>` : ''}
-                        <br>
-                        <a href="${repo.html_url}" target="_blank" class="install-btn">OPEN APP</a>
-                    </div>
-                `;
-                reposContainer.appendChild(storeCard);
-            });
-        })
-        .catch(err => {
-            reposContainer.innerHTML = `<p style="text-align:center;">Failed to load Play Store. Please check internet connection.</p>`;
+            // Open Window
+            repoTemplate.classList.add('active');
+            currentApp = repoTemplate;
         });
+    });
+
 });
