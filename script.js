@@ -73,39 +73,62 @@ const reposContainer = document.getElementById('projects-list-scrollable');
 
 const myProjects = [
     {
-        name: 'food_mvvm',
-        desc: 'Food delivery application showcasing MVVM architecture in Android natively. Built with Kotlin.',
-        url: 'https://github.com/NtbAndroidDev/food_mvvm'
+        name: 'Food App MVVM',
+        desc: 'A modern food delivery application natively built to showcase clean MVVM architecture workflows.',
+        url: 'https://github.com/NtbAndroidDev/food_mvvm',
+        color: 'linear-gradient(135deg, #FF9D6C, #BB4E75)',
+        icon: 'bx-restaurant',
+        lang: 'Kotlin'
     },
     {
-        name: 'job_app',
-        desc: 'Job seeking application focused on modern UI/UX and seamless navigation. Built with Flutter/Dart.',
-        url: 'https://github.com/NtbAndroidDev/job_app'
+        name: 'Job Finder UX',
+        desc: 'Sleek job seeking application heavily focused on ultra-modern UI/UX and seamless navigation paradigms.',
+        url: 'https://github.com/NtbAndroidDev/job_app',
+        color: 'linear-gradient(135deg, #5EFCE8, #736EFE)',
+        icon: 'bx-briefcase',
+        lang: 'Dart'
     },
     {
-        name: 'chatapp_flutter',
-        desc: 'A real-time chat application built with Flutter & Firebase. Built with Dart.',
-        url: 'https://github.com/NtbAndroidDev/chatapp_flutter'
+        name: 'Chatty Flutter',
+        desc: 'A real-time lightweight chat application powered instantly by Firebase real-time database.',
+        url: 'https://github.com/NtbAndroidDev/chatapp_flutter',
+        color: 'linear-gradient(135deg, #11998e, #38ef7d)',
+        icon: 'bx-message-rounded-dots',
+        lang: 'Flutter'
     },
     {
-        name: 'uitvic-caption',
-        desc: 'Deep Learning project for generating image captions using ViT5 and Python.',
-        url: 'https://github.com/NtbAndroidDev/uitvic-caption'
+        name: 'ViT5 Caption',
+        desc: 'Deep Learning pipeline for generating highly-accurate, context-aware image captions using ViT5 models.',
+        url: 'https://github.com/NtbAndroidDev/uitvic-caption',
+        color: 'linear-gradient(135deg, #8A2387, #E94057, #F27121)',
+        icon: 'bx-brain',
+        lang: 'Python'
     },
     {
-        name: 'compose-media-picker',
-        desc: 'A modern, high-performance media picker for Jetpack Compose. Built with Kotlin.',
-        url: 'https://github.com/NtbAndroidDev/compose-media-picker'
+        name: 'Compose Picker',
+        desc: 'A beautifully crafted, high-performance local media picker built exclusively for Jetpack Compose.',
+        url: 'https://github.com/NtbAndroidDev/compose-media-picker',
+        color: 'linear-gradient(135deg, #FFB75E, #ED8F03)',
+        icon: 'bx-images',
+        lang: 'Compose'
     }
 ];
 
 let htmlContent = '';
 myProjects.forEach(repo => {
     htmlContent += `
-        <div class="project-card">
-            <h3>${repo.name}</h3>
-            <p>${repo.desc}</p>
-            <a href="${repo.url}" target="_blank" class="btn-open">View on GitHub</a>
+        <div class="project-card" style="background: ${repo.color}">
+            <div class="card-overlay">
+                <div class="card-header-flex">
+                    <div class="card-icon"><i class='bx ${repo.icon}'></i></div>
+                    <span class="card-lang">${repo.lang}</span>
+                </div>
+                <h3>${repo.name}</h3>
+                <p>${repo.desc}</p>
+                <div class="card-actions">
+                    <a href="${repo.url}" target="_blank" class="btn-get">GET</a>
+                </div>
+            </div>
         </div>
     `;
 });
