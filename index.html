@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of nguyen thanh binh (NtbAndroidDev) - Android, Web and AI Developer from Vietnam.">
+    <title>Nguyen Thanh Binh | NtbAndroidDev</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- BoxIcons for vector icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    
+    <div class="container">
+        <header class="glass-panel profile-header">
+            <div class="profile-image-wrapper">
+                <img src="https://avatars.githubusercontent.com/u/135935496?v=4" alt="Nguyen Thanh Binh" class="profile-image">
+                <div class="status-indicator"></div>
+            </div>
+            
+            <div class="profile-info">
+                <span class="greeting">hello!! 👋</span>
+                <h1 class="name">Nguyen Thanh Binh</h1>
+                <h2 class="username">@NtbAndroidDev</h2>
+                
+                <div class="tags">
+                    <div class="tag">
+                        <i class='bx bxl-android'></i>
+                        Android Developer
+                    </div>
+                    <div class="tag">
+                        <i class='bx bx-map'></i>
+                        Vietnam
+                    </div>
+                </div>
+                
+                <p class="bio">Passionate mobile developer with experience in Kotlin, Dart/Flutter, and integrating AI models. Always learning and building exciting projects.</p>
+                
+                <div class="actions">
+                    <a href="https://github.com/NtbAndroidDev" target="_blank" class="btn btn-primary">
+                        <i class='bx bxl-github'></i>
+                        Follow on GitHub
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="projects-section">
+                <div class="section-header">
+                    <h2>Latest Projects</h2>
+                    <div class="line"></div>
+                </div>
+                
+                <div class="grid" id="repos-grid">
+                    <!-- Project Cards will be inserted here by JS -->
+                </div>
+            </section>
+        </main>
+        
+        <footer class="glass-panel text-center">
+            <p>&copy; <span id="year"></span> Nguyen Thanh Binh. Built with modern web technologies.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
