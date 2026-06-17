@@ -4,11 +4,11 @@ gsap.registerPlugin(ScrollTrigger);
    1. DATA
 ============================================================= */
 const myProjects = [
-    { name: 'Food App MVVM', desc: 'A modern food delivery application natively built to showcase clean MVVM architecture workflows.', url: 'https://github.com/NtbAndroidDev/food_mvvm', color: 'linear-gradient(135deg, #FF9D6C, #BB4E75)', icon: 'bx-restaurant', lang: 'Kotlin' },
-    { name: 'Job Finder UX', desc: 'Sleek job seeking application heavily focused on ultra-modern UI/UX and seamless navigation paradigms.', url: 'https://github.com/NtbAndroidDev/job_app', color: 'linear-gradient(135deg, #5EFCE8, #736EFE)', icon: 'bx-briefcase', lang: 'Dart' },
-    { name: 'Chatty Flutter', desc: 'A real-time lightweight chat application powered instantly by Firebase real-time database.', url: 'https://github.com/NtbAndroidDev/chatapp_flutter', color: 'linear-gradient(135deg, #11998e, #38ef7d)', icon: 'bx-message-rounded-dots', lang: 'Flutter' },
-    { name: 'ViT5 Caption', desc: 'Deep Learning pipeline for generating highly-accurate, context-aware image captions using ViT5 models.', url: 'https://github.com/NtbAndroidDev/uitvic-caption', color: 'linear-gradient(135deg, #8A2387, #E94057, #F27121)', icon: 'bx-brain', lang: 'Python' },
-    { name: 'Compose Picker', desc: 'A beautifully crafted, high-performance local media picker built exclusively for Jetpack Compose.', url: 'https://github.com/NtbAndroidDev/compose-media-picker', color: 'linear-gradient(135deg, #FFB75E, #ED8F03)', icon: 'bx-images', lang: 'Compose' }
+    { name: 'Food App MVVM', desc: 'A modern food delivery application natively built to showcase clean MVVM architecture workflows.', details: 'A native Android food-delivery app demonstrating a production-grade MVVM stack: reactive UI driven by ViewModels and StateFlow, a Repository layer abstracting Retrofit + Room, and dependency injection for testable, decoupled modules.', url: 'https://github.com/NtbAndroidDev/food_mvvm', color: 'linear-gradient(135deg, #FF9D6C, #BB4E75)', icon: 'bx-restaurant', lang: 'Kotlin', tags: ['Kotlin', 'MVVM', 'Retrofit', 'Room', 'Coroutines'] },
+    { name: 'Job Finder UX', desc: 'Sleek job seeking application heavily focused on ultra-modern UI/UX and seamless navigation paradigms.', details: 'A cross-platform job-seeking app built in Flutter with a strong emphasis on motion design, fluid hero transitions, and an intuitive navigation flow that keeps candidates one tap from their next opportunity.', url: 'https://github.com/NtbAndroidDev/job_app', color: 'linear-gradient(135deg, #5EFCE8, #736EFE)', icon: 'bx-briefcase', lang: 'Dart', tags: ['Flutter', 'Dart', 'UI/UX', 'Animations'] },
+    { name: 'Chatty Flutter', desc: 'A real-time lightweight chat application powered instantly by Firebase real-time database.', details: 'A lightweight real-time messenger backed by Firebase: instant message sync, presence and typing indicators, and authentication — all wired through a clean stream-based architecture.', url: 'https://github.com/NtbAndroidDev/chatapp_flutter', color: 'linear-gradient(135deg, #11998e, #38ef7d)', icon: 'bx-message-rounded-dots', lang: 'Flutter', tags: ['Flutter', 'Firebase', 'Realtime DB', 'Auth'] },
+    { name: 'ViT5 Caption', desc: 'Deep Learning pipeline for generating highly-accurate, context-aware image captions using ViT5 models.', details: 'A deep-learning pipeline that fine-tunes ViT5 to generate context-aware Vietnamese image captions — covering data preprocessing, transformer training, and inference packaged for mobile-friendly deployment.', url: 'https://github.com/NtbAndroidDev/uitvic-caption', color: 'linear-gradient(135deg, #8A2387, #E94057, #F27121)', icon: 'bx-brain', lang: 'Python', tags: ['Python', 'ViT5', 'Transformers', 'Deep Learning'] },
+    { name: 'Compose Picker', desc: 'A beautifully crafted, high-performance local media picker built exclusively for Jetpack Compose.', details: 'A high-performance media picker built natively for Jetpack Compose: lazy grid loading, smooth selection animations, and a clean composable API designed to drop into any modern Android project.', url: 'https://github.com/NtbAndroidDev/compose-media-picker', color: 'linear-gradient(135deg, #FFB75E, #ED8F03)', icon: 'bx-images', lang: 'Compose', tags: ['Kotlin', 'Jetpack Compose', 'Coil', 'Performance'] }
 ];
 
 const skills = [
@@ -39,8 +39,8 @@ const contacts = [
 ============================================================= */
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-document.getElementById('projects-list-scrollable').innerHTML = myProjects.map((repo) => `
-    <div class="project-card" style="background: ${repo.color}">
+document.getElementById('projects-list-scrollable').innerHTML = myProjects.map((repo, i) => `
+    <div class="project-card" style="background: ${repo.color}" data-index="${i}" role="button" tabindex="0" aria-label="View details for ${esc(repo.name)}">
         <div class="card-overlay">
             <div class="card-header-flex">
                 <div class="card-icon"><i class='bx ${repo.icon}'></i></div>
@@ -97,7 +97,77 @@ if ('IntersectionObserver' in window) {
 }
 
 /* ============================================================
-   4. HERO SCROLL TIMELINE (responsive via matchMedia)
+   4. FLOATING NAV — reveal after the first viewport, brand to top
+============================================================= */
+const nav = document.getElementById('site-nav');
+const onScrollNav = () => {
+    if (window.scrollY > window.innerHeight * 0.6) nav.classList.add('visible');
+    else nav.classList.remove('visible');
+};
+window.addEventListener('scroll', onScrollNav, { passive: true });
+onScrollNav();
+
+document.getElementById('nav-brand').addEventListener('click', (e) => {
+    e.preventDefault();
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+});
+
+/* ============================================================
+   5. PROJECT MODAL
+============================================================= */
+const modal = document.getElementById('project-modal');
+const modalHead = document.getElementById('modal-head');
+const modalBody = document.getElementById('modal-body');
+const modalClose = document.getElementById('modal-close');
+let lastFocused = null;
+
+function openModal(repo) {
+    lastFocused = document.activeElement;
+    modalHead.style.background = repo.color;
+    modalHead.innerHTML = `
+        <div class="modal-icon"><i class='bx ${repo.icon}'></i></div>
+        <h3 id="modal-title">${esc(repo.name)}</h3>
+        <span class="modal-lang">${esc(repo.lang)}</span>`;
+    modalBody.innerHTML = `
+        <p>${esc(repo.details || repo.desc)}</p>
+        <div class="modal-tags">${(repo.tags || []).map((t) => `<span>${esc(t)}</span>`).join('')}</div>
+        <a class="modal-link" href="${repo.url}" target="_blank" rel="noopener noreferrer"><i class='bx bxl-github'></i>View on GitHub</a>`;
+    modal.hidden = false;
+    requestAnimationFrame(() => modal.classList.add('open'));
+    modalClose.focus();
+}
+
+function closeModal() {
+    modal.classList.remove('open');
+    const finish = () => { modal.hidden = true; modal.removeEventListener('transitionend', finish); };
+    modal.addEventListener('transitionend', finish);
+    if (lastFocused) lastFocused.focus();
+}
+
+// Open from a card (but let the GET button do its own thing)
+const projectsList = document.getElementById('projects-list-scrollable');
+const cardToProject = (target) => {
+    const card = target.closest('.project-card');
+    if (!card || target.closest('.btn-get')) return null;
+    return myProjects[Number(card.dataset.index)];
+};
+projectsList.addEventListener('click', (e) => {
+    const repo = cardToProject(e.target);
+    if (repo) openModal(repo);
+});
+projectsList.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const repo = cardToProject(e.target);
+    if (repo) { e.preventDefault(); openModal(repo); }
+});
+
+modalClose.addEventListener('click', closeModal);
+modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
+
+/* ============================================================
+   6. HERO SCROLL TIMELINE (responsive via matchMedia)
    - Triggered on #hero-experience so content below is NOT
      stretched into the scrub range.
    - matchMedia auto-reverts + rebuilds on breakpoint/resize,
