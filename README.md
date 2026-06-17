@@ -27,8 +27,14 @@ Once pushed, GitHub will automatically deploy your site.
 Wait a minute or two, then visit: **https://NtbAndroidDev.github.io**
 
 ## 🛠 Setup & Customization
-- **index.html**: Update the structure, add new sections or change text.
-- **styles.css**: Edit colors, fonts, or tweak the glassmorphism design. Right now it uses a dynamic dark theme out of the box.
-- **script.js**: Contains your pinned/latest repositories. If you want to add or remove a project card, simply update the `repositories` list in this file!
+- **index.html**: Page structure. The `#hero-experience` block holds the scroll-driven 3D phone animation; the `#content` block holds the standard About / Skills / Experience / Contact sections.
+- **styles.css**: Colors, fonts and the glassmorphism dark theme. Fully responsive (mobile breakpoints at 900/768/480px) and respects `prefers-reduced-motion` — when motion is reduced, all content is shown statically instead of being scroll-driven.
+- **script.js**: All content is data-driven. Edit the arrays at the top to update your portfolio:
+  - `myProjects` — the App Store style gallery cards inside the phone.
+  - `skills` — the toolkit grid.
+  - `experience` — the timeline entries.
+  - `contacts` — the contact buttons (update the `mailto:` and social links!).
+
+The hero animation is built with GSAP `matchMedia`, so it automatically rebuilds on resize / orientation change and disables itself for reduced-motion users.
 
 Enjoy your new profile!

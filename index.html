@@ -3,115 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Binh | The Android Experience</title>
-    
+    <title>Binh | Mobile Software Engineer — The Android Experience</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Binh (NtbAndroidDev) — Mobile Software Engineer specialising in native Android (Kotlin/Compose), Flutter, clean MVVM architecture, and AI-integrated apps powered by deep learning.">
+    <meta name="author" content="Binh — NtbAndroidDev">
+    <meta name="theme-color" content="#000000">
+    <link rel="canonical" href="https://NtbAndroidDev.github.io">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Binh | Mobile Software Engineer">
+    <meta property="og:description" content="Native Android, Flutter & AI-integrated mobile applications. Clean Code. MVVM. Built for scale.">
+    <meta property="og:url" content="https://NtbAndroidDev.github.io">
+    <meta property="og:image" content="https://NtbAndroidDev.github.io/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicon (inline SVG, no extra request) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📱</text></svg>">
+
     <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    
+
     <link rel="stylesheet" href="styles.css">
-    <!-- Load Three.js (removed since we use CSS 3D for perfect Apple Scroll, but keeping just in case) -->
 </head>
 <body>
 
-    <!-- Smooth Scrolling Container Wrapper -->
+    <!-- Skip link for keyboard / screen-reader users -->
+    <a href="#content" class="skip-link">Skip to content</a>
+
     <div id="smooth-wrapper">
-        
-        <!-- Background Ambient -->
+
+        <!-- Background Ambient (persists across the whole page) -->
         <div class="bg-gradient"></div>
 
-        <!-- FIXED 3D VIEWPORT -->
-        <div class="fixed-viewport">
-            
-            <!-- Floating Text Elements -->
-            <div class="text-layer" id="text-1">
-                <h1>Meet Binh.</h1>
-                <p class="subtitle">Mobile Software Engineer.</p>
-                <div class="scroll-anim">
-                    <span>Scroll to unfold</span>
-                    <i class='bx bx-chevron-down'></i>
+        <!-- ============================================================
+             HERO EXPERIENCE — scroll-driven 3D phone animation.
+             The fixed viewport stays pinned while the spacers below
+             provide the scroll length that GSAP scrubs through.
+        ============================================================= -->
+        <header id="hero-experience">
+
+            <!-- FIXED 3D VIEWPORT -->
+            <div class="fixed-viewport" id="fixed-viewport">
+
+                <!-- Floating Text Elements -->
+                <div class="text-layer" id="text-1">
+                    <h1>Meet Binh.</h1>
+                    <p class="subtitle">Mobile Software Engineer.</p>
+                    <div class="scroll-anim" aria-hidden="true">
+                        <span>Scroll to unfold</span>
+                        <i class='bx bx-chevron-down'></i>
+                    </div>
+                </div>
+
+                <div class="text-layer" id="text-2">
+                    <h2>Master of Architecture.</h2>
+                    <p>Clean Code. MVVM. Built for Scale.</p>
+                </div>
+
+                <div class="text-layer" id="text-3">
+                    <h2 class="gradient-ai">AI Integrated.</h2>
+                    <p>Bridging mobile applications with Deep Learning &amp; ViT5 models.</p>
+                </div>
+
+                <!-- The 3D CSS Smartphone -->
+                <div class="phone-3d-wrapper" id="phone-wrapper" aria-hidden="true">
+                    <div class="phone" id="the-phone">
+
+                        <!-- Back of Phone -->
+                        <div class="phone-face phone-back">
+                            <div class="camera-bump">
+                                <div class="lens lens-1"></div>
+                                <div class="lens lens-2"></div>
+                                <div class="lens lens-3"></div>
+                                <div class="flash"></div>
+                            </div>
+                            <div class="brand-logo"><i class='bx bxl-android'></i></div>
+                        </div>
+
+                        <!-- Front of Phone (Screen) -->
+                        <div class="phone-face phone-front">
+                            <div class="notch"></div>
+
+                            <div class="screen-content active" id="screen-1">
+                                <div class="s1-time">09:41</div>
+                                <div class="s1-date">Tuesday, March 31</div>
+                                <div class="s1-widget">
+                                    <i class='bx bx-user-circle'></i> NtbAndroidDev
+                                </div>
+                            </div>
+
+                            <div class="screen-content" id="screen-2">
+                                <i class='bx bx-layer code-icon' style="color: #f97316;"></i>
+                                <h3>Kotlin / Dart</h3>
+                                <div class="line-code"></div>
+                                <div class="line-code w-70"></div>
+                                <div class="line-code w-40"></div>
+                            </div>
+
+                            <div class="screen-content" id="screen-3">
+                                <i class='bx bx-brain code-icon' style="color: #c026d3;"></i>
+                                <h3>Machine Learning</h3>
+                                <div class="ai-pulse"></div>
+                            </div>
+
+                            <div class="screen-content" id="screen-4">
+                                <div class="gallery-header">
+                                    <h2>The Gallery.</h2>
+                                </div>
+                                <div id="projects-list-scrollable">
+                                    <!-- Populated dynamically by JS -->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
-            <div class="text-layer" id="text-2">
-                <h2>Master of Architecture.</h2>
-                <p>Clean Code. MVVM. Built for Scale.</p>
-            </div>
+            <!-- Scroll Height Spacers (create length for GSAP scrubbing) -->
+            <div class="scroll-spacer section-1"></div>
+            <div class="scroll-spacer section-2"></div>
+            <div class="scroll-spacer section-3"></div>
+            <div class="scroll-spacer section-4"></div>
+            <div class="scroll-spacer section-5"></div>
 
-            <div class="text-layer" id="text-3">
-                <h2 style="background: linear-gradient(90deg, #ff00ff, #00f0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">AI Integrated.</h2>
-                <p>Bridging mobile applications with Deep Learning & ViT5 models.</p>
-            </div>
+        </header>
 
-            <!-- The 3D CSS Smartphone -->
-            <div class="phone-3d-wrapper" id="phone-wrapper">
-                <div class="phone" id="the-phone">
-                    
-                    <!-- Back of Phone -->
-                    <div class="phone-face phone-back">
-                        <div class="camera-bump">
-                            <div class="lens lens-1"></div>
-                            <div class="lens lens-2"></div>
-                            <div class="lens lens-3"></div>
-                            <div class="flash"></div>
+        <!-- ============================================================
+             MAIN CONTENT — standard scrollable sections that reveal
+             after the hero experience finishes.
+        ============================================================= -->
+        <main id="content">
+
+            <!-- ABOUT -->
+            <section class="section section-about" id="about">
+                <div class="section-inner">
+                    <span class="eyebrow">01 — About</span>
+                    <h2 class="section-title">Crafting mobile experiences that feel <em>inevitable</em>.</h2>
+                    <p class="lead">
+                        I'm Binh, a mobile software engineer focused on building native Android
+                        and cross-platform apps that are fast, maintainable, and a joy to use.
+                        I care deeply about clean architecture, polished motion, and shipping
+                        products that scale — from the first commit to the millionth user.
+                    </p>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <span class="stat-num">5+</span>
+                            <span class="stat-label">Years building mobile</span>
                         </div>
-                        <div class="brand-logo"><i class='bx bxl-android'></i></div>
-                    </div>
-
-                    <!-- Front of Phone (Screen) -->
-                    <div class="phone-face phone-front">
-                        <div class="notch"></div>
-                        
-                        <!-- Screen Contents (Fading in/out with GSAP) -->
-                        <div class="screen-content active" id="screen-1">
-                            <div class="s1-time">09:41</div>
-                            <div class="s1-date">Tuesday, March 31</div>
-                            <div class="s1-widget">
-                                <i class='bx bx-user-circle'></i> NtbAndroidDev
-                            </div>
+                        <div class="stat-card">
+                            <span class="stat-num">20+</span>
+                            <span class="stat-label">Apps & prototypes shipped</span>
                         </div>
-                        
-                        <div class="screen-content" id="screen-2">
-                            <i class='bx bx-layer code-icon' style="color: #f97316;"></i>
-                            <h3>Kotlin / Dart</h3>
-                            <div class="line-code"></div>
-                            <div class="line-code w-70"></div>
-                            <div class="line-code w-40"></div>
-                        </div>
-
-                        <div class="screen-content" id="screen-3">
-                            <i class='bx bx-brain code-icon' style="color: #c026d3;"></i>
-                            <h3>Machine Learning</h3>
-                            <div class="ai-pulse"></div>
-                        </div>
-
-                        <div class="screen-content" id="screen-4">
-                            <div class="gallery-header">
-                                <h2>The Gallery.</h2>
-                            </div>
-                            <div id="projects-list-scrollable">
-                                <!-- Populated dynamically by JS -->
-                            </div>
+                        <div class="stat-card">
+                            <span class="stat-num">∞</span>
+                            <span class="stat-label">Curiosity for AI</span>
                         </div>
                     </div>
-
                 </div>
-            </div>
-        </div>
+            </section>
 
-        <!-- Scroll Height Spacers (To create length for GSAP scrubbing) -->
-        <div class="scroll-spacer section-1"></div>
-        <div class="scroll-spacer section-2"></div>
-        <div class="scroll-spacer section-3"></div>
-        <div class="scroll-spacer section-4"></div>
-        <div class="scroll-spacer section-5" style="height: 300vh;"></div>
-        
+            <!-- SKILLS -->
+            <section class="section section-skills" id="skills">
+                <div class="section-inner">
+                    <span class="eyebrow">02 — Toolkit</span>
+                    <h2 class="section-title">A stack built for native speed &amp; intelligence.</h2>
+                    <div class="skills-grid" id="skills-grid">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- EXPERIENCE -->
+            <section class="section section-experience" id="experience">
+                <div class="section-inner">
+                    <span class="eyebrow">03 — Journey</span>
+                    <h2 class="section-title">The journey so far.</h2>
+                    <ol class="timeline" id="timeline">
+                        <!-- Populated by JS -->
+                    </ol>
+                </div>
+            </section>
+
+            <!-- CONTACT -->
+            <section class="section section-contact" id="contact">
+                <div class="section-inner">
+                    <span class="eyebrow">04 — Contact</span>
+                    <h2 class="section-title">Let's build something great.</h2>
+                    <p class="lead">
+                        Open to mobile engineering roles, freelance collaborations, and
+                        interesting AI-meets-mobile experiments. Reach out anytime.
+                    </p>
+                    <div class="contact-actions" id="contact-actions">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+                <footer class="site-footer">
+                    <p>© <span id="year"></span> Binh — NtbAndroidDev. Built with HTML, CSS &amp; GSAP.</p>
+                </footer>
+            </section>
+
+        </main>
+
     </div>
 
     <!-- GSAP Core & ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
+
     <script src="script.js"></script>
 </body>
 </html>
