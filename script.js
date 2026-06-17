@@ -113,6 +113,23 @@ document.getElementById('nav-brand').addEventListener('click', (e) => {
     window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
 });
 
+// Scroll-spy: highlight the nav link of the section currently in view
+const navLinkFor = {};
+document.querySelectorAll('.nav-links a').forEach((a) => { navLinkFor[a.getAttribute('href').slice(1)] = a; });
+const spySections = document.querySelectorAll('#content .section');
+if ('IntersectionObserver' in window) {
+    const spy = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const link = navLinkFor[entry.target.id];
+            if (!link) return;
+            Object.values(navLinkFor).forEach((a) => a.classList.remove('active'));
+            link.classList.add('active');
+        });
+    }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+    spySections.forEach((s) => spy.observe(s));
+}
+
 /* ============================================================
    5. PROJECT MODAL
 ============================================================= */
