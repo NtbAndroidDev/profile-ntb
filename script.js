@@ -22,6 +22,48 @@ const skills = [
     { name: 'Python / ML',     meta: 'ViT5 · Deep Learning',icon: 'bxl-python',     color: '#facc15' }
 ];
 
+const principles = [
+    { label: 'State', value: 'Flow-first UI', desc: 'Screen state is owned by ViewModel and survives configuration changes.', icon: 'bx-git-branch' },
+    { label: 'Performance', value: 'Payload rendering', desc: 'RecyclerView updates stay scoped, predictable, and smooth under real data.', icon: 'bx-tachometer' },
+    { label: 'Camera', value: 'Camera2 control', desc: 'Lifecycle-aware capture surfaces with explicit resource cleanup.', icon: 'bx-camera' },
+    { label: 'AI', value: 'On-device ready', desc: 'Mobile inference paths designed around latency, memory, and graceful fallback.', icon: 'bx-chip' }
+];
+
+const labMetrics = [
+    { label: 'Cold start', value: '1.2s', trend: 'target < 1.5s', icon: 'bx-rocket' },
+    { label: 'Crash-free', value: '99.8%', trend: 'release guard', icon: 'bx-shield-quarter' },
+    { label: 'Main thread', value: '0', trend: 'blocking calls', icon: 'bx-loader-alt' },
+    { label: 'Offline path', value: 'Ready', trend: 'cache fallback', icon: 'bx-wifi-off' }
+];
+
+const pipelineSteps = [
+    { name: 'Compile', detail: 'Kotlin + resources', status: 'passed' },
+    { name: 'State audit', detail: 'Flow ownership', status: 'passed' },
+    { name: 'Perf pass', detail: 'Payload + jank scan', status: 'running' },
+    { name: 'Ship gate', detail: 'Manual QA checklist', status: 'queued' }
+];
+
+const caseStudies = [
+    {
+        name: 'Food App MVVM',
+        problem: 'Turn a commerce flow into a maintainable native Android sample.',
+        decision: 'Separated UI state, repository contracts, local cache, and network mapping.',
+        stack: ['Kotlin', 'MVVM', 'Retrofit', 'Room', 'Coroutines']
+    },
+    {
+        name: 'Compose Media Picker',
+        problem: 'Make local media browsing feel instant on large galleries.',
+        decision: 'Lean lazy grid rendering, async image loading, and selection state isolation.',
+        stack: ['Compose', 'Coil', 'Lazy Grid', 'Performance']
+    },
+    {
+        name: 'ViT5 Caption',
+        problem: 'Bridge Vietnamese image understanding with practical mobile AI workflows.',
+        decision: 'Kept the ML pipeline explainable from preprocessing to inference packaging.',
+        stack: ['Python', 'ViT5', 'Transformers', 'Mobile AI']
+    }
+];
+
 const experience = [
     { period: '2023 — Present', role: 'Mobile Software Engineer', desc: 'Building production Android apps with Kotlin & Jetpack Compose, driving clean MVVM architecture and integrating on-device intelligence.' },
     { period: '2022 — 2023',    role: 'Flutter Developer',        desc: 'Delivered cross-platform applications focused on polished UI/UX, real-time features, and Firebase-backed data flows.' },
@@ -29,15 +71,47 @@ const experience = [
 ];
 
 const contacts = [
-    { label: 'Email me',   href: 'mailto:contact@ntbandroiddev.dev', icon: 'bx-envelope',  cls: 'primary' },
+    { label: 'Email me',   href: 'mailto:thanhbinhntn2018@gmail.com', icon: 'bx-envelope',  cls: 'primary' },
     { label: 'GitHub',     href: 'https://github.com/NtbAndroidDev',  icon: 'bxl-github',   cls: 'ghost' },
-    { label: 'LinkedIn',   href: 'https://www.linkedin.com/',         icon: 'bxl-linkedin', cls: 'ghost' }
+    { label: 'LinkedIn',   href: 'https://www.linkedin.com/in/nguy%E1%BB%85n-thanh-b%C3%ACnh-8b7aa1264/', icon: 'bxl-linkedin', cls: 'ghost' }
 ];
 
 /* ============================================================
    2. RENDER
 ============================================================= */
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const projectBriefs = {
+    'Food App MVVM': {
+        role: 'Android architecture sample',
+        focus: 'StateFlow, Repository, Room cache',
+        outcome: 'Readable commerce flow',
+        highlights: ['Separated UI state from data mapping', 'Repository hides Retrofit and Room details', 'Designed for testable ViewModel logic']
+    },
+    'Job Finder UX': {
+        role: 'Flutter product prototype',
+        focus: 'Navigation, motion, UI polish',
+        outcome: 'Fast candidate journey',
+        highlights: ['Reduced navigation friction', 'Used motion to support context', 'Kept opportunity actions one tap away']
+    },
+    'Chatty Flutter': {
+        role: 'Realtime messaging build',
+        focus: 'Firebase streams and auth',
+        outcome: 'Instant sync experience',
+        highlights: ['Stream-based message updates', 'Authentication-backed user flow', 'Presence-ready architecture']
+    },
+    'ViT5 Caption': {
+        role: 'Vietnamese AI pipeline',
+        focus: 'Transformer training and inference',
+        outcome: 'Mobile-friendly captioning path',
+        highlights: ['Clear preprocessing pipeline', 'ViT5 fine-tuning workflow', 'Inference packaging mindset']
+    },
+    'Compose Picker': {
+        role: 'Native media component',
+        focus: 'Lazy grid and selection state',
+        outcome: 'Smooth gallery browsing',
+        highlights: ['Scoped selection state', 'Async image loading with Coil', 'Composable API for reuse']
+    }
+};
 
 document.getElementById('projects-list-scrollable').innerHTML = myProjects.map((repo, i) => `
     <div class="project-card" style="background: ${repo.color}" data-index="${i}" role="button" tabindex="0" aria-label="View details for ${esc(repo.name)}">
@@ -60,6 +134,52 @@ document.getElementById('skills-grid').innerHTML = skills.map((s) => `
         <span><span class="skill-name">${esc(s.name)}</span><span class="skill-meta">${esc(s.meta)}</span></span>
     </div>`).join('');
 
+document.getElementById('principles-grid').innerHTML = principles.map((item) => `
+    <article class="principle-card">
+        <div class="principle-icon"><i class='bx ${item.icon}'></i></div>
+        <span>${esc(item.label)}</span>
+        <h3>${esc(item.value)}</h3>
+        <p>${esc(item.desc)}</p>
+    </article>`).join('');
+
+document.getElementById('lab-metrics').innerHTML = labMetrics.map((item) => `
+    <article class="lab-metric">
+        <div class="lab-metric-icon"><i class='bx ${item.icon}'></i></div>
+        <span>${esc(item.label)}</span>
+        <strong>${esc(item.value)}</strong>
+        <small>${esc(item.trend)}</small>
+    </article>`).join('');
+
+document.getElementById('pipeline-steps').innerHTML = pipelineSteps.map((step) => `
+    <div class="pipeline-step ${esc(step.status)}">
+        <span class="pipeline-dot"></span>
+        <div>
+            <strong>${esc(step.name)}</strong>
+            <p>${esc(step.detail)}</p>
+        </div>
+        <em>${esc(step.status)}</em>
+    </div>`).join('');
+
+document.getElementById('case-grid').innerHTML = caseStudies.map((item) => `
+    <article class="case-card">
+        <div class="case-topline">
+            <span>Case study</span>
+            <i class='bx bx-right-arrow-alt'></i>
+        </div>
+        <h3>${esc(item.name)}</h3>
+        <dl>
+            <div>
+                <dt>Problem</dt>
+                <dd>${esc(item.problem)}</dd>
+            </div>
+            <div>
+                <dt>Decision</dt>
+                <dd>${esc(item.decision)}</dd>
+            </div>
+        </dl>
+        <div class="case-tags">${item.stack.map((tag) => `<span>${esc(tag)}</span>`).join('')}</div>
+    </article>`).join('');
+
 document.getElementById('timeline').innerHTML = experience.map((e) => `
     <li>
         <span class="tl-period">${esc(e.period)}</span>
@@ -78,7 +198,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
    3. REVEAL-ON-SCROLL for content sections
 ============================================================= */
 const revealTargets = document.querySelectorAll(
-    '#content .section-title, #content .lead, #content .stats-grid, #content .skills-grid, #content .timeline, #content .contact-actions'
+    '#content .section-title, #content .lead, #content .stats-grid, #content .skills-grid, #content .lab-board, #content .architecture-board, #content .principles-grid, #content .code-board, #content .case-grid, #content .timeline, #content .contact-command'
 );
 revealTargets.forEach((el) => el.classList.add('reveal'));
 
@@ -140,6 +260,12 @@ const modalClose = document.getElementById('modal-close');
 let lastFocused = null;
 
 function openModal(repo) {
+    const brief = projectBriefs[repo.name] || {
+        role: repo.lang,
+        focus: (repo.tags || []).slice(0, 3).join(', '),
+        outcome: 'Maintainable mobile delivery',
+        highlights: repo.tags || []
+    };
     lastFocused = document.activeElement;
     modalHead.style.background = repo.color;
     modalHead.innerHTML = `
@@ -148,6 +274,14 @@ function openModal(repo) {
         <span class="modal-lang">${esc(repo.lang)}</span>`;
     modalBody.innerHTML = `
         <p>${esc(repo.details || repo.desc)}</p>
+        <div class="modal-brief-grid">
+            <div><span>Role</span><strong>${esc(brief.role)}</strong></div>
+            <div><span>Focus</span><strong>${esc(brief.focus)}</strong></div>
+            <div><span>Outcome</span><strong>${esc(brief.outcome)}</strong></div>
+        </div>
+        <ul class="modal-highlights">
+            ${(brief.highlights || []).map((item) => `<li><i class='bx bx-check'></i>${esc(item)}</li>`).join('')}
+        </ul>
         <div class="modal-tags">${(repo.tags || []).map((t) => `<span>${esc(t)}</span>`).join('')}</div>
         <a class="modal-link" href="${repo.url}" target="_blank" rel="noopener noreferrer"><i class='bx bxl-github'></i>View on GitHub</a>`;
     modal.hidden = false;
@@ -208,8 +342,10 @@ mm.add(
         // Initial layout
         gsap.set('#the-phone', { x: shift });
         gsap.set('#text-1', { autoAlpha: 1, y: 0, scale: 1 });
+        gsap.set('#hero-tech-hud', { autoAlpha: 1, y: 0 });
         gsap.set('#screen-1', { autoAlpha: 1 });
         gsap.set('#text-2', { y: 50, scale: 0.95 });
+        gsap.set('#hero-arch-flow', { autoAlpha: 0, y: 18 });
         gsap.set('#text-3', { y: 50, scale: 0.95 });
         gsap.set('#fixed-viewport', { autoAlpha: 1 });
 
@@ -224,13 +360,16 @@ mm.add(
 
         // Scene 0 -> 1: phone tilts left, Tech Stack screen
         tl.to('#text-1', { autoAlpha: 0, y: -50, scale: 0.95, duration: 0.5 }, 0)
+          .to('#hero-tech-hud', { autoAlpha: 0, y: -30, duration: 0.45 }, 0)
           .to('#the-phone', { rotateY: 25, rotateX: 5, x: -shift, boxShadow: '30px 30px 60px rgba(0,0,0,0.8)', duration: 1 }, 0)
           .to('#text-2', { autoAlpha: 1, y: 0, scale: 1, duration: 0.5 }, 0.5)
+          .to('#hero-arch-flow', { autoAlpha: 1, y: 0, duration: 0.6 }, 0.75)
           .to('#screen-1', { autoAlpha: 0, duration: 0.2 }, 0.4)
           .to('#screen-2', { autoAlpha: 1, duration: 0.2 }, 0.6);
 
         // Scene 1 -> 2: spin to back, move right, AI screen
         tl.to('#text-2', { autoAlpha: 0, y: -50, scale: 0.95, duration: 0.5 }, 1.5)
+          .to('#hero-arch-flow', { autoAlpha: 0, y: -20, duration: 0.4 }, 1.5)
           .to('#the-phone', { rotateY: 180 - 25, x: shift, boxShadow: '-30px 30px 60px rgba(0,0,0,0.8)', duration: 1.5 }, 1.5)
           .to('#text-3', { autoAlpha: 1, y: 0, scale: 1, duration: 0.5 }, 2)
           .to('#screen-2', { autoAlpha: 0, duration: 0.1 }, 2)

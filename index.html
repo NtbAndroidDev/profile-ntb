@@ -9,14 +9,14 @@
     <meta name="description" content="Binh (NtbAndroidDev) — Mobile Software Engineer specialising in native Android (Kotlin/Compose), Flutter, clean MVVM architecture, and AI-integrated apps powered by deep learning.">
     <meta name="author" content="Binh — NtbAndroidDev">
     <meta name="theme-color" content="#000000">
-    <link rel="canonical" href="https://NtbAndroidDev.github.io">
+    <link rel="canonical" href="https://ntbandroiddev.github.io/profile-ntb/">
 
     <!-- Open Graph / Social -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Binh | Mobile Software Engineer">
     <meta property="og:description" content="Native Android, Flutter & AI-integrated mobile applications. Clean Code. MVVM. Built for scale.">
-    <meta property="og:url" content="https://NtbAndroidDev.github.io">
-    <meta property="og:image" content="https://NtbAndroidDev.github.io/og-image.png">
+    <meta property="og:url" content="https://ntbandroiddev.github.io/profile-ntb/">
+    <meta property="og:image" content="https://ntbandroiddev.github.io/profile-ntb/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
 
     <!-- Favicon (inline SVG, no extra request) -->
@@ -37,19 +37,24 @@
 
     <!-- Floating navigation (revealed after the hero) -->
     <nav class="site-nav" id="site-nav" aria-label="Primary">
-        <a href="#top" class="nav-brand" id="nav-brand">Binh<span>.</span></a>
+        <a href="#top" class="nav-brand" id="nav-brand">Binh<span>.dev</span></a>
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
+            <li><a href="#live-lab">Lab</a></li>
+            <li><a href="#architecture">Architecture</a></li>
+            <li><a href="#case-studies">Cases</a></li>
             <li><a href="#experience">Journey</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+        <span class="nav-status" aria-label="Available for Android roles">Available</span>
     </nav>
 
     <div id="smooth-wrapper">
 
         <!-- Background Ambient (persists across the whole page) -->
         <div class="bg-gradient"></div>
+        <div class="bg-blueprint" aria-hidden="true"></div>
 
         <!-- ============================================================
              HERO EXPERIENCE — scroll-driven 3D phone animation.
@@ -65,6 +70,12 @@
                 <div class="text-layer" id="text-1">
                     <h1>Meet Binh.</h1>
                     <p class="subtitle">Mobile Software Engineer.</p>
+                    <div class="hero-stack" aria-label="Core mobile stack">
+                        <span>Kotlin</span>
+                        <span>MVVM</span>
+                        <span>StateFlow</span>
+                        <span>Camera2</span>
+                    </div>
                     <div class="scroll-anim" aria-hidden="true">
                         <span>Scroll to unfold</span>
                         <i class='bx bx-chevron-down'></i>
@@ -72,13 +83,33 @@
                 </div>
 
                 <div class="text-layer" id="text-2">
-                    <h2>Master of Architecture.</h2>
-                    <p>Clean Code. MVVM. Built for Scale.</p>
+                    <h2>Architecture first.</h2>
+                    <p>MVVM, Clean boundaries, Flow-driven state, and code that stays readable after launch.</p>
+                </div>
+
+                <div class="hero-arch-flow" id="hero-arch-flow" aria-hidden="true">
+                    <span>View</span>
+                    <i></i>
+                    <span>ViewModel</span>
+                    <i></i>
+                    <span>UseCase</span>
+                    <i></i>
+                    <span>Repository</span>
+                    <i></i>
+                    <span>API</span>
                 </div>
 
                 <div class="text-layer" id="text-3">
                     <h2 class="gradient-ai">AI Integrated.</h2>
                     <p>Bridging mobile applications with Deep Learning &amp; ViT5 models.</p>
+                </div>
+
+                <div class="hero-tech-hud" id="hero-tech-hud" aria-hidden="true">
+                    <span class="hud-chip hud-kotlin"><i class='bx bxl-kotlin'></i>Kotlin</span>
+                    <span class="hud-chip hud-flow"><i class='bx bx-git-branch'></i>StateFlow</span>
+                    <span class="hud-chip hud-camera"><i class='bx bx-camera'></i>Camera2</span>
+                    <span class="hud-chip hud-ai"><i class='bx bx-chip'></i>On-device AI</span>
+                    <span class="hud-chip hud-api"><i class='bx bx-data'></i>SQL Server API</span>
                 </div>
 
                 <!-- The 3D CSS Smartphone -->
@@ -101,10 +132,31 @@
                             <div class="notch"></div>
 
                             <div class="screen-content active" id="screen-1">
-                                <div class="s1-time">09:41</div>
-                                <div class="s1-date">Tuesday, March 31</div>
-                                <div class="s1-widget">
-                                    <i class='bx bx-user-circle'></i> NtbAndroidDev
+                                <div class="runtime-status">
+                                    <span>09:41</span>
+                                    <span><i class='bx bx-wifi'></i><i class='bx bxs-battery-charging'></i></span>
+                                </div>
+                                <div class="runtime-hero-card">
+                                    <div>
+                                        <span>Dev Runtime</span>
+                                        <h3>NtbAndroidDev</h3>
+                                    </div>
+                                    <i class='bx bxl-android'></i>
+                                </div>
+                                <div class="runtime-metric-card">
+                                    <span>Frame budget</span>
+                                    <strong>16.6ms</strong>
+                                    <div class="runtime-meter"><span></span></div>
+                                </div>
+                                <div class="runtime-grid">
+                                    <div><span>State</span><strong>Stable</strong></div>
+                                    <div><span>Cache</span><strong>Warm</strong></div>
+                                    <div><span>API</span><strong>200</strong></div>
+                                    <div><span>AI</span><strong>Ready</strong></div>
+                                </div>
+                                <div class="runtime-feed">
+                                    <p><i class='bx bx-check-circle'></i>Flow state restored</p>
+                                    <p><i class='bx bx-check-circle'></i>Payload update applied</p>
                                 </div>
                             </div>
 
@@ -155,7 +207,7 @@
             <section class="section section-about" id="about">
                 <div class="section-inner">
                     <span class="eyebrow">01 — About</span>
-                    <h2 class="section-title">Crafting mobile experiences that feel <em>inevitable</em>.</h2>
+                    <h2 class="section-title">Building Android systems that feel <em>fast, stable, and deliberate</em>.</h2>
                     <p class="lead">
                         I'm Binh, a mobile software engineer focused on building native Android
                         and cross-platform apps that are fast, maintainable, and a joy to use.
@@ -190,10 +242,168 @@
                 </div>
             </section>
 
+            <!-- LIVE MOBILE LAB -->
+            <section class="section section-lab" id="live-lab">
+                <div class="section-inner">
+                    <span class="eyebrow">03 — Live Mobile Lab</span>
+                    <h2 class="section-title">A compact view of how I think about mobile quality.</h2>
+                    <div class="lab-board">
+                        <div class="lab-device" aria-label="Mobile runtime preview">
+                            <div class="lab-device-top">
+                                <span>09:41</span>
+                                <i class='bx bxs-battery-charging'></i>
+                            </div>
+                            <div class="lab-app-header">
+                                <div>
+                                    <span>Dev Build</span>
+                                    <h3>Attendance Runtime</h3>
+                                </div>
+                                <i class='bx bxl-android'></i>
+                            </div>
+                            <div class="lab-health-card">
+                                <span>Frame budget</span>
+                                <strong>16.6ms</strong>
+                                <div class="lab-meter"><span style="width: 76%"></span></div>
+                            </div>
+                            <div class="lab-mini-grid">
+                                <div><span>State</span><strong>Stable</strong></div>
+                                <div><span>Cache</span><strong>Warm</strong></div>
+                                <div><span>API</span><strong>200</strong></div>
+                                <div><span>AI</span><strong>Ready</strong></div>
+                            </div>
+                            <div class="lab-feed">
+                                <p><i class='bx bx-check-circle'></i> ViewModel restored after rotation</p>
+                                <p><i class='bx bx-check-circle'></i> RecyclerView updated with payloads</p>
+                                <p><i class='bx bx-check-circle'></i> Camera surface released safely</p>
+                            </div>
+                        </div>
+                        <div class="lab-console">
+                            <div class="lab-metrics" id="lab-metrics">
+                                <!-- Populated by JS -->
+                            </div>
+                            <div class="lab-pipeline">
+                                <div class="pipeline-head">
+                                    <span>Release pipeline</span>
+                                    <strong>devDebug</strong>
+                                </div>
+                                <div class="pipeline-steps" id="pipeline-steps">
+                                    <!-- Populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ARCHITECTURE -->
+            <section class="section section-architecture" id="architecture">
+                <div class="section-inner">
+                    <span class="eyebrow">04 — Engineering Console</span>
+                    <h2 class="section-title">Clean mobile architecture, shown as a working system.</h2>
+                    <div class="architecture-board">
+                        <div class="system-map">
+                            <div class="map-node node-ui">
+                                <span>UI Layer</span>
+                                <strong>XML / Compose / ViewBinding</strong>
+                            </div>
+                            <div class="map-node node-state">
+                                <span>State Owner</span>
+                                <strong>ViewModel + StateFlow</strong>
+                            </div>
+                            <div class="map-node node-domain">
+                                <span>Domain</span>
+                                <strong>UseCase + Immutable Models</strong>
+                            </div>
+                            <div class="map-node node-data">
+                                <span>Data</span>
+                                <strong>Repository + SQL Server API</strong>
+                            </div>
+                            <div class="map-line line-one"></div>
+                            <div class="map-line line-two"></div>
+                            <div class="map-line line-three"></div>
+                        </div>
+                        <div class="terminal-panel" aria-label="Engineering signals">
+                            <div class="terminal-bar">
+                                <span></span><span></span><span></span>
+                                <strong>mobile-build.log</strong>
+                            </div>
+                            <pre><code>./gradlew :app:compileDevDebugKotlin
+state: StateFlow&lt;UiState&gt;
+threading: main-safe coroutines
+camera: Camera2 lifecycle aware
+rendering: RecyclerView payload updates
+ai: on-device inference ready</code></pre>
+                        </div>
+                    </div>
+                    <div class="principles-grid" id="principles-grid">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- CODE CRAFT -->
+            <section class="section section-code" id="code-craft">
+                <div class="section-inner">
+                    <span class="eyebrow">05 — Code Craft</span>
+                    <h2 class="section-title">Readable Kotlin, lifecycle-aware by default.</h2>
+                    <div class="code-board">
+                        <div class="editor-panel" aria-label="Kotlin ViewModel snippet">
+                            <div class="editor-titlebar">
+                                <span></span><span></span><span></span>
+                                <strong>AttendanceViewModel.kt</strong>
+                            </div>
+                            <pre><code><span class="code-key">data class</span> AttendanceUiState(
+    <span class="code-key">val</span> loading: Boolean = false,
+    <span class="code-key">val</span> records: List&lt;AttendanceRecord&gt; = emptyList(),
+    <span class="code-key">val</span> error: String? = null
+)
+
+<span class="code-key">fun</span> refresh() = viewModelScope.launch {
+    _uiState.update { it.copy(loading = true, error = null) }
+
+    getAttendanceHistory()
+        .onSuccess { records -&gt;
+            _uiState.update { it.copy(loading = false, records = records) }
+        }
+        .onFailure { throwable -&gt;
+            _uiState.update { it.copy(loading = false, error = throwable.message) }
+        }
+}</code></pre>
+                        </div>
+                        <aside class="review-panel" aria-label="Engineering review checklist">
+                            <div class="review-head">
+                                <i class='bx bx-code-curly'></i>
+                                <div>
+                                    <span>Review lens</span>
+                                    <h3>What I optimize for</h3>
+                                </div>
+                            </div>
+                            <ul class="review-list">
+                                <li><i class='bx bx-check'></i> Immutable UI state, no hidden Fragment writes</li>
+                                <li><i class='bx bx-check'></i> Main-safe coroutine boundaries</li>
+                                <li><i class='bx bx-check'></i> Explicit loading, error, and empty states</li>
+                                <li><i class='bx bx-check'></i> RecyclerView updates scoped by payloads</li>
+                            </ul>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CASE STUDIES -->
+            <section class="section section-cases" id="case-studies">
+                <div class="section-inner">
+                    <span class="eyebrow">06 — Case Studies</span>
+                    <h2 class="section-title">Projects explained by decisions, not only screenshots.</h2>
+                    <div class="case-grid" id="case-grid">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </section>
+
             <!-- EXPERIENCE -->
             <section class="section section-experience" id="experience">
                 <div class="section-inner">
-                    <span class="eyebrow">03 — Journey</span>
+                    <span class="eyebrow">07 — Journey</span>
                     <h2 class="section-title">The journey so far.</h2>
                     <ol class="timeline" id="timeline">
                         <!-- Populated by JS -->
@@ -204,14 +414,39 @@
             <!-- CONTACT -->
             <section class="section section-contact" id="contact">
                 <div class="section-inner">
-                    <span class="eyebrow">04 — Contact</span>
+                    <span class="eyebrow">08 — Contact</span>
                     <h2 class="section-title">Let's build something great.</h2>
                     <p class="lead">
                         Open to mobile engineering roles, freelance collaborations, and
                         interesting AI-meets-mobile experiments. Reach out anytime.
                     </p>
-                    <div class="contact-actions" id="contact-actions">
-                        <!-- Populated by JS -->
+                    <div class="contact-command">
+                        <div class="contact-terminal">
+                            <div class="contact-terminal-bar">
+                                <span></span><span></span><span></span>
+                                <strong>contact.sh</strong>
+                            </div>
+                            <div class="contact-terminal-body">
+                                <p><span>$</span> ./start_conversation --role android-engineer</p>
+                                <div class="contact-actions" id="contact-actions">
+                                    <!-- Populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-facts" aria-label="Collaboration details">
+                            <div>
+                                <span>Focus</span>
+                                <strong>Native Android, Kotlin, mobile architecture</strong>
+                            </div>
+                            <div>
+                                <span>Availability</span>
+                                <strong>Open to product teams and freelance builds</strong>
+                            </div>
+                            <div>
+                                <span>Working style</span>
+                                <strong>Clear scope, small diffs, production-minded delivery</strong>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <footer class="site-footer">
