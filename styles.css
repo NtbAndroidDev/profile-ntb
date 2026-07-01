@@ -35,6 +35,19 @@ body {
     transition: top 0.2s;
 }
 .skip-link:focus { top: 16px; }
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1900;
+    width: 100%;
+    height: 3px;
+    transform: scaleX(0);
+    transform-origin: left center;
+    background: linear-gradient(90deg, var(--accent-3), var(--accent-2), var(--accent));
+    box-shadow: 0 0 18px rgba(56,189,248,0.5);
+    pointer-events: none;
+}
 
 /* Background gradient spot */
 .bg-gradient {
@@ -151,6 +164,14 @@ body {
     align-items: center;
     will-change: opacity;
 }
+.text-layer,
+.hero-tech-hud,
+.hero-arch-flow,
+.screen-content,
+.phone-3d-wrapper,
+.macbook-3d-wrapper {
+    will-change: transform, opacity;
+}
 
 /* Typography Layers */
 .text-layer {
@@ -192,6 +213,10 @@ body {
 }
 
 #text-1 { top: 50%; left: 8%; transform: translateY(-50%); width: 400px; text-align: left; }
+#text-1 {
+    opacity: 1;
+    visibility: visible;
+}
 .hero-stack {
     display: flex;
     flex-wrap: wrap;
@@ -331,11 +356,198 @@ body {
 }
 
 /* The 3D CSS Phone Container */
+.macbook-3d-wrapper {
+    position: absolute;
+    width: 610px;
+    height: 360px;
+    z-index: 5;
+    transform-style: preserve-3d;
+    pointer-events: none;
+}
+.macbook {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    filter: drop-shadow(0 28px 54px rgba(0,0,0,0.62));
+}
+.macbook-screen {
+    position: absolute;
+    left: 50%;
+    top: 36px;
+    width: 72%;
+    height: 57%;
+    overflow: hidden;
+    border: 8px solid #050506;
+    border-radius: 14px 14px 6px 6px;
+    background: #010102;
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.07),
+        inset 0 16px 24px rgba(255,255,255,0.04),
+        0 22px 42px rgba(0,0,0,0.46);
+    transform: translateX(-50%);
+}
+.macbook-wallpaper {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 48% 48%, rgba(92,92,108,0.16), transparent 42%),
+        linear-gradient(180deg, #050507 0%, #000 100%);
+}
+.macbook-wallpaper::before,
+.macbook-wallpaper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+.macbook-wallpaper::before {
+    background: radial-gradient(circle at 50% 16%, rgba(255,255,255,0.16), transparent 18%);
+    mix-blend-mode: screen;
+}
+.macbook-wallpaper::after {
+    background:
+        linear-gradient(180deg, rgba(255,255,255,0.08), transparent 24%),
+        radial-gradient(circle at 50% 110%, rgba(0,0,0,0.95), transparent 54%);
+}
+.tube {
+    position: absolute;
+    display: block;
+    border-radius: 999px;
+    opacity: 0.64;
+    background:
+        linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.02) 32%, rgba(0,0,0,0.46) 76%),
+        linear-gradient(90deg, #101014, #2a2a31 46%, #0a0a0d);
+    box-shadow:
+        inset 0 7px 10px rgba(255,255,255,0.18),
+        inset 0 -12px 18px rgba(0,0,0,0.86),
+        0 0 20px rgba(0,0,0,0.88);
+}
+.tube-one {
+    left: 36px;
+    top: 29px;
+    width: 318px;
+    height: 38px;
+}
+.tube-two {
+    left: 34px;
+    top: 72px;
+    width: 248px;
+    height: 44px;
+}
+.tube-three {
+    left: 34px;
+    top: 111px;
+    width: 312px;
+    height: 42px;
+}
+.tube-four {
+    right: 48px;
+    top: 31px;
+    width: 42px;
+    height: 142px;
+}
+.tube-five {
+    right: 16px;
+    top: 36px;
+    width: 34px;
+    height: 102px;
+}
+.macbook-code {
+    position: absolute;
+    left: 54px;
+    top: 24px;
+    z-index: 2;
+    width: 70%;
+    overflow: hidden;
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    border-radius: 12px;
+    background: rgba(2, 6, 23, 0.68);
+    box-shadow:
+        0 18px 38px rgba(0,0,0,0.38),
+        inset 0 1px rgba(255,255,255,0.06);
+    backdrop-filter: blur(10px);
+}
+.macbook-code-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 24px;
+    padding: 0 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    background: rgba(15,23,42,0.78);
+}
+.macbook-code-bar span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #ef4444;
+}
+.macbook-code-bar span:nth-child(2) { background: #f59e0b; }
+.macbook-code-bar span:nth-child(3) { background: #22c55e; }
+.macbook-code-bar strong {
+    margin-left: 6px;
+    color: #94a3b8;
+    font-size: 0.56rem;
+    font-weight: 800;
+}
+.macbook-code pre {
+    margin: 0;
+    padding: 11px 13px 13px;
+    color: #dbeafe;
+    font-size: 0.58rem;
+    line-height: 1.58;
+    white-space: pre-wrap;
+}
+.macbook-code code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+.macbook-code code span {
+    color: #c084fc;
+}
+.macbook-hinge {
+    position: absolute;
+    left: 50%;
+    top: 65%;
+    width: 77%;
+    height: 9px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #050506, #5f6067 14%, #1a1b20 50%, #5f6067 86%, #050506);
+    transform: translateX(-50%);
+}
+.macbook-base {
+    position: absolute;
+    left: 50%;
+    top: 67%;
+    width: 83%;
+    height: 16px;
+    border-radius: 2px 2px 18px 18px;
+    background:
+        linear-gradient(180deg, #676870, #24252b 58%, #050506);
+    transform: translateX(-50%);
+    box-shadow:
+        inset 0 1px rgba(255,255,255,0.48),
+        0 10px 18px rgba(0,0,0,0.38);
+}
+.macbook-base::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 14%;
+    height: 4px;
+    border-radius: 0 0 999px 999px;
+    background: rgba(0,0,0,0.38);
+    transform: translateX(-50%);
+}
+
 .phone-3d-wrapper {
     position: absolute;
     width: 360px;
     height: 740px;
     transform-style: preserve-3d;
+    z-index: 6;
 }
 
 .phone {
@@ -428,6 +640,11 @@ body {
     padding: 20px;
     border-radius: 46px; overflow: hidden;
     background-size: cover; background-position: center;
+}
+.screen-content.active,
+#screen-1 {
+    opacity: 1;
+    visibility: visible;
 }
 
 /* Wallpapers */
@@ -1288,11 +1505,40 @@ body {
 .section-cases {
     background: linear-gradient(180deg, rgba(245,158,11,0.045), rgba(129,140,248,0.035));
 }
+.case-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 32px;
+}
+.case-filter {
+    min-height: 40px;
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    border-radius: 999px;
+    padding: 9px 15px;
+    color: #cbd5e1;
+    background: rgba(15, 23, 42, 0.58);
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s, border-color 0.2s, transform 0.2s;
+}
+.case-filter:hover {
+    color: #fff;
+    border-color: rgba(56,189,248,0.45);
+    transform: translateY(-2px);
+}
+.case-filter.active {
+    color: #020617;
+    background: #e0f2fe;
+    border-color: transparent;
+}
 .case-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 18px;
-    margin-top: 48px;
+    margin-top: 26px;
 }
 .case-card {
     border-radius: 22px;
@@ -1362,6 +1608,71 @@ body {
     padding: 6px 10px;
     font-size: 0.78rem;
     font-weight: 700;
+}
+
+/* Proof pack */
+.section-proof {
+    background:
+        radial-gradient(circle at 18% 18%, rgba(34,197,94,0.11), transparent 30%),
+        linear-gradient(180deg, rgba(56,189,248,0.035), rgba(0,0,0,0));
+}
+.proof-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 16px;
+    margin-top: 48px;
+}
+.proof-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 330px;
+    padding: 24px;
+    border-radius: 22px;
+    background:
+        linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.025));
+    border: 1px solid var(--border);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+    transition: transform 0.25s, border-color 0.25s;
+}
+.proof-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(34,197,94,0.45);
+}
+.proof-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 22px;
+    color: #86efac;
+    background: rgba(34,197,94,0.12);
+    font-size: 1.65rem;
+}
+.proof-card span {
+    color: var(--accent-2);
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+.proof-card h3 {
+    margin: 9px 0 12px;
+    font-size: 1.2rem;
+    line-height: 1.25;
+}
+.proof-card p {
+    margin: 0;
+    color: #cbd5e1;
+    line-height: 1.58;
+}
+.proof-card small {
+    display: block;
+    margin-top: auto;
+    padding-top: 22px;
+    color: var(--text-dim);
+    line-height: 1.5;
 }
 
 /* Experience timeline */
@@ -1605,6 +1916,7 @@ body {
     .nav-links a { padding: 8px 11px; font-size: 0.85rem; }
 }
 @media (max-width: 900px) {
+    .macbook-3d-wrapper { width: 520px; height: 350px; }
     .phone-3d-wrapper { width: 280px; height: 575px; }
     .stats-grid { grid-template-columns: 1fr; }
     .lab-board { grid-template-columns: 1fr; }
@@ -1614,6 +1926,7 @@ body {
     .contact-command { grid-template-columns: 1fr; }
     .architecture-board,
     .case-grid { grid-template-columns: 1fr; }
+    .proof-grid { grid-template-columns: repeat(2, 1fr); }
     .principles-grid { grid-template-columns: repeat(2, 1fr); }
     .system-map { min-height: 500px; }
     .map-node { width: calc(100% - 52px); }
@@ -1626,12 +1939,17 @@ body {
     .line-two { height: 82%; left: 38px; }
 }
 
+@media (max-width: 1099px) {
+    .macbook-3d-wrapper { display: none; }
+}
+
 @media (max-width: 768px) {
     /* On mobile the phone is centered; text layers stack over/under it */
     #text-1 { left: 50%; top: 16%; transform: translate(-50%, -50%); width: 90%; text-align: center; }
     .hero-stack { justify-content: center; }
     .hero-tech-hud,
-    .hero-arch-flow { display: none; }
+    .hero-arch-flow,
+    .macbook-3d-wrapper { display: none; }
     .scroll-anim { align-items: center; }
     #text-2 { left: 50%; right: auto; top: 16%; transform: translate(-50%, -50%); width: 90%; text-align: center; }
     #text-3 { left: 50%; top: 16%; transform: translate(-50%, -50%); width: 90%; text-align: center; }
@@ -1673,6 +1991,7 @@ body {
     .contact-facts { padding: 20px; }
     .contact-btn { width: 100%; justify-content: center; }
     .architecture-board { grid-template-columns: 1fr; }
+    .proof-grid { grid-template-columns: 1fr; }
     .principles-grid { grid-template-columns: 1fr; }
     .terminal-panel pre { min-height: 300px; }
 }
@@ -1700,6 +2019,7 @@ body {
     .hero-stack { justify-content: center; }
     .hero-tech-hud,
     .hero-arch-flow { display: none; }
+    .macbook-3d-wrapper { position: relative; width: min(92vw, 520px); height: 340px; }
     .phone-3d-wrapper { position: relative; }
     .screen-content.active, #screen-1 { opacity: 1; visibility: visible; }
     .reveal { opacity: 1; transform: none; }

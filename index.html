@@ -28,12 +28,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20260617-9">
 </head>
 <body>
 
     <!-- Skip link for keyboard / screen-reader users -->
     <a href="#content" class="skip-link">Skip to content</a>
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
     <!-- Floating navigation (revealed after the hero) -->
     <nav class="site-nav" id="site-nav" aria-label="Primary">
@@ -44,6 +45,7 @@
             <li><a href="#live-lab">Lab</a></li>
             <li><a href="#architecture">Architecture</a></li>
             <li><a href="#case-studies">Cases</a></li>
+            <li><a href="#proof">Proof</a></li>
             <li><a href="#experience">Journey</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -110,6 +112,38 @@
                     <span class="hud-chip hud-camera"><i class='bx bx-camera'></i>Camera2</span>
                     <span class="hud-chip hud-ai"><i class='bx bx-chip'></i>On-device AI</span>
                     <span class="hud-chip hud-api"><i class='bx bx-data'></i>SQL Server API</span>
+                </div>
+
+                <!-- The 3D CSS laptop mockup -->
+                <div class="macbook-3d-wrapper" id="macbook-wrapper" aria-hidden="true">
+                    <div class="macbook" id="the-macbook">
+                        <div class="macbook-screen">
+                            <div class="macbook-wallpaper">
+                                <span class="tube tube-one"></span>
+                                <span class="tube tube-two"></span>
+                                <span class="tube tube-three"></span>
+                                <span class="tube tube-four"></span>
+                                <span class="tube tube-five"></span>
+                                <div class="macbook-code">
+                                    <div class="macbook-code-bar">
+                                        <span></span><span></span><span></span>
+                                        <strong>MainViewModel.kt</strong>
+                                    </div>
+                                    <pre><code><span>val</span> uiState = combine(
+    profileFlow,
+    deviceFlow
+) { profile, device -&gt;
+    DashboardState(
+        name = profile.name,
+        device = device.type
+    )
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="macbook-hinge"></div>
+                        <div class="macbook-base"></div>
+                    </div>
                 </div>
 
                 <!-- The 3D CSS Smartphone -->
@@ -394,7 +428,25 @@ ai: on-device inference ready</code></pre>
                 <div class="section-inner">
                     <span class="eyebrow">06 — Case Studies</span>
                     <h2 class="section-title">Projects explained by decisions, not only screenshots.</h2>
+                    <div class="case-filters" id="case-filters" aria-label="Filter case studies">
+                        <!-- Populated by JS -->
+                    </div>
                     <div class="case-grid" id="case-grid">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROOF -->
+            <section class="section section-proof" id="proof">
+                <div class="section-inner">
+                    <span class="eyebrow">07 — Proof Pack</span>
+                    <h2 class="section-title">Signals that matter when mobile apps reach production.</h2>
+                    <p class="lead">
+                        I prefer evidence over buzzwords: state ownership, payload correctness,
+                        lifecycle cleanup, API contracts, and failure paths that are easy to inspect.
+                    </p>
+                    <div class="proof-grid" id="proof-grid">
                         <!-- Populated by JS -->
                     </div>
                 </div>
@@ -403,7 +455,7 @@ ai: on-device inference ready</code></pre>
             <!-- EXPERIENCE -->
             <section class="section section-experience" id="experience">
                 <div class="section-inner">
-                    <span class="eyebrow">07 — Journey</span>
+                    <span class="eyebrow">08 — Journey</span>
                     <h2 class="section-title">The journey so far.</h2>
                     <ol class="timeline" id="timeline">
                         <!-- Populated by JS -->
@@ -414,7 +466,7 @@ ai: on-device inference ready</code></pre>
             <!-- CONTACT -->
             <section class="section section-contact" id="contact">
                 <div class="section-inner">
-                    <span class="eyebrow">08 — Contact</span>
+                    <span class="eyebrow">09 — Contact</span>
                     <h2 class="section-title">Let's build something great.</h2>
                     <p class="lead">
                         Open to mobile engineering roles, freelance collaborations, and
@@ -471,6 +523,6 @@ ai: on-device inference ready</code></pre>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=20260617-9"></script>
 </body>
 </html>

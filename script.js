@@ -43,24 +43,68 @@ const pipelineSteps = [
     { name: 'Ship gate', detail: 'Manual QA checklist', status: 'queued' }
 ];
 
+const caseFilters = [
+    { id: 'all', label: 'All' },
+    { id: 'android', label: 'Android' },
+    { id: 'performance', label: 'Performance' },
+    { id: 'ai', label: 'AI / ML' }
+];
+
 const caseStudies = [
     {
         name: 'Food App MVVM',
+        category: 'android',
+        categoryLabel: 'Android',
         problem: 'Turn a commerce flow into a maintainable native Android sample.',
         decision: 'Separated UI state, repository contracts, local cache, and network mapping.',
         stack: ['Kotlin', 'MVVM', 'Retrofit', 'Room', 'Coroutines']
     },
     {
         name: 'Compose Media Picker',
+        category: 'performance',
+        categoryLabel: 'Performance',
         problem: 'Make local media browsing feel instant on large galleries.',
         decision: 'Lean lazy grid rendering, async image loading, and selection state isolation.',
         stack: ['Compose', 'Coil', 'Lazy Grid', 'Performance']
     },
     {
         name: 'ViT5 Caption',
+        category: 'ai',
+        categoryLabel: 'AI / ML',
         problem: 'Bridge Vietnamese image understanding with practical mobile AI workflows.',
         decision: 'Kept the ML pipeline explainable from preprocessing to inference packaging.',
         stack: ['Python', 'ViT5', 'Transformers', 'Mobile AI']
+    }
+];
+
+const proofSignals = [
+    {
+        label: 'State ownership',
+        title: 'One screen, one source of truth',
+        evidence: 'ViewModel owns immutable UI state; Fragment observes and renders without hidden writes.',
+        risk: 'Prevents rotation bugs, stale loading flags, and duplicated submit events.',
+        icon: 'bx-git-branch'
+    },
+    {
+        label: 'Payload correctness',
+        title: 'Requests match user intent',
+        evidence: 'IDs, filters, and form values are traced from UI selection to API payload before patching.',
+        risk: 'Avoids shipping a visually correct screen that sends the wrong backend contract.',
+        icon: 'bx-data'
+    },
+    {
+        label: 'Rendering performance',
+        title: 'RecyclerView changes stay scoped',
+        evidence: 'Diffing and payload updates are used for high-churn lists instead of full item redraws.',
+        risk: 'Keeps scroll smooth when data, warnings, media thumbnails, or status rows update frequently.',
+        icon: 'bx-tachometer'
+    },
+    {
+        label: 'Lifecycle cleanup',
+        title: 'Camera and async work release cleanly',
+        evidence: 'Camera2 sessions, collectors, and callbacks are bound to lifecycle-aware owners.',
+        risk: 'Reduces leaked surfaces, stuck previews, and background work after navigation.',
+        icon: 'bx-camera'
     }
 ];
 
@@ -160,10 +204,18 @@ document.getElementById('pipeline-steps').innerHTML = pipelineSteps.map((step) =
         <em>${esc(step.status)}</em>
     </div>`).join('');
 
-document.getElementById('case-grid').innerHTML = caseStudies.map((item) => `
-    <article class="case-card">
+const caseGrid = document.getElementById('case-grid');
+const caseFilterBar = document.getElementById('case-filters');
+
+function renderCaseStudies(activeFilter = 'all') {
+    const visibleCases = activeFilter === 'all'
+        ? caseStudies
+        : caseStudies.filter((item) => item.category === activeFilter);
+
+    caseGrid.innerHTML = visibleCases.map((item) => `
+    <article class="case-card" data-category="${esc(item.category)}">
         <div class="case-topline">
-            <span>Case study</span>
+            <span>${esc(item.categoryLabel)}</span>
             <i class='bx bx-right-arrow-alt'></i>
         </div>
         <h3>${esc(item.name)}</h3>
@@ -178,6 +230,36 @@ document.getElementById('case-grid').innerHTML = caseStudies.map((item) => `
             </div>
         </dl>
         <div class="case-tags">${item.stack.map((tag) => `<span>${esc(tag)}</span>`).join('')}</div>
+    </article>`).join('');
+}
+
+caseFilterBar.innerHTML = caseFilters.map((filter) => `
+    <button class="case-filter ${filter.id === 'all' ? 'active' : ''}" type="button" data-filter="${esc(filter.id)}" aria-pressed="${filter.id === 'all'}">
+        ${esc(filter.label)}
+    </button>`).join('');
+
+caseFilterBar.addEventListener('click', (event) => {
+    const button = event.target.closest('.case-filter');
+    if (!button) return;
+
+    const filter = button.dataset.filter;
+    renderCaseStudies(filter);
+    caseFilterBar.querySelectorAll('.case-filter').forEach((item) => {
+        const active = item === button;
+        item.classList.toggle('active', active);
+        item.setAttribute('aria-pressed', String(active));
+    });
+});
+
+renderCaseStudies();
+
+document.getElementById('proof-grid').innerHTML = proofSignals.map((item) => `
+    <article class="proof-card">
+        <div class="proof-icon"><i class='bx ${item.icon}'></i></div>
+        <span>${esc(item.label)}</span>
+        <h3>${esc(item.title)}</h3>
+        <p>${esc(item.evidence)}</p>
+        <small>${esc(item.risk)}</small>
     </article>`).join('');
 
 document.getElementById('timeline').innerHTML = experience.map((e) => `
@@ -198,7 +280,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
    3. REVEAL-ON-SCROLL for content sections
 ============================================================= */
 const revealTargets = document.querySelectorAll(
-    '#content .section-title, #content .lead, #content .stats-grid, #content .skills-grid, #content .lab-board, #content .architecture-board, #content .principles-grid, #content .code-board, #content .case-grid, #content .timeline, #content .contact-command'
+    '#content .section-title, #content .lead, #content .stats-grid, #content .skills-grid, #content .lab-board, #content .architecture-board, #content .principles-grid, #content .code-board, #content .case-grid, #content .proof-grid, #content .timeline, #content .contact-command'
 );
 revealTargets.forEach((el) => el.classList.add('reveal'));
 
@@ -220,12 +302,22 @@ if ('IntersectionObserver' in window) {
    4. FLOATING NAV — reveal after the first viewport, brand to top
 ============================================================= */
 const nav = document.getElementById('site-nav');
+const scrollProgress = document.getElementById('scroll-progress');
 const onScrollNav = () => {
     if (window.scrollY > window.innerHeight * 0.6) nav.classList.add('visible');
     else nav.classList.remove('visible');
 };
 window.addEventListener('scroll', onScrollNav, { passive: true });
 onScrollNav();
+
+const updateScrollProgress = () => {
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+    scrollProgress.style.transform = `scaleX(${Math.min(Math.max(progress, 0), 1)})`;
+};
+window.addEventListener('scroll', updateScrollProgress, { passive: true });
+window.addEventListener('resize', updateScrollProgress);
+updateScrollProgress();
 
 document.getElementById('nav-brand').addEventListener('click', (e) => {
     e.preventDefault();
@@ -338,48 +430,61 @@ mm.add(
         if (reduceMotion) return;
 
         const shift = isDesktop ? window.innerWidth * 0.25 : 0;
+        const showMacbook = window.innerWidth >= 1100;
 
         // Initial layout
         gsap.set('#the-phone', { x: shift });
+        gsap.set('#the-macbook', {
+            autoAlpha: showMacbook ? 1 : 0,
+            x: isDesktop ? -shift * 0.9 : 0,
+            y: isDesktop ? 78 : 0,
+            rotateX: 7,
+            rotateY: -18,
+            scale: isDesktop ? 0.86 : 0.72
+        });
         gsap.set('#text-1', { autoAlpha: 1, y: 0, scale: 1 });
         gsap.set('#hero-tech-hud', { autoAlpha: 1, y: 0 });
         gsap.set('#screen-1', { autoAlpha: 1 });
+        gsap.set(['#screen-2', '#screen-3', '#screen-4'], { autoAlpha: 0 });
         gsap.set('#text-2', { y: 50, scale: 0.95 });
         gsap.set('#hero-arch-flow', { autoAlpha: 0, y: 18 });
         gsap.set('#text-3', { y: 50, scale: 0.95 });
         gsap.set('#fixed-viewport', { autoAlpha: 1 });
+        gsap.set('#projects-list-scrollable', { y: 0 });
 
         const tl = gsap.timeline({
+            defaults: { ease: 'power2.inOut' },
             scrollTrigger: {
                 trigger: '#hero-experience',
                 start: 'top top',
                 end: 'bottom bottom',
-                scrub: 1.5
+                scrub: 2.4
             }
         });
 
         // Scene 0 -> 1: phone tilts left, Tech Stack screen
-        tl.to('#text-1', { autoAlpha: 0, y: -50, scale: 0.95, duration: 0.5 }, 0)
-          .to('#hero-tech-hud', { autoAlpha: 0, y: -30, duration: 0.45 }, 0)
-          .to('#the-phone', { rotateY: 25, rotateX: 5, x: -shift, boxShadow: '30px 30px 60px rgba(0,0,0,0.8)', duration: 1 }, 0)
-          .to('#text-2', { autoAlpha: 1, y: 0, scale: 1, duration: 0.5 }, 0.5)
-          .to('#hero-arch-flow', { autoAlpha: 1, y: 0, duration: 0.6 }, 0.75)
-          .to('#screen-1', { autoAlpha: 0, duration: 0.2 }, 0.4)
-          .to('#screen-2', { autoAlpha: 1, duration: 0.2 }, 0.6);
+        tl.to('#text-1', { autoAlpha: 0, y: -42, scale: 0.97, duration: 0.75 }, 0)
+          .to('#hero-tech-hud', { autoAlpha: 0, y: -24, duration: 0.7 }, 0)
+          .to('#the-macbook', { autoAlpha: 0, x: -shift * 1.15, y: 118, rotateY: -26, rotateX: 5, scale: 0.72, duration: 0.8 }, 0)
+          .to('#the-phone', { rotateY: 25, rotateX: 5, x: -shift, boxShadow: '30px 30px 60px rgba(0,0,0,0.8)', duration: 1.25 }, 0)
+          .to('#text-2', { autoAlpha: 1, y: 0, scale: 1, duration: 0.85 }, 0.45)
+          .to('#hero-arch-flow', { autoAlpha: 1, y: 0, duration: 0.85 }, 0.65)
+          .to('#screen-1', { autoAlpha: 0, duration: 0.55 }, 0.35)
+          .to('#screen-2', { autoAlpha: 1, duration: 0.65 }, 0.55);
 
         // Scene 1 -> 2: spin to back, move right, AI screen
-        tl.to('#text-2', { autoAlpha: 0, y: -50, scale: 0.95, duration: 0.5 }, 1.5)
-          .to('#hero-arch-flow', { autoAlpha: 0, y: -20, duration: 0.4 }, 1.5)
-          .to('#the-phone', { rotateY: 180 - 25, x: shift, boxShadow: '-30px 30px 60px rgba(0,0,0,0.8)', duration: 1.5 }, 1.5)
-          .to('#text-3', { autoAlpha: 1, y: 0, scale: 1, duration: 0.5 }, 2)
-          .to('#screen-2', { autoAlpha: 0, duration: 0.1 }, 2)
-          .to('#screen-3', { autoAlpha: 1, duration: 0.1 }, 2.1);
+        tl.to('#text-2', { autoAlpha: 0, y: -42, scale: 0.97, duration: 0.75 }, 1.55)
+          .to('#hero-arch-flow', { autoAlpha: 0, y: -18, duration: 0.65 }, 1.55)
+          .to('#the-phone', { rotateY: 180 - 25, x: shift, boxShadow: '-30px 30px 60px rgba(0,0,0,0.8)', duration: 1.65 }, 1.45)
+          .to('#text-3', { autoAlpha: 1, y: 0, scale: 1, duration: 0.85 }, 2.05)
+          .to('#screen-2', { autoAlpha: 0, duration: 0.5 }, 1.95)
+          .to('#screen-3', { autoAlpha: 1, duration: 0.65 }, 2.12);
 
         // Scene 2 -> 3: spin back, center, scale up, Gallery
-        tl.to('#text-3', { autoAlpha: 0, y: -50, scale: 0.95, duration: 0.5 }, 3.5)
-          .to('#the-phone', { rotateY: 360, rotateX: 0, x: 0, y: 0, scale: isDesktop ? 1.5 : 1.1, boxShadow: '0 50px 100px rgba(0,0,0,0.9)', duration: 1.5 }, 3.5)
-          .to('#screen-3', { autoAlpha: 0, duration: 0.2 }, 3.8)
-          .to('#screen-4', { autoAlpha: 1, duration: 0.2 }, 4.0);
+        tl.to('#text-3', { autoAlpha: 0, y: -42, scale: 0.97, duration: 0.75 }, 3.45)
+          .to('#the-phone', { rotateY: 360, rotateX: 0, x: 0, y: 0, scale: isDesktop ? 1.5 : 1.1, boxShadow: '0 50px 100px rgba(0,0,0,0.9)', duration: 1.75 }, 3.35)
+          .to('#screen-3', { autoAlpha: 0, duration: 0.55 }, 3.75)
+          .to('#screen-4', { autoAlpha: 1, duration: 0.75 }, 3.95);
 
         // Scene 4: native gallery scroll inside the phone
         tl.to('#projects-list-scrollable', {
