@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Nguyễn Thanh Bình — Links</title>
+
+    <meta name="description" content="Nguyễn Thanh Bình (NtbAndroidDev) — mobile software engineer. Android apps, native macOS utilities, open-source libraries and on-device AI.">
+    <meta name="author" content="Nguyễn Thanh Bình">
+    <meta name="theme-color" content="#f5f3ee" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0c0c0d" media="(prefers-color-scheme: dark)">
+    <link rel="canonical" href="https://ntbandroiddev.github.io/profile-ntb/links/">
+
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Nguyễn Thanh Bình — Links">
+    <meta property="og:description" content="Android apps, native macOS utilities and open-source work by NtbAndroidDev.">
+    <meta property="og:url" content="https://ntbandroiddev.github.io/profile-ntb/links/">
+    <meta property="og:image" content="https://ntbandroiddev.github.io/profile-ntb/links/assets/avatar.jpg">
+    <meta name="twitter:card" content="summary">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%230c0c0d'/><text x='50%' y='54%' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-size='34' fill='%23d4b98c'>b</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+    <!-- Apply the saved theme before first paint to avoid a flash -->
+    <script>
+        try {
+            var t = localStorage.getItem('links-theme');
+            if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+        } catch (e) {}
+    </script>
+
+    <link rel="stylesheet" href="links.css?v=20260919">
+</head>
+<body>
+    <a href="#work" class="skip-link" data-i18n="skip">Skip to work</a>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="glow" aria-hidden="true"></div>
+
+    <header class="topbar">
+        <a class="mark" href="../" aria-label="Portfolio home">
+            <span class="mark-glyph">b</span>
+            <span class="mark-text">NtbAndroidDev</span>
+        </a>
+        <div class="topbar-tools">
+            <button class="tool" id="lang-toggle" type="button" aria-label="Switch language">
+                <span data-lang-opt="en">EN</span><span class="tool-sep">/</span><span data-lang-opt="vi">VI</span>
+            </button>
+            <button class="tool tool-icon" id="theme-toggle" type="button" aria-label="Toggle colour theme">
+                <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="layout">
+
+        <!-- ========== IDENTITY ========== -->
+        <aside class="identity" aria-label="Profile">
+            <div class="identity-inner">
+                <div class="avatar reveal" style="--i:0">
+                    <img src="assets/avatar.jpg" width="96" height="96" alt="Nguyễn Thanh Bình">
+                    <span class="avatar-status" aria-hidden="true"></span>
+                </div>
+
+                <h1 class="name reveal" style="--i:1">Nguyễn <em>Thanh Bình</em></h1>
+
+                <p class="handle reveal" style="--i:2">
+                    <span>@NtbAndroidDev</span>
+                    <span class="dot-sep" aria-hidden="true"></span>
+                    <span class="local-time"><span data-i18n="location">Vietnam</span> · <time id="local-time">--:--</time></span>
+                </p>
+
+                <p class="bio reveal" style="--i:3" data-i18n="bio">Mobile software engineer crafting native Android apps, quiet macOS utilities and on-device AI — with clean architecture and an eye for detail.</p>
+
+                <p class="status reveal" style="--i:4">
+                    <span class="pulse" aria-hidden="true"></span>
+                    <span data-i18n="status">Open to Android &amp; mobile roles</span>
+                </p>
+
+                <div class="actions reveal" style="--i:5">
+                    <a class="btn btn-primary" href="mailto:thanhbinhntn2018@gmail.com">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        <span data-i18n="email">Email me</span>
+                    </a>
+                    <button class="btn btn-icon" id="save-contact" type="button" data-i18n-label="saveContact" aria-label="Save contact">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>
+                    </button>
+                    <button class="btn btn-icon" id="show-qr" type="button" data-i18n-label="qr" aria-label="Show QR code">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></svg>
+                    </button>
+                    <button class="btn btn-icon" id="share" type="button" data-i18n-label="share" aria-label="Share this page">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="m16 6-4-4-4 4"/><path d="M12 2v13"/></svg>
+                    </button>
+                </div>
+
+                <nav class="socials" aria-label="Elsewhere">
+                    <p class="label reveal" style="--i:6"><span data-i18n="elsewhere">Elsewhere</span></p>
+                    <ul>
+                        <li class="reveal" style="--i:7">
+                            <a class="social" href="https://ntbandroiddev.github.io/profile-ntb/">
+                                <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20"/></svg></span>
+                                <span class="social-text"><strong data-i18n="portfolio">Portfolio</strong><small data-i18n="portfolioSub">Architecture, case studies &amp; journey</small></span>
+                                <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+                            </a>
+                        </li>
+                        <li class="reveal" style="--i:8">
+                            <a class="social" href="https://github.com/NtbAndroidDev" target="_blank" rel="noopener">
+                                <span class="social-icon"><svg class="fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3"/></svg></span>
+                                <span class="social-text"><strong>GitHub</strong><small><span id="repo-count">18</span> <span data-i18n="publicRepos">public repositories</span></small></span>
+                                <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+                            </a>
+                        </li>
+                        <li class="reveal" style="--i:9">
+                            <a class="social" href="https://www.linkedin.com/in/nguy%E1%BB%85n-thanh-b%C3%ACnh-8b7aa1264/" target="_blank" rel="noopener">
+                                <span class="social-icon"><svg class="fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg></span>
+                                <span class="social-text"><strong>LinkedIn</strong><small data-i18n="linkedinSub">Experience &amp; recommendations</small></span>
+                                <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+                            </a>
+                        </li>
+                        <li class="reveal" style="--i:10">
+                            <div class="social social-email">
+                                <a class="social-link" href="mailto:thanhbinhntn2018@gmail.com">
+                                    <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+                                    <span class="social-text"><strong>Email</strong><small>thanhbinhntn2018@gmail.com</small></span>
+                                </a>
+                                <button class="copy" id="copy-email" type="button" data-i18n-label="copyEmail" aria-label="Copy email address">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- ========== WORK ========== -->
+        <main class="work" id="work">
+            <section class="glance reveal" style="--i:4" aria-labelledby="glance-title">
+                <h2 class="visually-hidden" id="glance-title" data-i18n="atAGlance">At a glance</h2>
+                <dl class="glance-stats">
+                    <div><dt data-i18n="repos">Repositories</dt><dd id="stat-repos">18</dd></div>
+                    <div><dt data-i18n="languages">Languages</dt><dd id="stat-langs">8</dd></div>
+                    <div><dt data-i18n="stars">Stars earned</dt><dd id="stat-stars">12</dd></div>
+                    <div><dt data-i18n="platforms">Platforms</dt><dd>4</dd></div>
+                </dl>
+                <div class="footprint" id="footprint" role="img" aria-label="Language footprint"></div>
+                <ul class="footprint-legend" id="footprint-legend"></ul>
+            </section>
+
+            <div id="groups"></div>
+
+            <section class="group reveal" style="--i:9" aria-labelledby="archive-title">
+                <details class="archive" id="archive">
+                    <summary>
+                        <span class="group-head">
+                            <span class="label"><span class="label-num">05</span><span data-i18n="archive">Archive · 2023</span></span>
+                            <span class="group-title" id="archive-title" data-i18n="archiveTitle">Where it started — Flutter, Java &amp; Kotlin</span>
+                        </span>
+                        <span class="archive-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
+                    </summary>
+                    <ul class="archive-list" id="archive-list"></ul>
+                </details>
+            </section>
+
+            <noscript>
+                <p class="noscript">Full list of work: <a href="https://github.com/NtbAndroidDev?tab=repositories">github.com/NtbAndroidDev</a></p>
+            </noscript>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <p>© <span id="year">2026</span> Nguyễn Thanh Bình</p>
+        <p class="footer-sync" id="sync-note" data-i18n="syncStatic">Snapshot of GitHub · Sep 2026</p>
+    </footer>
+
+    <!-- QR dialog -->
+    <dialog class="qr-dialog" id="qr-dialog" aria-labelledby="qr-title">
+        <form method="dialog" class="qr-card">
+            <p class="label" id="qr-title"><span data-i18n="scanTitle">Scan to connect</span></p>
+            <div class="qr-code" id="qr-code" aria-hidden="true"></div>
+            <p class="qr-name">Nguyễn <em>Thanh Bình</em></p>
+            <p class="qr-url">ntbandroiddev.github.io/profile-ntb/links</p>
+            <button class="btn btn-ghost" value="close" data-i18n="close">Close</button>
+        </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="links.js?v=20260919"></script>
+</body>
+</html>

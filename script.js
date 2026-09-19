@@ -117,7 +117,8 @@ const experience = [
 const contacts = [
     { label: 'Email me',   href: 'mailto:thanhbinhntn2018@gmail.com', icon: 'bx-envelope',  cls: 'primary' },
     { label: 'GitHub',     href: 'https://github.com/NtbAndroidDev',  icon: 'bxl-github',   cls: 'ghost' },
-    { label: 'LinkedIn',   href: 'https://www.linkedin.com/in/nguy%E1%BB%85n-thanh-b%C3%ACnh-8b7aa1264/', icon: 'bxl-linkedin', cls: 'ghost' }
+    { label: 'LinkedIn',   href: 'https://www.linkedin.com/in/nguy%E1%BB%85n-thanh-b%C3%ACnh-8b7aa1264/', icon: 'bxl-linkedin', cls: 'ghost' },
+    { label: 'All links',  href: 'links/', icon: 'bx-link', cls: 'ghost' }
 ];
 
 /* ============================================================

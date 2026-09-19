@@ -37,4 +37,14 @@ Wait a minute or two, then visit: **https://NtbAndroidDev.github.io**
 
 The hero animation is built with GSAP `matchMedia`, so it automatically rebuilds on resize / orientation change and disables itself for reduced-motion users.
 
+## 🔗 Links page (`/links/`)
+A standalone, premium link-in-bio page lives in `links/` and deploys with the rest of the site at
+**https://ntbandroiddev.github.io/profile-ntb/links/**.
+
+- `links/links.js` — all content is data: `STRINGS` (EN/VI copy), `GROUPS` (featured work), `ARCHIVE` (older repos).
+  Stars, languages and "updated" times sync live from the GitHub API (cached 30 min, falls back to a built-in snapshot).
+  New repos not listed in the data appear automatically under "Fresh on GitHub".
+- `links/links.css` — design tokens at the top (light + dark themes).
+- `links/assets/` — avatar and app icons.
+
 Enjoy your new profile!
