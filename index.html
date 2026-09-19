@@ -2,527 +2,305 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Binh | Mobile Software Engineer — The Android Experience</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Nguyễn Thanh Bình — Mobile Software Engineer</title>
 
-    <!-- SEO -->
-    <meta name="description" content="Binh (NtbAndroidDev) — Mobile Software Engineer specialising in native Android (Kotlin/Compose), Flutter, clean MVVM architecture, and AI-integrated apps powered by deep learning.">
-    <meta name="author" content="Binh — NtbAndroidDev">
-    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Nguyễn Thanh Bình (NtbAndroidDev) — mobile software engineer in Vietnam building native Android apps, macOS menu-bar tools and on-device AI. Private by default, fast by design.">
+    <meta name="author" content="Nguyễn Thanh Bình">
+    <meta name="theme-color" content="#f5f3ee" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0c0c0d" media="(prefers-color-scheme: dark)">
     <link rel="canonical" href="https://ntbandroiddev.github.io/profile-ntb/">
 
-    <!-- Open Graph / Social -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Binh | Mobile Software Engineer">
-    <meta property="og:description" content="Native Android, Flutter & AI-integrated mobile applications. Clean Code. MVVM. Built for scale.">
+    <meta property="og:title" content="Nguyễn Thanh Bình — Mobile Software Engineer">
+    <meta property="og:description" content="Native Android apps, macOS menu-bar tools and on-device AI. Private by default, fast by design.">
     <meta property="og:url" content="https://ntbandroiddev.github.io/profile-ntb/">
-    <meta property="og:image" content="https://ntbandroiddev.github.io/profile-ntb/og-image.png">
+    <meta property="og:image" content="https://ntbandroiddev.github.io/profile-ntb/assets/shots/devicebar.jpg">
     <meta name="twitter:card" content="summary_large_image">
 
-    <!-- Favicon (inline SVG, no extra request) -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📱</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%230c0c0d'/><text x='50%' y='54%' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-size='34' fill='%23d4b98c'>b</text></svg>">
 
-    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="styles.css?v=20260617-9">
+    <script>
+        document.documentElement.classList.add('js');
+        try {
+            var t = localStorage.getItem('ntb-theme');
+            if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+        } catch (e) {}
+    </script>
+
+    <link rel="stylesheet" href="styles.css?v=20260920">
 </head>
 <body>
+    <a href="#work" class="skip-link" data-i18n="skip">Skip to work</a>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="glow" aria-hidden="true"></div>
 
-    <!-- Skip link for keyboard / screen-reader users -->
-    <a href="#content" class="skip-link">Skip to content</a>
-    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+    <!-- ========== NAV ========== -->
+    <header class="nav" id="nav">
+        <div class="nav-inner">
+            <a class="mark" href="#top" aria-label="Back to top">
+                <span class="mark-glyph">b</span>
+                <span class="mark-text">NtbAndroidDev</span>
+            </a>
+            <nav class="nav-links" aria-label="Sections">
+                <a href="#work" data-i18n="navWork">Work</a>
+                <a href="#approach" data-i18n="navApproach">Approach</a>
+                <a href="#log" data-i18n="navLog">Log</a>
+                <a href="#index" data-i18n="navIndex">Index</a>
+                <a href="#contact" data-i18n="navContact">Contact</a>
+            </nav>
+            <div class="nav-tools">
+                <a class="tool tool-link" href="links/">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                    <span data-i18n="navLinks">Links</span>
+                </a>
+                <button class="tool" id="lang-toggle" type="button" aria-label="Switch language">
+                    <span data-lang-opt="en">EN</span><span class="tool-sep">/</span><span data-lang-opt="vi">VI</span>
+                </button>
+                <button class="tool tool-icon" id="theme-toggle" type="button" aria-label="Toggle colour theme">
+                    <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                    <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
 
-    <!-- Floating navigation (revealed after the hero) -->
-    <nav class="site-nav" id="site-nav" aria-label="Primary">
-        <a href="#top" class="nav-brand" id="nav-brand">Binh<span>.dev</span></a>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#live-lab">Lab</a></li>
-            <li><a href="#architecture">Architecture</a></li>
-            <li><a href="#case-studies">Cases</a></li>
-            <li><a href="#proof">Proof</a></li>
-            <li><a href="#experience">Journey</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <span class="nav-status" aria-label="Available for Android roles">Available</span>
-    </nav>
+    <main id="top">
 
-    <div id="smooth-wrapper">
-
-        <!-- Background Ambient (persists across the whole page) -->
-        <div class="bg-gradient"></div>
-        <div class="bg-blueprint" aria-hidden="true"></div>
-
-        <!-- ============================================================
-             HERO EXPERIENCE — scroll-driven 3D phone animation.
-             The fixed viewport stays pinned while the spacers below
-             provide the scroll length that GSAP scrubs through.
-        ============================================================= -->
-        <header id="hero-experience">
-
-            <!-- FIXED 3D VIEWPORT -->
-            <div class="fixed-viewport" id="fixed-viewport">
-
-                <!-- Floating Text Elements -->
-                <div class="text-layer" id="text-1">
-                    <h1>Meet Binh.</h1>
-                    <p class="subtitle">Mobile Software Engineer.</p>
-                    <div class="hero-stack" aria-label="Core mobile stack">
-                        <span>Kotlin</span>
-                        <span>MVVM</span>
-                        <span>StateFlow</span>
-                        <span>Camera2</span>
-                    </div>
-                    <div class="scroll-anim" aria-hidden="true">
-                        <span>Scroll to unfold</span>
-                        <i class='bx bx-chevron-down'></i>
-                    </div>
-                </div>
-
-                <div class="text-layer" id="text-2">
-                    <h2>Architecture first.</h2>
-                    <p>MVVM, Clean boundaries, Flow-driven state, and code that stays readable after launch.</p>
-                </div>
-
-                <div class="hero-arch-flow" id="hero-arch-flow" aria-hidden="true">
-                    <span>View</span>
-                    <i></i>
-                    <span>ViewModel</span>
-                    <i></i>
-                    <span>UseCase</span>
-                    <i></i>
-                    <span>Repository</span>
-                    <i></i>
-                    <span>API</span>
-                </div>
-
-                <div class="text-layer" id="text-3">
-                    <h2 class="gradient-ai">AI Integrated.</h2>
-                    <p>Bridging mobile applications with Deep Learning &amp; ViT5 models.</p>
-                </div>
-
-                <div class="hero-tech-hud" id="hero-tech-hud" aria-hidden="true">
-                    <span class="hud-chip hud-kotlin"><i class='bx bxl-kotlin'></i>Kotlin</span>
-                    <span class="hud-chip hud-flow"><i class='bx bx-git-branch'></i>StateFlow</span>
-                    <span class="hud-chip hud-camera"><i class='bx bx-camera'></i>Camera2</span>
-                    <span class="hud-chip hud-ai"><i class='bx bx-chip'></i>On-device AI</span>
-                    <span class="hud-chip hud-api"><i class='bx bx-data'></i>SQL Server API</span>
-                </div>
-
-                <!-- The 3D CSS laptop mockup -->
-                <div class="macbook-3d-wrapper" id="macbook-wrapper" aria-hidden="true">
-                    <div class="macbook" id="the-macbook">
-                        <div class="macbook-screen">
-                            <div class="macbook-wallpaper">
-                                <span class="tube tube-one"></span>
-                                <span class="tube tube-two"></span>
-                                <span class="tube tube-three"></span>
-                                <span class="tube tube-four"></span>
-                                <span class="tube tube-five"></span>
-                                <div class="macbook-code">
-                                    <div class="macbook-code-bar">
-                                        <span></span><span></span><span></span>
-                                        <strong>MainViewModel.kt</strong>
-                                    </div>
-                                    <pre><code><span>val</span> uiState = combine(
-    profileFlow,
-    deviceFlow
-) { profile, device -&gt;
-    DashboardState(
-        name = profile.name,
-        device = device.type
-    )
-}</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="macbook-hinge"></div>
-                        <div class="macbook-base"></div>
-                    </div>
-                </div>
-
-                <!-- The 3D CSS Smartphone -->
-                <div class="phone-3d-wrapper" id="phone-wrapper" aria-hidden="true">
-                    <div class="phone" id="the-phone">
-
-                        <!-- Back of Phone -->
-                        <div class="phone-face phone-back">
-                            <div class="camera-bump">
-                                <div class="lens lens-1"></div>
-                                <div class="lens lens-2"></div>
-                                <div class="lens lens-3"></div>
-                                <div class="flash"></div>
-                            </div>
-                            <div class="brand-logo"><i class='bx bxl-android'></i></div>
-                        </div>
-
-                        <!-- Front of Phone (Screen) -->
-                        <div class="phone-face phone-front">
-                            <div class="notch"></div>
-
-                            <div class="screen-content active" id="screen-1">
-                                <div class="runtime-status">
-                                    <span>09:41</span>
-                                    <span><i class='bx bx-wifi'></i><i class='bx bxs-battery-charging'></i></span>
-                                </div>
-                                <div class="runtime-hero-card">
-                                    <div>
-                                        <span>Dev Runtime</span>
-                                        <h3>NtbAndroidDev</h3>
-                                    </div>
-                                    <i class='bx bxl-android'></i>
-                                </div>
-                                <div class="runtime-metric-card">
-                                    <span>Frame budget</span>
-                                    <strong>16.6ms</strong>
-                                    <div class="runtime-meter"><span></span></div>
-                                </div>
-                                <div class="runtime-grid">
-                                    <div><span>State</span><strong>Stable</strong></div>
-                                    <div><span>Cache</span><strong>Warm</strong></div>
-                                    <div><span>API</span><strong>200</strong></div>
-                                    <div><span>AI</span><strong>Ready</strong></div>
-                                </div>
-                                <div class="runtime-feed">
-                                    <p><i class='bx bx-check-circle'></i>Flow state restored</p>
-                                    <p><i class='bx bx-check-circle'></i>Payload update applied</p>
-                                </div>
-                            </div>
-
-                            <div class="screen-content" id="screen-2">
-                                <i class='bx bx-layer code-icon' style="color: #f97316;"></i>
-                                <h3>Kotlin / Dart</h3>
-                                <div class="line-code"></div>
-                                <div class="line-code w-70"></div>
-                                <div class="line-code w-40"></div>
-                            </div>
-
-                            <div class="screen-content" id="screen-3">
-                                <i class='bx bx-brain code-icon' style="color: #c026d3;"></i>
-                                <h3>Machine Learning</h3>
-                                <div class="ai-pulse"></div>
-                            </div>
-
-                            <div class="screen-content" id="screen-4">
-                                <div class="gallery-header">
-                                    <h2>The Gallery.</h2>
-                                </div>
-                                <div id="projects-list-scrollable">
-                                    <!-- Populated dynamically by JS -->
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+        <!-- ========== HERO ========== -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-copy">
+                <p class="status rise" style="--i:0">
+                    <span class="pulse" aria-hidden="true"></span>
+                    <span data-i18n="status">Open to Android &amp; mobile roles</span>
+                </p>
+                <h1 class="hero-title rise" style="--i:1" id="hero-title" data-i18n-html="heroTitle">Native software, <em>quietly</em> well made.</h1>
+                <p class="hero-lead rise" style="--i:2" data-i18n="heroLead">I'm Nguyễn Thanh Bình — a mobile engineer in Vietnam building Android apps, macOS menu-bar tools and on-device AI. Private by default, fast by design.</p>
+                <div class="hero-cta rise" style="--i:3">
+                    <a class="btn btn-primary" href="#work" data-guide="hero">
+                        <span data-i18n="ctaWork">See selected work</span>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+                    </a>
+                    <a class="btn btn-ghost" href="#contact" data-i18n="ctaContact">Get in touch</a>
                 </div>
             </div>
 
-            <!-- Scroll Height Spacers (create length for GSAP scrubbing) -->
-            <div class="scroll-spacer section-1"></div>
-            <div class="scroll-spacer section-2"></div>
-            <div class="scroll-spacer section-3"></div>
-            <div class="scroll-spacer section-4"></div>
-            <div class="scroll-spacer section-5"></div>
-
-        </header>
-
-        <!-- ============================================================
-             MAIN CONTENT — standard scrollable sections that reveal
-             after the hero experience finishes.
-        ============================================================= -->
-        <main id="content">
-
-            <!-- ABOUT -->
-            <section class="section section-about" id="about">
-                <div class="section-inner">
-                    <span class="eyebrow">01 — About</span>
-                    <h2 class="section-title">Building Android systems that feel <em>fast, stable, and deliberate</em>.</h2>
-                    <p class="lead">
-                        I'm Binh, a mobile software engineer focused on building native Android
-                        and cross-platform apps that are fast, maintainable, and a joy to use.
-                        I care deeply about clean architecture, polished motion, and shipping
-                        products that scale — from the first commit to the millionth user.
-                    </p>
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <span class="stat-num">5+</span>
-                            <span class="stat-label">Years building mobile</span>
+            <!-- Interactive desk: three real menu-bar apps, rebuilt small -->
+            <div class="desk-wrap rise" style="--i:4">
+                <p class="desk-try" data-i18n="deskTry">But why tell you — try them right here.</p>
+                <div class="desk" id="desk">
+                    <div class="menubar">
+                        <div class="mb-left">
+                            <svg class="mb-apple" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.63c-.02-2.1 1.72-3.12 1.8-3.17-.98-1.44-2.51-1.64-3.05-1.66-1.3-.13-2.54.77-3.2.77-.66 0-1.68-.75-2.76-.73-1.42.02-2.73.83-3.46 2.1-1.48 2.56-.38 6.35 1.06 8.43.7 1.02 1.54 2.16 2.64 2.12 1.06-.04 1.46-.69 2.74-.69 1.28 0 1.64.69 2.76.67 1.14-.02 1.86-1.04 2.56-2.06.8-1.18 1.13-2.32 1.15-2.38-.03-.01-2.2-.85-2.24-3.4ZM14.28 6.46c.58-.71.98-1.69.87-2.67-.84.03-1.86.56-2.46 1.26-.54.62-1.01 1.62-.89 2.58.94.07 1.9-.48 2.48-1.17Z"/></svg>
+                            <strong>Finder</strong><span>File</span><span>Edit</span><span class="mb-hide-sm">View</span><span class="mb-hide-sm">Go</span>
                         </div>
-                        <div class="stat-card">
-                            <span class="stat-num">20+</span>
-                            <span class="stat-label">Apps & prototypes shipped</span>
-                        </div>
-                        <div class="stat-card">
-                            <span class="stat-num">∞</span>
-                            <span class="stat-label">Curiosity for AI</span>
+                        <div class="mb-right">
+                            <button class="mb-item" type="button" data-app="lingo" aria-label="Lingo" aria-expanded="false">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9Z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8Z"/></svg>
+                            </button>
+                            <button class="mb-item" type="button" data-app="devicebar" aria-label="DeviceBar" aria-expanded="false">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="13" height="11" rx="1.5"/><rect x="15" y="8" width="7" height="12" rx="1.5"/><path d="M5 20h7"/></svg>
+                                <span class="mb-count" id="db-count">1</span>
+                            </button>
+                            <button class="mb-item mb-mectrics" type="button" data-app="mectrics" aria-label="Mectrics" aria-expanded="false">
+                                <span class="mb-m">M</span>
+                                <span class="mb-stat">CPU <b id="mb-cpu">28%</b></span>
+                                <span class="mb-stat mb-hide-sm">RAM <b id="mb-ram">45%</b></span>
+                            </button>
+                            <span class="mb-clock" id="mb-clock">--:--</span>
                         </div>
                     </div>
-                </div>
-            </section>
 
-            <!-- SKILLS -->
-            <section class="section section-skills" id="skills">
-                <div class="section-inner">
-                    <span class="eyebrow">02 — Toolkit</span>
-                    <h2 class="section-title">A stack built for native speed &amp; intelligence.</h2>
-                    <div class="skills-grid" id="skills-grid">
+                    <div class="desk-body" id="desk-body">
+                        <!-- Mectrics popover -->
+                        <div class="pop pop-mectrics" id="pop-mectrics" role="dialog" aria-label="Mectrics" hidden>
+                            <div class="pm-head">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                                <strong data-i18n="pmNormal">All systems normal</strong>
+                            </div>
+                            <div class="pm-spark">
+                                <svg viewBox="0 0 240 48" preserveAspectRatio="none" aria-hidden="true"><path id="pm-spark-fill" class="pm-spark-fill" d=""/><path id="pm-spark" class="pm-spark-line" d=""/></svg>
+                                <div class="pm-cores" id="pm-cores" aria-hidden="true"></div>
+                            </div>
+                            <ul class="pm-rows" id="pm-rows"></ul>
+                            <button class="pm-btn" type="button" id="pm-awake"><span data-i18n="pmAwake">Keep Awake</span>: <b data-i18n="pmOff">Off</b></button>
+                        </div>
+
+                        <!-- DeviceBar popover -->
+                        <div class="pop pop-devicebar" id="pop-devicebar" role="dialog" aria-label="DeviceBar" hidden>
+                            <div class="pd-head">
+                                <strong>DeviceBar</strong>
+                                <span class="pd-booted"><b id="db-booted">1</b> <span data-i18n="pdBooted">Booted</span></span>
+                            </div>
+                            <div class="pd-device is-on">
+                                <div><strong>iPhone 16 Pro</strong><small>iOS 18 · Simulator</small></div>
+                                <span class="pd-state" data-i18n="pdBootedOne">Booted</span>
+                            </div>
+                            <div class="pd-quick">
+                                <button type="button" data-quick="dark" data-i18n="pdDark">Dark mode</button>
+                                <button type="button" data-quick="faceid">FaceID ✓</button>
+                                <button type="button" data-quick="gps" data-i18n="pdGps">GPS · Hà Nội</button>
+                                <button type="button" data-quick="shot" data-i18n="pdShot">Screenshot</button>
+                            </div>
+                            <div class="pd-device" id="pd-pixel">
+                                <div><strong>Pixel 8 Pro</strong><small>Android 15 · AVD</small></div>
+                                <button class="pd-boot" type="button" id="pd-boot" data-i18n="pdBoot">Boot</button>
+                            </div>
+                            <p class="pd-toast" id="pd-toast" aria-live="polite"></p>
+                        </div>
+
+                        <!-- Lingo floating HUD -->
+                        <div class="pop pop-lingo" id="pop-lingo" role="dialog" aria-label="Lingo" hidden>
+                            <div class="pl-head">
+                                <img src="assets/lingo.png" alt="" width="22" height="22">
+                                <strong>Lingo</strong>
+                                <span class="pl-dir">English → Tiếng Việt</span>
+                            </div>
+                            <p class="pl-src">Apple Vision recognises text on-device in about 0.2 seconds.</p>
+                            <p class="pl-out" id="pl-out" aria-live="polite"></p>
+                            <div class="pl-tones" role="group" aria-label="Tone">
+                                <button type="button" data-tone="standard" aria-pressed="true">Standard</button>
+                                <button type="button" data-tone="technical" aria-pressed="false">Technical</button>
+                                <button type="button" data-tone="casual" aria-pressed="false">Casual</button>
+                            </div>
+                        </div>
+
+                        <div class="desk-center" id="desk-center">
+                            <button class="demo-btn" type="button" id="demo-btn" data-guide="demo">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16l13-8Z"/></svg>
+                                <span data-i18n="demoStart">Start demo</span>
+                            </button>
+                            <p class="desk-hint" data-i18n="deskHint">or click the menu bar yourself</p>
+                        </div>
+
+                        <div class="desk-cursor" id="desk-cursor" aria-hidden="true">
+                            <svg viewBox="0 0 13 20"><path d="M1 1v15.2l3.9-3.7 2.6 6.1 2.4-1-2.6-6h5.4Z"/></svg>
+                        </div>
+                    </div>
+
+                    <nav class="dock" id="dock" aria-label="Jump to a project">
                         <!-- Populated by JS -->
-                    </div>
+                    </nav>
                 </div>
-            </section>
+            </div>
 
-            <!-- LIVE MOBILE LAB -->
-            <section class="section section-lab" id="live-lab">
-                <div class="section-inner">
-                    <span class="eyebrow">03 — Live Mobile Lab</span>
-                    <h2 class="section-title">A compact view of how I think about mobile quality.</h2>
-                    <div class="lab-board">
-                        <div class="lab-device" aria-label="Mobile runtime preview">
-                            <div class="lab-device-top">
-                                <span>09:41</span>
-                                <i class='bx bxs-battery-charging'></i>
-                            </div>
-                            <div class="lab-app-header">
-                                <div>
-                                    <span>Dev Build</span>
-                                    <h3>Attendance Runtime</h3>
-                                </div>
-                                <i class='bx bxl-android'></i>
-                            </div>
-                            <div class="lab-health-card">
-                                <span>Frame budget</span>
-                                <strong>16.6ms</strong>
-                                <div class="lab-meter"><span style="width: 76%"></span></div>
-                            </div>
-                            <div class="lab-mini-grid">
-                                <div><span>State</span><strong>Stable</strong></div>
-                                <div><span>Cache</span><strong>Warm</strong></div>
-                                <div><span>API</span><strong>200</strong></div>
-                                <div><span>AI</span><strong>Ready</strong></div>
-                            </div>
-                            <div class="lab-feed">
-                                <p><i class='bx bx-check-circle'></i> ViewModel restored after rotation</p>
-                                <p><i class='bx bx-check-circle'></i> RecyclerView updated with payloads</p>
-                                <p><i class='bx bx-check-circle'></i> Camera surface released safely</p>
-                            </div>
-                        </div>
-                        <div class="lab-console">
-                            <div class="lab-metrics" id="lab-metrics">
-                                <!-- Populated by JS -->
-                            </div>
-                            <div class="lab-pipeline">
-                                <div class="pipeline-head">
-                                    <span>Release pipeline</span>
-                                    <strong>devDebug</strong>
-                                </div>
-                                <div class="pipeline-steps" id="pipeline-steps">
-                                    <!-- Populated by JS -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <dl class="hero-meta rise" style="--i:5">
+                <div>
+                    <dt data-i18n="metaBased">Based in</dt>
+                    <dd><span data-i18n="location">Vietnam</span> · <time id="local-time">--:--</time></dd>
                 </div>
-            </section>
-
-            <!-- ARCHITECTURE -->
-            <section class="section section-architecture" id="architecture">
-                <div class="section-inner">
-                    <span class="eyebrow">04 — Engineering Console</span>
-                    <h2 class="section-title">Clean mobile architecture, shown as a working system.</h2>
-                    <div class="architecture-board">
-                        <div class="system-map">
-                            <div class="map-node node-ui">
-                                <span>UI Layer</span>
-                                <strong>XML / Compose / ViewBinding</strong>
-                            </div>
-                            <div class="map-node node-state">
-                                <span>State Owner</span>
-                                <strong>ViewModel + StateFlow</strong>
-                            </div>
-                            <div class="map-node node-domain">
-                                <span>Domain</span>
-                                <strong>UseCase + Immutable Models</strong>
-                            </div>
-                            <div class="map-node node-data">
-                                <span>Data</span>
-                                <strong>Repository + SQL Server API</strong>
-                            </div>
-                            <div class="map-line line-one"></div>
-                            <div class="map-line line-two"></div>
-                            <div class="map-line line-three"></div>
-                        </div>
-                        <div class="terminal-panel" aria-label="Engineering signals">
-                            <div class="terminal-bar">
-                                <span></span><span></span><span></span>
-                                <strong>mobile-build.log</strong>
-                            </div>
-                            <pre><code>./gradlew :app:compileDevDebugKotlin
-state: StateFlow&lt;UiState&gt;
-threading: main-safe coroutines
-camera: Camera2 lifecycle aware
-rendering: RecyclerView payload updates
-ai: on-device inference ready</code></pre>
-                        </div>
-                    </div>
-                    <div class="principles-grid" id="principles-grid">
-                        <!-- Populated by JS -->
-                    </div>
+                <div>
+                    <dt data-i18n="metaFocus">Focus</dt>
+                    <dd data-i18n="metaFocusValue">Android · macOS · On-device AI</dd>
                 </div>
-            </section>
-
-            <!-- CODE CRAFT -->
-            <section class="section section-code" id="code-craft">
-                <div class="section-inner">
-                    <span class="eyebrow">05 — Code Craft</span>
-                    <h2 class="section-title">Readable Kotlin, lifecycle-aware by default.</h2>
-                    <div class="code-board">
-                        <div class="editor-panel" aria-label="Kotlin ViewModel snippet">
-                            <div class="editor-titlebar">
-                                <span></span><span></span><span></span>
-                                <strong>AttendanceViewModel.kt</strong>
-                            </div>
-                            <pre><code><span class="code-key">data class</span> AttendanceUiState(
-    <span class="code-key">val</span> loading: Boolean = false,
-    <span class="code-key">val</span> records: List&lt;AttendanceRecord&gt; = emptyList(),
-    <span class="code-key">val</span> error: String? = null
-)
-
-<span class="code-key">fun</span> refresh() = viewModelScope.launch {
-    _uiState.update { it.copy(loading = true, error = null) }
-
-    getAttendanceHistory()
-        .onSuccess { records -&gt;
-            _uiState.update { it.copy(loading = false, records = records) }
-        }
-        .onFailure { throwable -&gt;
-            _uiState.update { it.copy(loading = false, error = throwable.message) }
-        }
-}</code></pre>
-                        </div>
-                        <aside class="review-panel" aria-label="Engineering review checklist">
-                            <div class="review-head">
-                                <i class='bx bx-code-curly'></i>
-                                <div>
-                                    <span>Review lens</span>
-                                    <h3>What I optimize for</h3>
-                                </div>
-                            </div>
-                            <ul class="review-list">
-                                <li><i class='bx bx-check'></i> Immutable UI state, no hidden Fragment writes</li>
-                                <li><i class='bx bx-check'></i> Main-safe coroutine boundaries</li>
-                                <li><i class='bx bx-check'></i> Explicit loading, error, and empty states</li>
-                                <li><i class='bx bx-check'></i> RecyclerView updates scoped by payloads</li>
-                            </ul>
-                        </aside>
-                    </div>
+                <div>
+                    <dt data-i18n="metaRepos">Public repositories</dt>
+                    <dd id="hero-repos">18</dd>
                 </div>
-            </section>
-
-            <!-- CASE STUDIES -->
-            <section class="section section-cases" id="case-studies">
-                <div class="section-inner">
-                    <span class="eyebrow">06 — Case Studies</span>
-                    <h2 class="section-title">Projects explained by decisions, not only screenshots.</h2>
-                    <div class="case-filters" id="case-filters" aria-label="Filter case studies">
-                        <!-- Populated by JS -->
-                    </div>
-                    <div class="case-grid" id="case-grid">
-                        <!-- Populated by JS -->
-                    </div>
+                <div>
+                    <dt data-i18n="metaNow">Now</dt>
+                    <dd data-i18n="metaNowValue">Taking Moodroll to Google Play</dd>
                 </div>
-            </section>
+            </dl>
+        </section>
 
-            <!-- PROOF -->
-            <section class="section section-proof" id="proof">
-                <div class="section-inner">
-                    <span class="eyebrow">07 — Proof Pack</span>
-                    <h2 class="section-title">Signals that matter when mobile apps reach production.</h2>
-                    <p class="lead">
-                        I prefer evidence over buzzwords: state ownership, payload correctness,
-                        lifecycle cleanup, API contracts, and failure paths that are easy to inspect.
-                    </p>
-                    <div class="proof-grid" id="proof-grid">
-                        <!-- Populated by JS -->
-                    </div>
+        <!-- ========== WORK ========== -->
+        <section class="section" id="work" aria-labelledby="work-title">
+            <header class="section-head reveal">
+                <p class="label"><span class="label-num">01</span><span data-i18n="workLabel">Selected work</span></p>
+                <h2 class="section-title" id="work-title" data-i18n-html="workTitle">Things I've built, <em>up close</em>.</h2>
+                <p class="section-intro" data-i18n="workIntro">Three macOS utilities, two privacy-first Android apps, an open-source Compose library and a research pipeline — each explained by what it does and how it's built.</p>
+            </header>
+            <div class="cases" id="cases">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- ========== APPROACH ========== -->
+        <section class="section" id="approach" aria-labelledby="approach-title">
+            <header class="section-head reveal">
+                <p class="label"><span class="label-num">02</span><span data-i18n="approachLabel">Approach</span></p>
+                <h2 class="section-title" id="approach-title" data-i18n-html="approachTitle">Four habits behind <em>every</em> build.</h2>
+            </header>
+            <ol class="principles" id="principles">
+                <!-- Populated by JS -->
+            </ol>
+            <div class="toolkit reveal" id="toolkit">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- ========== LOG ========== -->
+        <section class="section" id="log" aria-labelledby="log-title">
+            <header class="section-head reveal">
+                <p class="label"><span class="label-num">03</span><span data-i18n="logLabel">Build log</span></p>
+                <h2 class="section-title" id="log-title" data-i18n-html="logTitle">From Java chat apps to <em>native Mac tools</em>.</h2>
+            </header>
+            <ol class="timeline" id="timeline">
+                <!-- Populated by JS -->
+            </ol>
+        </section>
+
+        <!-- ========== INDEX ========== -->
+        <section class="section" id="index" aria-labelledby="index-title">
+            <header class="section-head reveal">
+                <p class="label"><span class="label-num">04</span><span data-i18n="indexLabel">Index</span></p>
+                <h2 class="section-title" id="index-title" data-i18n-html="indexTitle">Every public <em>repository</em>.</h2>
+            </header>
+            <div class="index-bar reveal">
+                <div class="filters" id="filters" role="group" aria-label="Filter by language">
+                    <!-- Populated by JS -->
                 </div>
-            </section>
+                <p class="sync-note" id="sync-note" data-i18n="syncStatic">Snapshot of GitHub · Sep 2026</p>
+            </div>
+            <ul class="repo-index reveal" id="repo-index">
+                <!-- Populated by JS -->
+            </ul>
+        </section>
 
-            <!-- EXPERIENCE -->
-            <section class="section section-experience" id="experience">
-                <div class="section-inner">
-                    <span class="eyebrow">08 — Journey</span>
-                    <h2 class="section-title">The journey so far.</h2>
-                    <ol class="timeline" id="timeline">
-                        <!-- Populated by JS -->
-                    </ol>
-                </div>
-            </section>
+        <!-- ========== CONTACT ========== -->
+        <section class="section contact" id="contact" aria-labelledby="contact-title">
+            <p class="label reveal"><span class="label-num">05</span><span data-i18n="contactLabel">Contact</span></p>
+            <h2 class="contact-title reveal" id="contact-title" data-i18n-html="contactTitle">Let's make something <em>calm</em> and fast.</h2>
+            <div class="contact-mail reveal">
+                <a class="mail-link" href="mailto:thanhbinhntn2018@gmail.com">thanhbinhntn2018@gmail.com</a>
+                <button class="copy" id="copy-email" type="button" data-i18n-label="copyEmail" aria-label="Copy email address">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                </button>
+            </div>
+            <div class="contact-links reveal">
+                <a class="pill" href="https://www.linkedin.com/in/nguy%E1%BB%85n-thanh-b%C3%ACnh-8b7aa1264/" target="_blank" rel="noopener">LinkedIn <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+                <a class="pill" href="https://github.com/NtbAndroidDev" target="_blank" rel="noopener">GitHub <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+                <a class="pill" href="links/"><span data-i18n="allLinks">All links</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+                <a class="pill pill-coffee" href="https://buymeacoffee.com/ntb1nh" target="_blank" rel="noopener"><span data-i18n="coffee">Buy me a coffee</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+            </div>
+            <dl class="contact-facts reveal">
+                <div><dt data-i18n="factBased">Based</dt><dd data-i18n="factBasedValue">Vietnam · GMT+7</dd></div>
+                <div><dt data-i18n="factFocus">Focus</dt><dd data-i18n="factFocusValue">Native Android, macOS utilities, on-device AI</dd></div>
+                <div><dt data-i18n="factOpen">Open to</dt><dd data-i18n="factOpenValue">Android &amp; mobile roles, freelance builds</dd></div>
+            </dl>
+        </section>
+    </main>
 
-            <!-- CONTACT -->
-            <section class="section section-contact" id="contact">
-                <div class="section-inner">
-                    <span class="eyebrow">09 — Contact</span>
-                    <h2 class="section-title">Let's build something great.</h2>
-                    <p class="lead">
-                        Open to mobile engineering roles, freelance collaborations, and
-                        interesting AI-meets-mobile experiments. Reach out anytime.
-                    </p>
-                    <div class="contact-command">
-                        <div class="contact-terminal">
-                            <div class="contact-terminal-bar">
-                                <span></span><span></span><span></span>
-                                <strong>contact.sh</strong>
-                            </div>
-                            <div class="contact-terminal-body">
-                                <p><span>$</span> ./start_conversation --role android-engineer</p>
-                                <div class="contact-actions" id="contact-actions">
-                                    <!-- Populated by JS -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="contact-facts" aria-label="Collaboration details">
-                            <div>
-                                <span>Focus</span>
-                                <strong>Native Android, Kotlin, mobile architecture</strong>
-                            </div>
-                            <div>
-                                <span>Availability</span>
-                                <strong>Open to product teams and freelance builds</strong>
-                            </div>
-                            <div>
-                                <span>Working style</span>
-                                <strong>Clear scope, small diffs, production-minded delivery</strong>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <footer class="site-footer">
-                    <p>© <span id="year"></span> Binh — NtbAndroidDev. Built with HTML, CSS &amp; GSAP.</p>
-                </footer>
-            </section>
+    <footer class="footer">
+        <p>© <span id="year">2026</span> Nguyễn Thanh Bình</p>
+        <p data-i18n="footerNote">Hand-built with HTML, CSS &amp; a little JavaScript.</p>
+    </footer>
 
-        </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+    <!-- The sample user who walks the page as you scroll -->
+    <div class="guide" id="guide" aria-hidden="true">
+        <svg class="guide-arrow" viewBox="0 0 13 20"><path d="M1 1v15.2l3.9-3.7 2.6 6.1 2.4-1-2.6-6h5.4Z"/></svg>
+        <span class="guide-tag"><b id="guide-name">Guest</b><span id="guide-say"></span></span>
+        <span class="guide-ripple"></span>
     </div>
 
-    <!-- Project detail modal -->
-    <div class="modal-backdrop" id="project-modal" hidden>
-        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-            <button class="modal-close" id="modal-close" aria-label="Close dialog"><i class='bx bx-x'></i></button>
-            <div class="modal-head" id="modal-head"></div>
-            <div class="modal-body" id="modal-body"></div>
-        </div>
-    </div>
-
-    <!-- GSAP Core & ScrollTrigger -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-    <script src="script.js?v=20260617-9"></script>
+    <script src="data.js?v=20260920"></script>
+    <script src="script.js?v=20260920"></script>
 </body>
 </html>

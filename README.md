@@ -1,50 +1,40 @@
-# NtbAndroidDev Profile Website
+# NtbAndroidDev — Portfolio & Links
 
-Welcome to your personal portfolio website! This repository contains a beautiful, responsive, and modern profile page built with HTML, CSS, and JavaScript. It's designed to showcase your skills, experience, and latest projects.
+Personal site of Nguyễn Thanh Bình, served by GitHub Pages:
 
-## 🚀 Getting Started with GitHub Pages
+- **Portfolio** — https://ntbandroiddev.github.io/profile-ntb/
+- **Links page** — https://ntbandroiddev.github.io/profile-ntb/links/
 
-To host this website for free on GitHub, follow these simple steps:
+Plain HTML, CSS and JavaScript. No build step, no framework. Pushing to `main` deploys via
+`.github/workflows/deploy.yml`.
 
-### 1. Create a New Repository
-1. Go to your GitHub account and click **New Repository**.
-2. Name the repository exactly: `NtbAndroidDev.github.io`
-   *(This tells GitHub to automatically host the site).*
-3. **Do not** initialize it with a README, .gitignore, or license (leave them unchecked).
-4. Click **Create repository**.
+## Layout
 
-### 2. Push Your Code to GitHub
-Open your terminal, navigate to this project folder, and run the following commands (replace the URL with your new repository's URL if different):
+| Path | What it is |
+| --- | --- |
+| `data.js` | **Shared content** for both pages: profile, projects (EN/VI summaries, highlights, media), archive, GitHub snapshot, helpers. Edit projects here once. |
+| `index.html`, `styles.css`, `script.js` | Portfolio: hero with an interactive macOS desk, selected work, approach, build log, repository index, contact. |
+| `links/` | Link-in-bio page (`index.html`, `links.css`, `links.js`) — vCard, QR code, share, copy email. |
+| `assets/` | Avatar, app icons and `shots/` (screenshots taken from each project's own repo). |
 
-```bash
-git remote add origin https://github.com/NtbAndroidDev/NtbAndroidDev.github.io.git
-git branch -M main
-git push -u origin main
-```
+## Things worth knowing
 
-### 3. See it Live!
-Once pushed, GitHub will automatically deploy your site. 
-Wait a minute or two, then visit: **https://NtbAndroidDev.github.io**
+- **Live GitHub data.** Both pages fetch `api.github.com/users/NtbAndroidDev/repos` (cached 30 min in
+  `sessionStorage`) for stars, languages and update times. If the API is unreachable or rate-limited
+  they fall back to the snapshot in `data.js`. New repos appear automatically in the portfolio index
+  and under "Fresh on GitHub" on the links page.
+- **The desk** (`#desk` in `index.html`, section 5 of `script.js`) rebuilds Mectrics, DeviceBar and
+  Lingo as small menu-bar mocks. Visitors can click them; **Start demo** runs a scripted cursor through
+  the same click handlers. A real click cancels the autopilot.
+- **The guide** (section 6 of `script.js`) is the "sample user" cursor that walks the page as you
+  scroll. Any element with `data-guide="…"` becomes a stop; its caption comes from the `say*` strings.
+  It is hidden on touch screens, narrow viewports and with `prefers-reduced-motion`.
+- **Language & theme.** EN/VI and light/dark are shared between both pages via `localStorage`
+  (`ntb-lang`, `ntb-theme`); the default follows the browser.
 
-## 🛠 Setup & Customization
-- **index.html**: Page structure. The `#hero-experience` block holds the scroll-driven 3D phone animation; the `#content` block holds the standard About / Skills / Experience / Contact sections.
-- **styles.css**: Colors, fonts and the glassmorphism dark theme. Fully responsive (mobile breakpoints at 900/768/480px) and respects `prefers-reduced-motion` — when motion is reduced, all content is shown statically instead of being scroll-driven.
-- **script.js**: All content is data-driven. Edit the arrays at the top to update your portfolio:
-  - `myProjects` — the App Store style gallery cards inside the phone.
-  - `skills` — the toolkit grid.
-  - `experience` — the timeline entries.
-  - `contacts` — the contact buttons (update the `mailto:` and social links!).
+## Adding a project
 
-The hero animation is built with GSAP `matchMedia`, so it automatically rebuilds on resize / orientation change and disables itself for reduced-motion users.
-
-## 🔗 Links page (`/links/`)
-A standalone, premium link-in-bio page lives in `links/` and deploys with the rest of the site at
-**https://ntbandroiddev.github.io/profile-ntb/links/**.
-
-- `links/links.js` — all content is data: `STRINGS` (EN/VI copy), `GROUPS` (featured work), `ARCHIVE` (older repos).
-  Stars, languages and "updated" times sync live from the GitHub API (cached 30 min, falls back to a built-in snapshot).
-  New repos not listed in the data appear automatically under "Fresh on GitHub".
-- `links/links.css` — design tokens at the top (light + dark themes).
-- `links/assets/` — avatar and app icons.
-
-Enjoy your new profile!
+1. Add an entry to `projects` in `data.js` (copy an existing one; `media.type` is one of
+   `shot`, `phones`, `stickers`, `code`, `pipeline`).
+2. Put images in `assets/` or `assets/shots/`.
+3. List its key in `CASE_ORDER` (and optionally `DOCK`) in `script.js`, and in a group in `links/links.js`.

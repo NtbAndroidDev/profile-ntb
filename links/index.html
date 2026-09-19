@@ -15,7 +15,7 @@
     <meta property="og:title" content="Nguyễn Thanh Bình — Links">
     <meta property="og:description" content="Android apps, native macOS utilities and open-source work by NtbAndroidDev.">
     <meta property="og:url" content="https://ntbandroiddev.github.io/profile-ntb/links/">
-    <meta property="og:image" content="https://ntbandroiddev.github.io/profile-ntb/links/assets/avatar.jpg">
+    <meta property="og:image" content="https://ntbandroiddev.github.io/profile-ntb/assets/avatar.jpg">
     <meta name="twitter:card" content="summary">
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%230c0c0d'/><text x='50%' y='54%' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-size='34' fill='%23d4b98c'>b</text></svg>">
@@ -27,12 +27,12 @@
     <!-- Apply the saved theme before first paint to avoid a flash -->
     <script>
         try {
-            var t = localStorage.getItem('links-theme');
+            var t = localStorage.getItem('ntb-theme');
             if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
         } catch (e) {}
     </script>
 
-    <link rel="stylesheet" href="links.css?v=20260919">
+    <link rel="stylesheet" href="links.css?v=20260920">
 </head>
 <body>
     <a href="#work" class="skip-link" data-i18n="skip">Skip to work</a>
@@ -61,7 +61,7 @@
         <aside class="identity" aria-label="Profile">
             <div class="identity-inner">
                 <div class="avatar reveal" style="--i:0">
-                    <img src="assets/avatar.jpg" width="96" height="96" alt="Nguyễn Thanh Bình">
+                    <img src="../assets/avatar.jpg" width="96" height="96" alt="Nguyễn Thanh Bình">
                     <span class="avatar-status" aria-hidden="true"></span>
                 </div>
 
@@ -100,9 +100,9 @@
                     <p class="label reveal" style="--i:6"><span data-i18n="elsewhere">Elsewhere</span></p>
                     <ul>
                         <li class="reveal" style="--i:7">
-                            <a class="social" href="https://ntbandroiddev.github.io/profile-ntb/">
+                            <a class="social" href="../">
                                 <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20"/></svg></span>
-                                <span class="social-text"><strong data-i18n="portfolio">Portfolio</strong><small data-i18n="portfolioSub">Architecture, case studies &amp; journey</small></span>
+                                <span class="social-text"><strong data-i18n="portfolio">Portfolio</strong><small data-i18n="portfolioSub">Selected work, approach &amp; build log</small></span>
                                 <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
                             </a>
                         </li>
@@ -130,6 +130,13 @@
                                     <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
                                 </button>
                             </div>
+                        </li>
+                        <li class="reveal" style="--i:11">
+                            <a class="social" href="https://buymeacoffee.com/ntb1nh" target="_blank" rel="noopener">
+                                <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><path d="M6 2v2M10 2v2M14 2v2"/></svg></span>
+                                <span class="social-text"><strong data-i18n="coffee">Buy me a coffee</strong><small data-i18n="coffeeSub">Keeps the open-source tools going</small></span>
+                                <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+                            </a>
                         </li>
                     </ul>
                 </nav>
@@ -189,6 +196,7 @@
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-    <script src="links.js?v=20260919"></script>
+    <script src="../data.js?v=20260920"></script>
+    <script src="links.js?v=20260920"></script>
 </body>
 </html>
