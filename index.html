@@ -15,10 +15,36 @@
     <meta property="og:title" content="Nguyễn Thanh Bình — Mobile Software Engineer">
     <meta property="og:description" content="Native Android apps, macOS menu-bar tools and on-device AI. Private by default, fast by design.">
     <meta property="og:url" content="https://ntbandroiddev.github.io/profile-ntb/">
-    <meta property="og:image" content="https://ntbandroiddev.github.io/profile-ntb/assets/shots/devicebar.jpg">
+    <meta property="og:image" content="https://ntbandroiddev.github.io/profile-ntb/assets/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Nguyễn Thanh Bình — mobile software engineer">
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%230c0c0d'/><text x='50%' y='54%' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-size='34' fill='%23d4b98c'>b</text></svg>">
+
+    <link rel="apple-touch-icon" href="assets/touch-icon.png">
+    <link rel="manifest" href="manifest.webmanifest">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Nguyễn Thanh Bình",
+        "alternateName": "NtbAndroidDev",
+        "jobTitle": "Mobile Software Engineer",
+        "url": "https://ntbandroiddev.github.io/profile-ntb/",
+        "image": "https://ntbandroiddev.github.io/profile-ntb/assets/avatar.jpg",
+        "email": "mailto:thanhbinhntn2018@gmail.com",
+        "address": { "@type": "PostalAddress", "addressCountry": "VN" },
+        "knowsAbout": ["Android", "Kotlin", "Jetpack Compose", "Swift", "SwiftUI", "macOS", "Flutter", "On-device AI"],
+        "sameAs": [
+            "https://github.com/NtbAndroidDev",
+            "https://www.linkedin.com/in/nguy%E1%BB%85n-thanh-b%C3%ACnh-8b7aa1264/",
+            "https://buymeacoffee.com/ntb1nh"
+        ]
+    }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,7 +72,7 @@
                 <span class="mark-glyph">b</span>
                 <span class="mark-text">NtbAndroidDev</span>
             </a>
-            <nav class="nav-links" aria-label="Sections">
+            <nav class="nav-links" id="nav-links" aria-label="Sections">
                 <a href="#work" data-i18n="navWork">Work</a>
                 <a href="#approach" data-i18n="navApproach">Approach</a>
                 <a href="#log" data-i18n="navLog">Log</a>
@@ -54,6 +80,9 @@
                 <a href="#contact" data-i18n="navContact">Contact</a>
             </nav>
             <div class="nav-tools">
+                <a class="tool tool-icon tool-coffee" href="https://buymeacoffee.com/ntb1nh" target="_blank" rel="noopener" data-i18n-label="coffee" aria-label="Buy me a coffee">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><path d="M6 2v2M10 2v2M14 2v2"/></svg>
+                </a>
                 <a class="tool tool-link" href="links/">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
                     <span data-i18n="navLinks">Links</span>
@@ -64,6 +93,10 @@
                 <button class="tool tool-icon" id="theme-toggle" type="button" aria-label="Toggle colour theme">
                     <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
                     <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                </button>
+                <button class="tool tool-icon nav-burger" id="nav-burger" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+                    <svg class="i-bars" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+                    <svg class="i-x" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
                 </button>
             </div>
         </div>
@@ -260,6 +293,21 @@
             <ul class="repo-index reveal" id="repo-index">
                 <!-- Populated by JS -->
             </ul>
+        </section>
+
+        <!-- ========== SUPPORT ========== -->
+        <section class="section support-section" aria-labelledby="support-title">
+            <div class="support reveal">
+                <div class="support-copy">
+                    <p class="label"><span data-i18n="supportLabel">Support</span></p>
+                    <h2 id="support-title" data-i18n-html="supportTitle">Three Mac tools, <em>free and open</em>.</h2>
+                    <p data-i18n="supportText">Mectrics, DeviceBar and Lingo are MIT-licensed, ad-free and have no telemetry. A coffee keeps them maintained and updated.</p>
+                </div>
+                <a class="bmc" href="https://buymeacoffee.com/ntb1nh" target="_blank" rel="noopener" data-guide="coffee">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><path d="M6 2v2M10 2v2M14 2v2"/></svg>
+                    <span><b data-i18n="coffee">Buy me a coffee</b><small>buymeacoffee.com/ntb1nh</small></span>
+                </a>
+            </div>
         </section>
 
         <!-- ========== CONTACT ========== -->

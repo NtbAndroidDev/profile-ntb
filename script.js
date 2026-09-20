@@ -85,6 +85,10 @@ const STRINGS = {
         jitpack: 'JitPack',
         dataset: 'Dataset',
         updated: 'Updated',
+        supportLabel: 'Support',
+        supportTitle: 'Three Mac tools, <em>free and open</em>.',
+        supportText: 'Mectrics, DeviceBar and Lingo are MIT-licensed, ad-free and have no telemetry. A coffee keeps them maintained and updated.',
+        menu: 'Menu',
         guideName: 'Guest',
         sayHero: 'Let\'s look around',
         sayDemo: 'Starting the demo',
@@ -92,6 +96,7 @@ const STRINGS = {
         sayPrinciple: 'Why private?',
         sayLog: 'Back to the start',
         sayIndex: 'Browsing by language',
+        sayCoffee: 'Worth a coffee',
         sayContact: 'Saying hi 👋'
     },
     vi: {
@@ -167,6 +172,10 @@ const STRINGS = {
         jitpack: 'JitPack',
         dataset: 'Dataset',
         updated: 'Cập nhật',
+        supportLabel: 'Ủng hộ',
+        supportTitle: 'Ba công cụ Mac, <em>miễn phí và mở</em>.',
+        supportText: 'Mectrics, DeviceBar và Lingo đều theo giấy phép MIT, không quảng cáo, không thu thập dữ liệu. Một ly cà phê giúp chúng được duy trì và cập nhật.',
+        menu: 'Menu',
         guideName: 'Khách',
         sayHero: 'Đi một vòng nhé',
         sayDemo: 'Bấm chạy demo',
@@ -174,6 +183,7 @@ const STRINGS = {
         sayPrinciple: 'Sao lại riêng tư?',
         sayLog: 'Quay về lúc bắt đầu',
         sayIndex: 'Lọc theo ngôn ngữ',
+        sayCoffee: 'Đáng một ly cà phê',
         sayContact: 'Gửi lời chào 👋'
     }
 };
@@ -842,7 +852,7 @@ const guide = (() => {
 
     function sayFor(p) {
         if (!p) return '';
-        const key = { hero: 'sayHero', demo: 'sayDemo', case: 'sayCase', principle: 'sayPrinciple', log: 'sayLog', index: 'sayIndex', contact: 'sayContact' }[p.kind];
+        const key = { hero: 'sayHero', demo: 'sayDemo', case: 'sayCase', principle: 'sayPrinciple', log: 'sayLog', index: 'sayIndex', coffee: 'sayCoffee', contact: 'sayContact' }[p.kind];
         return t(key).replace('{name}', p.node.dataset.name || '');
     }
 
@@ -939,6 +949,17 @@ function observeReveals() {
 
 function setupNav() {
     const nav = $('#nav');
+    const burger = $('#nav-burger');
+    const closeMenu = () => { nav.classList.remove('is-open'); burger.setAttribute('aria-expanded', 'false'); };
+    burger.addEventListener('click', () => {
+        const open = !nav.classList.contains('is-open');
+        nav.classList.toggle('is-open', open);
+        burger.setAttribute('aria-expanded', String(open));
+    });
+    $$('.nav-links a').forEach((a) => a.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+    document.addEventListener('click', (e) => { if (!e.target.closest('.nav-inner')) closeMenu(); });
+
     const links = $$('.nav-links a');
     const onScroll = () => {
         nav.classList.toggle('is-scrolled', scrollY > 12);

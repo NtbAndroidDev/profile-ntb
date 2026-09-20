@@ -1,0 +1,11 @@
+{
+  "name": "Nguyễn Thanh Bình — Mobile Software Engineer",
+  "short_name": "NtbAndroidDev",
+  "description": "Android apps, macOS menu-bar tools and on-device AI.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "browser",
+  "background_color": "#0c0c0d",
+  "theme_color": "#0c0c0d",
+  "icons": [{ "src": "assets/touch-icon.png", "sizes": "180x180", "type": "image/png" }]
+}

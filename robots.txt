@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ntbandroiddev.github.io/profile-ntb/sitemap.xml
