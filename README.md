@@ -16,7 +16,6 @@ Plain HTML, CSS and JavaScript. No build step, no framework. Pushing to `main` d
 | `index.html`, `styles.css`, `script.js` | Portfolio: hero with an interactive macOS desk, selected work, approach, build log, repository index, contact. |
 | `links/` | Link-in-bio page (`index.html`, `links.css`, `links.js`) — vCard, QR code, share, copy email. |
 | `assets/` | Avatar, app icons and `shots/` (screenshots taken from each project's own repo). |
-
 | `404.html`, `robots.txt`, `sitemap.xml`, `manifest.webmanifest` | Not-found page (uses absolute `/profile-ntb/` paths, since Pages serves it at any depth) and search/PWA metadata. |
 | `assets/og.png`, `assets/og-links.png`, `assets/touch-icon.png` | Social share cards (1200×630) and the home-screen icon. Regenerate by rendering an HTML card at that size and screenshotting it. |
 
